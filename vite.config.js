@@ -14,8 +14,8 @@ export default defineConfig({
         }),
         react(),
     ],
-    build: {
-        manifest: true,
-        outDir: './build',
-    },
+    // build: {
+    //     manifest: true,
+    //     outDir: './build',
+    // },
 });
