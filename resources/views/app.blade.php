@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html data-theme="luxury">
+<html data-theme="luxury" lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Keubitbi Official Website</title>
+        <title inertia></title>
         @viteReactRefresh 
         @vite(['resources/css/app.css', 'resources/js/app.jsx'])
         <!-- As you can see, we will use vite with jsx syntax for React-->
