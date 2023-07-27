@@ -3,7 +3,7 @@ import laravel from 'laravel-vite-plugin';
 import react from '@vitejs/plugin-react';
 
 export default defineConfig({
-    public: '/public',
+    publicDir: "public",
     plugins: [
         laravel({
             input: [
@@ -11,7 +11,6 @@ export default defineConfig({
                 'resources/css/app.css'
             ],
             refresh: true,
-            public: '/public',
         }),
         react(),
     ]
