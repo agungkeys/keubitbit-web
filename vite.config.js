@@ -8,15 +8,14 @@ export default defineConfig({
         laravel({
             input: [
                 'resources/js/app.jsx',
-                'resources/css/app.css',
-                'resources/sass/app.scss',
+                'resources/css/app.css'
             ],
             refresh: true,
-            publicDirectory: 'public',
         }),
         react(),
     ],
     build: {
-        chunkSizeWarningLimit: 1000,
+        manifest: true,
+        outDir: './build',
     },
 });

@@ -1,0 +1,58 @@
+{
+  "_VerifyEmail-eb78dbb1.js": {
+    "file": "assets/VerifyEmail-eb78dbb1.js",
+    "isDynamicEntry": true
+  },
+  "resources/css/app.css": {
+    "file": "assets/app-8590ac5a.css",
+    "isEntry": true,
+    "src": "resources/css/app.css"
+  },
+  "resources/js/Pages/Auth/Login.jsx": {
+    "file": "assets/Login-e9241c73.js",
+    "imports": [
+      "resources/js/app.jsx"
+    ],
+    "isDynamicEntry": true,
+    "src": "resources/js/Pages/Auth/Login.jsx"
+  },
+  "resources/js/Pages/Auth/Register.jsx": {
+    "file": "assets/Register-db9d2367.js",
+    "imports": [
+      "resources/js/app.jsx"
+    ],
+    "isDynamicEntry": true,
+    "src": "resources/js/Pages/Auth/Register.jsx"
+  },
+  "resources/js/Pages/Homepage.jsx": {
+    "file": "assets/Homepage-7eb8b29d.js",
+    "imports": [
+      "resources/js/app.jsx"
+    ],
+    "isDynamicEntry": true,
+    "src": "resources/js/Pages/Homepage.jsx"
+  },
+  "resources/js/Pages/Test.jsx": {
+    "file": "assets/Test-5e718f7e.js",
+    "imports": [
+      "resources/js/app.jsx"
+    ],
+    "isDynamicEntry": true,
+    "src": "resources/js/Pages/Test.jsx"
+  },
+  "resources/js/app.jsx": {
+    "dynamicImports": [
+      "_VerifyEmail-eb78dbb1.js",
+      "_VerifyEmail-eb78dbb1.js",
+      "resources/js/Pages/Auth/Login.jsx",
+      "resources/js/Pages/Auth/Register.jsx",
+      "_VerifyEmail-eb78dbb1.js",
+      "_VerifyEmail-eb78dbb1.js",
+      "resources/js/Pages/Homepage.jsx",
+      "resources/js/Pages/Test.jsx"
+    ],
+    "file": "assets/app-8d9a7e66.js",
+    "isEntry": true,
+    "src": "resources/js/app.jsx"
+  }
+}
