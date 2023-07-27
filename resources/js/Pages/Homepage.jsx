@@ -38,12 +38,20 @@ const Homepage = () => {
     ];
     return (
         <>
-            <Head title="Keubitbit Aceh Ethnic Music Official Website" />
+            <Head>
+                <meta charset="UTF-8" />
+                <title>Keubitbit Aceh Ethnic Music Official Website</title>
+                <link rel="icon" type="image/x-icon" href="https://res.cloudinary.com/domqavi1p/image/upload/v1690457837/favicon_uakjw6.ico" />
+                <meta name="description" content="Everything about gigs, glbums of Keubitbit Aceh Ethnic Music" />
+                <meta name="keywords" content="Keubitbit, Ethnic Music, Keubitbit Indonesia" />
+                <meta name="author" content="Agung Kurniawan" />
+                <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+            </Head>
             <Header menu={menus} />
             <div
                 className="w-full bg-center bg-repeat md:bg-no-repeat bg-contain md:bg-cover"
                 style={{
-                    backgroundImage: `linear-gradient(to top, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.4), rgba(0, 0, 0, .1)), url(/keubitbit.jpeg)`,
+                    backgroundImage: `linear-gradient(to top, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.4), rgba(0, 0, 0, .1)), url(https://res.cloudinary.com/domqavi1p/image/upload/v1690457739/keubitbit_p9zx93.webp)`,
                 }}
             >
                 <div className="hero min-h-screen bg-base">
