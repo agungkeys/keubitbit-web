@@ -9,7 +9,7 @@
     "src": "resources/css/app.css"
   },
   "resources/js/Pages/Auth/Login.jsx": {
-    "file": "assets/Login-6b964256.js",
+    "file": "assets/Login-2c2ae53e.js",
     "imports": [
       "resources/js/app.jsx"
     ],
@@ -17,7 +17,7 @@
     "src": "resources/js/Pages/Auth/Login.jsx"
   },
   "resources/js/Pages/Auth/Register.jsx": {
-    "file": "assets/Register-f19ba9d1.js",
+    "file": "assets/Register-ea152f4d.js",
     "imports": [
       "resources/js/app.jsx"
     ],
@@ -25,7 +25,7 @@
     "src": "resources/js/Pages/Auth/Register.jsx"
   },
   "resources/js/Pages/Homepage.jsx": {
-    "file": "assets/Homepage-e8054ec5.js",
+    "file": "assets/Homepage-5157f699.js",
     "imports": [
       "resources/js/app.jsx"
     ],
@@ -33,7 +33,7 @@
     "src": "resources/js/Pages/Homepage.jsx"
   },
   "resources/js/Pages/Test.jsx": {
-    "file": "assets/Test-daabd465.js",
+    "file": "assets/Test-8f6a418c.js",
     "imports": [
       "resources/js/app.jsx"
     ],
@@ -51,7 +51,7 @@
       "resources/js/Pages/Homepage.jsx",
       "resources/js/Pages/Test.jsx"
     ],
-    "file": "assets/app-a9444ed3.js",
+    "file": "assets/app-0414f5f0.js",
     "isEntry": true,
     "src": "resources/js/app.jsx"
   }
