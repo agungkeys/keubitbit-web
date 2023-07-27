@@ -8,9 +8,14 @@ export default defineConfig({
         laravel({
             input: [
                 'resources/js/app.jsx',
-                'resources/sass/app.scss',
+                'resources/css/app.css'
             ],
+            refresh: true,
         }),
         react(),
     ],
+    build: {
+        manifest: true,
+        outDir: 'build',
+    },
 });
