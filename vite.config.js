@@ -3,7 +3,7 @@ import laravel from 'laravel-vite-plugin';
 import react from '@vitejs/plugin-react';
 
 export default defineConfig({
-    base: "",
+    base: "./",
     plugins: [
         laravel({
             input: [
@@ -12,7 +12,7 @@ export default defineConfig({
                 'resources/sass/app.scss',
             ],
             refresh: true,
-            publicPath: "/public/",
+            publicDirectory: 'public',
         }),
         react(),
     ],
