@@ -3,13 +3,8 @@
     "file": "assets/VerifyEmail-eb78dbb1.js",
     "isDynamicEntry": true
   },
-  "resources/css/app.css": {
-    "file": "assets/app-8590ac5a.css",
-    "isEntry": true,
-    "src": "resources/css/app.css"
-  },
   "resources/js/Pages/Auth/Login.jsx": {
-    "file": "assets/Login-fde4969b.js",
+    "file": "assets/Login-0090d80a.js",
     "imports": [
       "resources/js/app.jsx"
     ],
@@ -17,7 +12,7 @@
     "src": "resources/js/Pages/Auth/Login.jsx"
   },
   "resources/js/Pages/Auth/Register.jsx": {
-    "file": "assets/Register-7941ee3d.js",
+    "file": "assets/Register-d0b08cbc.js",
     "imports": [
       "resources/js/app.jsx"
     ],
@@ -25,7 +20,7 @@
     "src": "resources/js/Pages/Auth/Register.jsx"
   },
   "resources/js/Pages/Homepage.jsx": {
-    "file": "assets/Homepage-2fb6b421.js",
+    "file": "assets/Homepage-45741f01.js",
     "imports": [
       "resources/js/app.jsx"
     ],
@@ -33,14 +28,21 @@
     "src": "resources/js/Pages/Homepage.jsx"
   },
   "resources/js/Pages/Test.jsx": {
-    "file": "assets/Test-b754bddd.js",
+    "file": "assets/Test-95d1c45b.js",
     "imports": [
       "resources/js/app.jsx"
     ],
     "isDynamicEntry": true,
     "src": "resources/js/Pages/Test.jsx"
   },
+  "resources/js/app.css": {
+    "file": "assets/app-8590ac5a.css",
+    "src": "resources/js/app.css"
+  },
   "resources/js/app.jsx": {
+    "css": [
+      "assets/app-8590ac5a.css"
+    ],
     "dynamicImports": [
       "_VerifyEmail-eb78dbb1.js",
       "_VerifyEmail-eb78dbb1.js",
@@ -51,7 +53,7 @@
       "resources/js/Pages/Homepage.jsx",
       "resources/js/Pages/Test.jsx"
     ],
-    "file": "assets/app-05ce5be0.js",
+    "file": "assets/app-fa8941a7.js",
     "isEntry": true,
     "src": "resources/js/app.jsx"
   }

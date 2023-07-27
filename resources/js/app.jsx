@@ -2,6 +2,7 @@ import React from 'react'
 import {createRoot} from 'react-dom/client'
 import {createInertiaApp } from '@inertiajs/react'
 import {resolvePageComponent} from 'laravel-vite-plugin/inertia-helpers'
+import '../css/app.css'; 
 
 const appName = window.document.getElementsByTagName('title')[0]?.innerText || 'Keubitbit.com';
 
