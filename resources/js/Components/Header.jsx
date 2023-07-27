@@ -7,7 +7,7 @@ export default function Header(props) {
                 <div className="block md:flex-1 text-center md:text-left pt-2 md:pt-0">
                     <img
                         className="w-36 mx-auto md:mx-0"
-                        src="/keubitbit-long.svg"
+                        src="https://res.cloudinary.com/domqavi1p/image/upload/v1690468533/keubitbit-long_hidyuv.svg"
                     />
                 </div>
                 <div className="flex-none">
