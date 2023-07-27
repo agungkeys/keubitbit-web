@@ -11,7 +11,12 @@ export default defineConfig({
                 'resources/css/app.css',
                 'resources/sass/app.scss',
             ],
+            refresh: true,
+            publicPath: "/public/",
         }),
         react(),
     ],
+    build: {
+        chunkSizeWarningLimit: 1000,
+    },
 });
