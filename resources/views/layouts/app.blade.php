@@ -7,13 +7,13 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}" />
 
-    <title>@hasSection('title') @yield('title') @else Default Page @endif</title>
+    <title>@hasSection('title')@yield('title')@else Default Page @endif</title>
     <link rel="icon" type="image/x-icon" href="{{asset('favicon.ico')}} " />
     <meta name="description" content="Everything about gigs, albums of Keubitbit Aceh Ethnic Music" />
     <meta name="keywords" content="Keubitbit, Ethnic Music, Keubitbit Indonesia" />
     <meta name="author" content="Agung Kurniawan" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta property=’og:title’ content="{{@hasSection('title') @yield('title') @else Default Page @endif}}" />
+    <meta property=’og:title’ content="@hasSection('title') @yield('title') @else Default Page @endif" />
     <meta property=’og:image’ content="https://res.cloudinary.com/domqavi1p/image/upload/c_fill,w_300,h_300/v1690546337/ab67616d0000b273adaa917ccb54739ec80f2684_vgms6p.jpg" />
     <meta property=’og:description’ content="Everything about gigs, albums of Keubitbit Aceh Ethnic Music" />
     <meta property=’og:url’ content="https://keubitbit.com" />
