@@ -1,80 +1,143 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <!-- CSRF Token -->
-    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <meta name="csrf-token" content="{{ csrf_token() }}" />
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
-
+    <title>{{ config("app.name", "Laravel") }}</title>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.12.3/dist/cdn.min.js"></script>
     <!-- Fonts -->
-    <link rel="dns-prefetch" href="//fonts.bunny.net">
-    <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
+    <link rel="dns-prefetch" href="//fonts.bunny.net" />
+    <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.7.0/flowbite.min.css" rel="stylesheet" />
 
     <!-- Scripts -->
-    @vite(['resources/sass/app.scss', 'resources/js/app.js'])
-</head>
-<body>
-    <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
-            <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
-                </a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav me-auto">
-
-                    </ul>
-
-                    <!-- Right Side Of Navbar -->
-                    <ul class="navbar-nav ms-auto">
-                        <!-- Authentication Links -->
-                        @guest
-                            @if (Route::has('login'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-                                </li>
-                            @endif
-
-                            @if (Route::has('register'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                                </li>
-                            @endif
-                        @else
-                            <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }}
-                                </a>
-
-                                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
-                                    </a>
-
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                        @csrf
-                                    </form>
-                                </div>
-                            </li>
-                        @endguest
-                    </ul>
-                </div>
-            </div>
-        </nav>
-
-        <main class="py-4">
-            @yield('content')
-        </main>
+    @vite('resources/css/app.css')
+  </head>
+  <body class="font-hindi">
+    @include('layouts.app-header') 
+    <div id="root" class="bg-white">
+      <main>@yield('content')</main>
     </div>
-</body>
+    @include('layouts.app-footer')
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.7.0/flowbite.min.js"></script>
+    <script>
+      const datamenu = [
+        {
+          id: 0,
+          name: "home",
+          label: "Home",
+          link: "/"
+        },{
+          id: 1,
+          name: "about",
+          label: "About",
+          link: "/about"
+        },{
+          id: 2,
+          name: "video",
+          label: "Video",
+          link: "/video"
+        },{
+          id: 3,
+          name: "music",
+          label: "Music",
+          link: "/music"
+        },{
+          id: 4,
+          name: "tour",
+          label: "Tour",
+          link: "/tour"
+        },{
+          id: 5,
+          name: "merchandise",
+          label: "Merchandise",
+          link: "/merchandise"
+        },{
+          id: 6,
+          name: "contact",
+          label: "Contact",
+          link: "/contact"
+        }
+      ];
+
+      const datasocialfooter = [
+        {
+          id: 0,
+          name: "groundup",
+          image: "https://res.cloudinary.com/domqavi1p/image/upload/v1690539710/groundup-white_sivrmn.webp",
+          link: "/"
+        },
+        {
+          id: 1,
+          name: "apple-music",
+          image: "https://res.cloudinary.com/domqavi1p/image/upload/v1690539805/applemusic-white_vhybzx.webp",
+          link: "/"
+        },{
+          id: 2,
+          name: "facebook",
+          image: "https://res.cloudinary.com/domqavi1p/image/upload/v1690539844/facebook-white_ejzyil.webp",
+          link: "/"
+        },{
+          id: 3,
+          name: "twitter",
+          image: "https://res.cloudinary.com/domqavi1p/image/upload/v1690539886/twitter-white_zj1p5f.webp",
+          link: "/"
+        },{
+          id: 4,
+          name: "instagram",
+          image: "https://res.cloudinary.com/domqavi1p/image/upload/v1690539927/instagram-white_thzdpf.webp",
+          link: "/"
+        },{
+          id: 5,
+          name: "youtube",
+          image: "https://res.cloudinary.com/domqavi1p/image/upload/v1690539951/youtube-white_ciu5ol.webp",
+          link: "/"
+        }
+      ];
+
+      const datalatestrelease = {
+        album: "Peuneurah Bumoe",
+        image: "https://res.cloudinary.com/domqavi1p/image/upload/v1690546337/ab67616d0000b273adaa917ccb54739ec80f2684_vgms6p.webp",
+        year: "2023",
+        songs: [
+          {
+            id: 0,
+            name: "SiCupak Lada",
+            description: "Keubitbit",
+            file: ""
+          },{
+            id: 1,
+            name: "Sep Sep Hansep",
+            description: "Keubitbit, Fahmil Arabi",
+            file: ""
+          },{
+            id: 2,
+            name: "Bak Tajak",
+            description: "Keubitbit, Fahmil Arabi",
+            file: ""
+          },{
+            id: 3,
+            name: "Eu mak Eu",
+            description: "Keubitbit, Fahmil Arabi",
+            file: ""
+          },{
+            id: 4,
+            name: "ANGEN",
+            description: "Keubitbit, Fahmil Arabi",
+            file: ""
+          },{
+            id: 5,
+            name: "Rhambule",
+            description: "Keubitbit, Fahmil Arabi",
+            file: ""
+          }
+        ]
+      }
+    </script>
+    @yield('js')
+  </body>
 </html>
