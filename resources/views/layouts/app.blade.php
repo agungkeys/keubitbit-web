@@ -7,7 +7,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}" />
 
-    <title>{{ config("app.name", "Laravel") }}</title>
+    <title>@hasSection('title') @yield('title') @else Default Page @endif</title>
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.12.3/dist/cdn.min.js"></script>
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.bunny.net" />

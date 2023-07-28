@@ -1,4 +1,6 @@
-@extends('layouts.app') @section('content')
+@extends('layouts.app') 
+@section('title', 'Keubitbit Aceh Ethnic Music - Official Website')
+@section('content')
 <div class="bg-base-200">
   <div 
     x-data="{ data: datalatestrelease}"
