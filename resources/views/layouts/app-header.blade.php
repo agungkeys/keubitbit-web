@@ -15,13 +15,13 @@
         class="flex-none"
         x-data="{ data: datamenu}"
       >
-        <ul class="menu menu-horizontal md:gap-1 md:my-1">
+        <ul class="menu menu-horizontal gap-0 md:gap-1 md:my-1">
           <template x-for="item in data">
             <li>
               <a
                 x-text="item.label" 
                 x-bind:href="item.link"
-                class="hover:text-white text-xs md:text-base font-normal md:font-light px-2 py-1 md:py-2"
+                class="hover:text-white text-xs md:text-base font-normal md:font-light px-1 md:px-2 py-1 md:py-2"
               >
                 -
             </a>

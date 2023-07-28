@@ -51,11 +51,12 @@
   </div>
   
 
-  <div class="hero pt-2 md:pt-10 pb-4 md:pb-8">
+  <div class="hero pt-2 md:pt-10 pb-3 md:pb-8">
     <div class="hero-content gap-6 flex-col-reverse lg:flex-row">
-      <div>
-        <h1 class="text-3xl md:text-5xlfont-bold font-great">Keubitbit</h1>
-        <p class="py-6 text-sm md:text-base">
+      <div class="text-center md:text-left">
+        <h1 class="text-3xl md:text-5xl font-bold font-great">Keubitbit</h1>
+        <span class="text-xs md:text-sm">Aceh Ethnic Music</span>
+        <p class="py-2 md:py-6 text-sm md:text-base">
           Keubitbit merupakan grup yang mengangkat musik etnik asal Aceh dan dipadukan dengan unsur modern, dibentuk pada 2014 dengan membawa instrumen khas seperti rapai’, gendrang, seurunee kalee...
         </p>
         <button class="btn btn-primary btn-sm md:btn-md capitalize">Read More</button>
