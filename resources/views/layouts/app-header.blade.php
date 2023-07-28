@@ -15,7 +15,7 @@
         class="flex-none"
         x-data="{ data: datamenu}"
       >
-        <ul class="menu menu-horizontal gap-0 md:gap-1 md:my-1">
+        <ul class="menu menu-horizontal md:my-1">
           <template x-for="item in data">
             <li>
               <a
