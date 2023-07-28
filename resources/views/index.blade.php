@@ -13,7 +13,7 @@
       </div>
       <div class="container grid grid-cols-3 gap-4 pt-1 md:pt-3">
         <div class="col-span-3 md:col-span-1">
-          <img class="rounded-md" src="https://res.cloudinary.com/domqavi1p/image/upload/v1690546337/ab67616d0000b273adaa917ccb54739ec80f2684_vgms6p.webp" alt="album #1" />
+          <img class="rounded-md" width="400" height="400" src="https://res.cloudinary.com/domqavi1p/image/upload/v1690546337/ab67616d0000b273adaa917ccb54739ec80f2684_vgms6p.webp" alt="album #1" />
         </div>
         <div class="col-span-3 md:col-span-2">
           <div class="flex gap-3">

@@ -5,7 +5,11 @@
       <div class="block md:flex-1 text-center md:text-left pt-2 md:pt-0">
         <img
           class="w-36 mx-auto md:mx-0"
-          src="https://res.cloudinary.com/domqavi1p/image/upload/v1690468533/keubitbit-long_hidyuv.svg" />
+          src="https://res.cloudinary.com/domqavi1p/image/upload/v1690468533/keubitbit-long_hidyuv.svg" 
+          alt="Logo Keubitbit"
+          width="144"
+          height="40"
+          />
       </div>
       <div 
         class="flex-none"
