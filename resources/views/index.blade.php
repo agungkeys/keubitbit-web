@@ -6,10 +6,10 @@
     x-data="{ data: datalatestrelease}"
     class="relative bg-cover bg-center bg-[url(https://res.cloudinary.com/domqavi1p/image/upload/v1690546337/ab67616d0000b273adaa917ccb54739ec80f2684_vgms6p.webp)]">
     <div class="py-2 md:py-6" style="background: rgba(0, 0, 0, 0.8)">
-      <h1 class="text-center py-2 md:py-4 text-3xl md:text-5xl font-great">Latest Release</h1>
-      <div class="container pt-2 md:pt-6">
-        <span class="text-sm md:text-base">Album:</span>
-        <h1 class="text-white text-2xl md:text-5xl font-semibold" x-text="data.album"></h1>
+      <h1 class="text-center py-2 md:py-4 text-3xl md:text-5xl font-bold">Latest Release</h1>
+      <div class="container pt-2 md:pt-4">
+        <span class="text-base md:text-lg">Album:</span>
+        <h1 class="text-white pt-1 text-2xl md:text-5xl" x-text="data.album"></h1>
       </div>
       <div class="container grid grid-cols-3 gap-6 pt-1 md:pt-3">
         <div class="col-span-3 md:col-span-1">
@@ -52,7 +52,7 @@
   </div>
   
 
-  <div class="hero pt-2 md:pt-10 pb-3 md:pb-8">
+  <div class="hero container pt-2 md:pt-4 pb-3 md:pb-6">
     <div class="hero-content gap-6 flex-col-reverse lg:flex-row">
       <div class="text-center md:text-left">
         <h1 class="text-3xl md:text-5xl font-bold font-great">Keubitbit</h1>
@@ -138,7 +138,7 @@
   <div class="divider"></div> 
 
   <section class="container py-6">
-    <h1 class="text-3xl md:text-5xl font-bold font-great">Latest Videos</h1>
+    <h1 class="text-3xl md:text-5xl font-bold">Latest Videos</h1>
     <div class="py-2 md:py-4 grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-6">
       <div class="card shadow-xl bg-contain bg-[url('https://res.cloudinary.com/domqavi1p/image/upload/c_fill,h_200,w_500/v1690519461/ART_WORK_KEUBITBIT_emiyy9.webp')]">
         <iframe width="100%" height="315" src="https://www.youtube.com/embed/RcPB6GtYTYQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
