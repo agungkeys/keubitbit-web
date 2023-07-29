@@ -7,8 +7,9 @@
         <!-- CSRF Token -->
         <meta name="csrf-token" content="{{ csrf_token() }}" />
 
-        <title>{{ config("app.name", "Laravel") }}</title>
+        <title>Admin CMS Keubitbit.com</title>
 
+        <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.12.3/dist/cdn.min.js"></script>
         <!-- Fonts -->
         <link rel="dns-prefetch" href="//fonts.bunny.net" />
         <link
@@ -19,7 +20,7 @@
         <!-- Scripts -->
         @vite('resources/css/app.css')
     </head>
-    <body>
+    <body data-theme="corporate">
         <div id="root">
             <div class="drawer lg:drawer-open drawer-mobile">
                 <input
@@ -40,7 +41,7 @@
                         <div class="dropdown dropdown-end ml-4">
                             <label tabindex="0" class="btn btn-ghost btn-circle avatar">
                                 <div class="w-10 rounded-full">
-                                <img src="https://placehold.co/80x80" alt="profile" />
+                                <img src="https://res.cloudinary.com/domqavi1p/image/upload/v1690634584/favicon_ablvyf.webp" alt="profile" />
                                 </div>
                             </label>
                             <ul tabindex="0" class="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
@@ -74,5 +75,84 @@
             <!-- <ModalLayout /> -->
             
         </div>
+        <script>
+          const datasidebar = [
+            {
+              id: 0,
+              name: "dashboard",
+              label: "Dashboard",
+              link: "/dashboard",
+              isLabel: false,
+            },
+            {
+              id: 1,
+              name: "data master",
+              label: "Data Master",
+              link: "",
+              isLabel: true,
+            },{
+              id: 2,
+              name: "user",
+              label: "User",
+              link: "/admin/users",
+              isLabel: false,
+            },{
+              id: 3,
+              name: "member",
+              label: "Member",
+              link: "/admin/members",
+              isLabel: false,
+            },{
+              id: 4,
+              name: "music",
+              label: "Music",
+              link: "/admin/musics",
+              isLabel: false,
+            },{
+              id: 5,
+              name: "tour",
+              label: "Tour",
+              link: "/admin/tours",
+              isLabel: false,
+            },{
+              id: 6,
+              name: "store",
+              label: "Store",
+              link: "/admin/stores",
+              isLabel: false,
+            },{
+              id: 7,
+              name: "article",
+              label: "Article & News",
+              link: "/admin/articles",
+              isLabel: false,
+            },{
+              id: 8,
+              name: "gallery",
+              label: "Gallery",
+              link: "/admin/galleries",
+              isLabel: false,
+            },{
+              id: 9,
+              name: "video",
+              label: "Video",
+              link: "/admin/videos",
+              isLabel: false,
+            },{
+              id: 10,
+              name: "banner",
+              label: "Banner",
+              link: "/admin/banners",
+              isLabel: false,
+            },{
+              id: 11,
+              name: "newsletter",
+              label: "Newsletter",
+              link: "/admin/newsletter",
+              isLabel: false,
+            }
+          ]
+        </script>
+        @yield('js')
     </body>
 </html>

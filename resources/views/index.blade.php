@@ -21,8 +21,7 @@
             <button class="btn btn-sm md:btn-md btn-primary btn-outline">Apple Music</button>
             <button class="btn btn-sm md:btn-md btn-error btn-outline">Youtube</button>
           </div> -->
-
-          <iframe class="rounded-xl" src="https://open.spotify.com/embed/album/2WItxRtYnXr3rZPsSEq8S0?si=U31pWidDSDWdz_WeNdEF9Q&utm_source=embed_player_p&utm_medium=desktop&nd=1" style="border:0px #000000 none;" name="myiFrame" scrolling="yes" frameborder="1" marginheight="0px" marginwidth="0px" height="520px" width="100%" allowfullscreen="true"></iframe>
+          <iframe style="border-radius:12px" src="https://open.spotify.com/embed/album/2WItxRtYnXr3rZPsSEq8S0?utm_source=generator&theme=0" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
           <!-- <ul class="mt-3 menu w-full rounded-box text-white">
             <template x-for="item in data.songs">
               <li class="w-full">
@@ -58,7 +57,7 @@
       <div class="text-center md:text-left">
         <h1 class="text-3xl md:text-5xl font-bold font-great">Keubitbit</h1>
         <span class="text-xs md:text-sm">Aceh Ethnic Music</span>
-        <p class="py-2 md:py-6 text-sm md:text-base">
+        <p class="py-2 md:py-6 text-base md:text-lg">
           Keubitbit merupakan grup yang mengangkat musik etnik asal Aceh dan dipadukan dengan unsur modern, dibentuk pada 2014 dengan membawa instrumen khas seperti rapai’, gendrang, seurunee kalee...
         </p>
         <button class="btn btn-primary btn-sm md:btn-md capitalize">Read More</button>
@@ -139,7 +138,33 @@
   <div class="divider"></div> 
 
   <section class="container py-6">
-    <h1 class="text-3xl md:text-5xl font-bold font-great">Articles</h1>
+    <h1 class="text-3xl md:text-5xl font-bold font-great">Latest Videos</h1>
+    <div class="py-2 md:py-4 grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-6">
+      <div class="card shadow-xl bg-contain bg-[url('https://res.cloudinary.com/domqavi1p/image/upload/c_fill,h_200,w_500/v1690519461/ART_WORK_KEUBITBIT_emiyy9.webp')]">
+        <iframe width="100%" height="315" src="https://www.youtube.com/embed/RcPB6GtYTYQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        <div class="card-body">
+          <span class="text-xl text-primary">Keubitbit - Hembala (Tribute For Endatu) Live Moscow Jazz Festival 2023</span>
+          <p class="mt-2 text-lg">By: Keubitbit</p>
+        </div>
+      </div>
+
+      <div class="card shadow-xl bg-contain bg-[url('https://res.cloudinary.com/domqavi1p/image/upload/c_fill,h_200,w_500/v1690519461/ART_WORK_KEUBITBIT_emiyy9.webp')]">
+        <iframe width="100%" height="315" src="https://www.youtube.com/embed/_1KiJRbX-J0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        <div class="card-body">
+          <span class="text-xl text-primary">Keubitbit - Sep Sep Hansep Live Moscow Jazz Festival 2023</span>
+          <p class="mt-2 text-lg">By: Keubitbit</p>
+        </div>
+      </div>
+
+      <div class="card shadow-xl bg-contain bg-[url('https://res.cloudinary.com/domqavi1p/image/upload/c_fill,h_200,w_500/v1690519461/ART_WORK_KEUBITBIT_emiyy9.webp')]">
+        <iframe width="100%" height="315" src="https://www.youtube.com/embed/GvM4L0hK2Kc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        <div class="card-body">
+          <span class="text-xl text-primary">Keubitbit - Bak Tajak Live Moscow Jazz Festival 2023</span>
+          <p class="mt-2 text-lg">By: Keubitbit</p>
+        </div>
+      </div>
+      
+    </div>
   </section>
 
 </div>
