@@ -22,7 +22,7 @@
                 <a
                   x-text="item.label" 
                   x-bind:href="item.link"
-                  class="hover:text-white text-sm md:text-lg font-normal md:font-light px-1 md:px-2 py-1 md:py-2"
+                  class="hover:text-white text-xs md:text-lg font-normal md:font-light px-1 md:px-2 py-1 md:py-2"
                 >
                   -
               </a>
