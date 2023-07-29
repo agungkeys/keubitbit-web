@@ -11,17 +11,19 @@
         <span class="text-sm md:text-base">Album:</span>
         <h1 class="text-white text-2xl md:text-5xl font-semibold" x-text="data.album"></h1>
       </div>
-      <div class="container grid grid-cols-3 gap-4 pt-1 md:pt-3">
+      <div class="container grid grid-cols-3 gap-6 pt-1 md:pt-3">
         <div class="col-span-3 md:col-span-1">
-          <img class="rounded-md" width="400" height="400" src="https://res.cloudinary.com/domqavi1p/image/upload/v1690546337/ab67616d0000b273adaa917ccb54739ec80f2684_vgms6p.webp" alt="album #1" />
+          <img class="rounded-md w-full" width="400" height="400" src="https://res.cloudinary.com/domqavi1p/image/upload/v1690546337/ab67616d0000b273adaa917ccb54739ec80f2684_vgms6p.webp" alt="album #1" />
         </div>
         <div class="col-span-3 md:col-span-2">
-          <div class="flex gap-3">
+          <!-- <div class="flex gap-3">
             <button class="btn btn-sm md:btn-md btn-success btn-outline">Spotify</button>
             <button class="btn btn-sm md:btn-md btn-primary btn-outline">Apple Music</button>
             <button class="btn btn-sm md:btn-md btn-error btn-outline">Youtube</button>
-          </div>
-          <ul class="mt-3 menu w-full rounded-box text-white">
+          </div> -->
+
+          <iframe class="rounded-xl" src="https://open.spotify.com/embed/album/2WItxRtYnXr3rZPsSEq8S0?si=U31pWidDSDWdz_WeNdEF9Q&utm_source=embed_player_p&utm_medium=desktop&nd=1" style="border:0px #000000 none;" name="myiFrame" scrolling="yes" frameborder="1" marginheight="0px" marginwidth="0px" height="520px" width="100%" allowfullscreen="true"></iframe>
+          <!-- <ul class="mt-3 menu w-full rounded-box text-white">
             <template x-for="item in data.songs">
               <li class="w-full">
                 <div class="flex justify-between items-center">
@@ -44,7 +46,7 @@
                 </div>
               </li>
             </template>
-          </ul>
+          </ul> -->
         </div>
       </div>
     </div>
@@ -133,5 +135,17 @@
       </div>
     </div>
   </div>
+
+  <div class="divider"></div> 
+
+  <section class="container py-6">
+    <h1 class="text-3xl md:text-5xl font-bold font-great">Articles</h1>
+  </section>
+
 </div>
 @endsection
+@section('js')
+<script type="text/javascript" src="https://instaembedcode.com/in.js"></script>
+@endsection
+
+
