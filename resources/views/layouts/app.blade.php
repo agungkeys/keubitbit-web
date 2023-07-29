@@ -32,7 +32,7 @@
     <!-- Scripts -->
     @vite('resources/css/app.css')
   </head>
-  <body class="font-hindi">
+  <body data-theme="luxury" class="font-hindi">
     @include('layouts.app-header') 
     <div id="root" class="bg-white">
       <main>@yield('content')</main>
