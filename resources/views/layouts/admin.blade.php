@@ -3,12 +3,23 @@
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Admin CMS Keubitbit.com</title>
+        <link rel="icon" type="image/x-icon" href="{{asset('favicon.ico')}} " />
+        <meta name="description" content="Everything about gigs, albums of Keubitbit Aceh Ethnic Music" />
+        <meta name="keywords" content="Keubitbit, Ethnic Music, Keubitbit Indonesia" />
+        <meta name="author" content="Agung Kurniawan" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta property="og:title" content="@hasSection('title') @yield('title') @else Default Page @endif" />
+        <meta property="og:image" content="https://res.cloudinary.com/domqavi1p/image/upload/c_fill,w_300,h_300/v1690546337/ab67616d0000b273adaa917ccb54739ec80f2684_vgms6p.jpg" />
+        <meta property="og:description" content="Everything about gigs, albums of Keubitbit Aceh Ethnic Music" />
+        <meta property="og:url" content="https://keubitbit.com" />
+        <meta property="og:image:width" content="300" />
+        <meta property="og:image:height" content="300" />
+        <meta property="og:image:alt" content="keubitbit"/>
+        <meta property="og:image:type" content="image/jpg" />
 
         <!-- CSRF Token -->
         <meta name="csrf-token" content="{{ csrf_token() }}" />
-
-        <title>Admin CMS Keubitbit.com</title>
-
         <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.12.3/dist/cdn.min.js"></script>
         <!-- Fonts -->
         <link rel="dns-prefetch" href="//fonts.bunny.net" />
@@ -34,7 +45,7 @@
                         <label for="left-sidebar-drawer" class="btn btn-primary drawer-button lg:hidden">
                           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" class="h-5 inline-block w-5"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"></path></svg>
                         </label>
-                        <h1 class="text-2xl font-semibold ml-2">Judul Halaman</h1>
+                        <h1 class="text-2xl font-semibold ml-2">@hasSection('title')@yield('title')@else Default Page @endif</h1>
                     </div>
 
                     <div class="order-last">

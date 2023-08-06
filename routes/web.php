@@ -15,14 +15,20 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::get('/', function () {
-//     return Inertia::render('Index');
-// });
+Route::get('/', [App\Http\Controllers\IndexController::class, 'index'])->name('index');
 Auth::routes();
 
-Route::get('/', [App\Http\Controllers\IndexController::class, 'index'])->name('index');
+Route::group(['namespace' => 'Admin', 'as' => 'admin.'], function () {
+  Route::middleware('auth')->group(function () {
+      //Dashboard
+      Route::get('/dashboard', 'DashboardController@index')->name('index');
+      //Master
+      Route::get('/admin/users', 'UsersController@index')->name('users');
 
-Route::get('/dashboard', [App\Http\Controllers\Admin\DashboardController::class, 'index'])->name('index');
+  });
+});
+
+// Route::get('/dashboard', [App\Http\Controllers\Admin\DashboardController::class, 'index'])->name('index');
 
 
 // Route::get('/', function () {
