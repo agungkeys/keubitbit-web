@@ -2,7 +2,7 @@
 
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
-// use Inertia\Inertia; 
+// use Inertia\Inertia;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,13 +19,13 @@ Route::get('/', [App\Http\Controllers\IndexController::class, 'index'])->name('i
 Auth::routes();
 
 Route::group(['namespace' => 'Admin', 'as' => 'admin.'], function () {
-  Route::middleware('auth')->group(function () {
-      //Dashboard
-      Route::get('/dashboard', 'DashboardController@index')->name('index');
-      //Master
-      Route::get('/admin/users', 'UsersController@index')->name('users');
-
-  });
+    Route::middleware('auth')->group(function () {
+        //Dashboard
+        Route::get('/dashboard', 'DashboardController@index')->name('index');
+        //Master
+        Route::get('/admin/users', 'UsersController@index')->name('users');
+        Route::get('/admin/banners', 'BannersController@index')->name('banners');
+    });
 });
 
 // Route::get('/dashboard', [App\Http\Controllers\Admin\DashboardController::class, 'index'])->name('index');
