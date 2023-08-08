@@ -2,43 +2,37 @@
 <div class="">
   <div class="row justify-content-center">
     <div class="col-md-8">
-      @component('components.card') tester hehe @endcomponent
-      <div class="card">
-        <div class="card-header">Master User</div>
-        <div class="card-body bg-white">
+      <div class="flex justify-end pb-6">
+        <button class="btn btn-sm btn-primary">Tambah</button>
+      </div>
+      <div class="card bg-white rounded-lg">
+        <div class="card-body">
           <div class="overflow-x-auto">
-            <table class="table table-zebra">
+            <table class="table table-zebra border-[1px]">
               <!-- head -->
               <thead>
                 <tr>
                   <th></th>
                   <th>Name</th>
-                  <th>Job</th>
-                  <th>Favorite Color</th>
+                  <th>Email</th>
+                  <th>Action</th>
                 </tr>
               </thead>
               <tbody>
-                <!-- row 1 -->
+                @foreach ($users as $user)
                 <tr>
-                  <th>1</th>
-                  <td>Cy Ganderton</td>
-                  <td>Quality Control Specialist</td>
-                  <td>Blue</td>
+                    <th>{{ $user->id }}</th>
+                    <td>{{ $user->name }}</td>
+                    <td>{{ $user->email }}</td>
+                    <td>
+                        <div class="flex gap-2">
+                            <button class="btn btn-xs">Detail</button>
+                            <button class="btn btn-xs btn-primary">Edit</button>
+                            <button class="btn btn-xs btn-error">Delete</button>
+                        </div>
+                    </td>
                 </tr>
-                <!-- row 2 -->
-                <tr class="hover">
-                  <th>2</th>
-                  <td>Hart Hagerty</td>
-                  <td>Desktop Support Technician</td>
-                  <td>Purple</td>
-                </tr>
-                <!-- row 3 -->
-                <tr>
-                  <th>3</th>
-                  <td>Brice Swyre</td>
-                  <td>Tax Accountant</td>
-                  <td>Red</td>
-                </tr>
+                @endforeach
               </tbody>
             </table>
           </div>
