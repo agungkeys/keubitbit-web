@@ -21,7 +21,9 @@
         <!-- CSRF Token -->
         <meta name="csrf-token" content="{{ csrf_token() }}" />
         <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.12.3/dist/cdn.min.js"></script>
-        <!-- Fonts -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
         <link rel="dns-prefetch" href="//fonts.bunny.net" />
         <link
             href="https://fonts.bunny.net/css?family=Nunito"
@@ -31,7 +33,7 @@
         <!-- Scripts -->
         @vite('resources/css/app.css')
     </head>
-    <body data-theme="corporate">
+    <body data-theme="light">
         <div id="root">
             <div class="drawer lg:drawer-open drawer-mobile">
                 <input
@@ -105,7 +107,7 @@
               id: 2,
               name: "user",
               label: "User",
-              link: "/admin/users",
+              link: "/admin/users?sortDirection=desc&sortColumn=id",
               isLabel: false,
             },{
               id: 3,
@@ -162,8 +164,51 @@
               link: "/admin/newsletter",
               isLabel: false,
             }
-          ]
+          ];
         </script>
+        @if(Session::has('success'))
+        <script>
+          toastr.options =
+          {
+            "closeButton" : true,
+            "progressBar" : true
+          }
+          toastr.success("{{ session('success') }}");
+        </script>
+        @endif
+
+        @if(Session::has('error'))
+        <script>
+          toastr.options =
+          {
+            "closeButton" : true,
+            "progressBar" : true
+          }
+          toastr.error("{{ session('error') }}");
+        </script>
+        @endif
+
+        @if(Session::has('info'))
+        <script>
+          toastr.options =
+          {
+            "closeButton" : true,
+            "progressBar" : true
+          }
+          toastr.info("{{ session('info') }}");
+        </script>
+        @endif
+
+        @if(Session::has('warning'))
+        <script>
+          toastr.options =
+          {
+            "closeButton" : true,
+            "progressBar" : true
+          }
+          toastr.warning("{{ session('warning') }}");
+        </script>
+        @endif
         @yield('js')
     </body>
 </html>

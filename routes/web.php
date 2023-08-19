@@ -22,8 +22,13 @@ Route::group(['namespace' => 'Admin', 'as' => 'admin.'], function () {
     Route::middleware('auth')->group(function () {
         //Dashboard
         Route::get('/dashboard', 'DashboardController@index')->name('index');
-        //Master
+        //Master User
         Route::get('/admin/users', 'UsersController@index')->name('users');
+        Route::post('/admin/users/store', 'UsersController@store')->name('users.store');
+        Route::get('/admin/users/edit/{id}', 'UsersController@edit')->name('users.edit');
+        Route::post('/admin/users/update', 'UsersController@update')->name('users.update');
+        Route::delete('/admin/users/delete/{id}', 'UsersController@delete')->name('users.delete');
+        
         Route::get('/admin/banners', 'BannersController@index')->name('banners');
     });
 });
