@@ -28,8 +28,11 @@ Route::group(['namespace' => 'Admin', 'as' => 'admin.'], function () {
         Route::get('/admin/users/edit/{id}', 'UsersController@edit')->name('users.edit');
         Route::post('/admin/users/update', 'UsersController@update')->name('users.update');
         Route::delete('/admin/users/delete/{id}', 'UsersController@delete')->name('users.delete');
-        
+
         Route::get('/admin/banners', 'BannersController@index')->name('banners');
+        Route::post('/admin/banners/store', 'BannersController@store')->name('banners.store');
+        Route::get('/admin/banners/edit/{id}', 'BannersController@edit')->name('banners.edit');
+        Route::post('/admin/banners/update', 'BannersController@update')->name('banners.update');
     });
 });
 
