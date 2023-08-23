@@ -1,7 +1,7 @@
 @extends('layouts.app') 
 @section('title', 'Keubitbit Aceh Ethnic Music - Official Website')
 @section('content')
-<div class="bg-base-200">
+<div class="">
   <div 
     x-data="{ data: datalatestrelease}"
     class="relative bg-cover bg-center bg-[url(https://res.cloudinary.com/domqavi1p/image/upload/v1690546337/ab67616d0000b273adaa917ccb54739ec80f2684_vgms6p.webp)]">
@@ -55,12 +55,16 @@
   <div class="hero container pt-2 md:pt-4 pb-3 md:pb-6">
     <div class="hero-content gap-6 flex-col-reverse lg:flex-row">
       <div class="text-center md:text-left">
-        <h1 class="text-3xl md:text-5xl font-bold font-great">Keubitbit</h1>
-        <span class="text-xs md:text-sm">Aceh Ethnic Music</span>
-        <p class="py-2 md:py-6 text-base md:text-lg">
-          Keubitbit merupakan grup yang mengangkat musik etnik asal Aceh dan dipadukan dengan unsur modern, dibentuk pada 2014 dengan membawa instrumen khas seperti rapai’, gendrang, seurunee kalee...
+        <!-- <h1 class="text-3xl text-black md:text-5xl font-bold font-great">Keubitbit</h1>
+        <span class="text-xs md:text-sm">Aceh Ethnic Music</span> -->
+        <img class="w-56 mx-auto md:mx-0" src="https://res.cloudinary.com/domqavi1p/image/upload/v1690634689/logo-long_yewhbj.webp" />
+        <p class="text-black py-b md:pb-6 text-base md:text-lg">
+          Keubibitt departs from anxiety about culture which has begun to fade slowly with time. The feeling of love because the cause is no longer a reference, to foster longing for the process of cultural events.
         </p>
-        <button class="btn btn-primary btn-sm md:btn-md capitalize">Read More</button>
+        <p class="mt-2 text-black py-b md:pb-6 text-base md:text-lg">
+          Keubibit exists as an adhesive for modern culture and traditional culture side by side to present to the world.
+        </p>
+        <a href="/about" class="btn btn-secondary btn-md md:btn-md capitalize">Read More</a>
       </div>
       <div id="gallery" class="relative w-full" data-carousel="slide">
         <div class="relative h-56 overflow-hidden rounded-lg md:h-96">
@@ -138,7 +142,10 @@
   <div class="divider"></div> 
 
   <section class="container py-6">
-    <h1 class="text-3xl md:text-5xl font-bold">Latest Videos</h1>
+    <div class="flex justify-between items-center">
+      <h1 class="text-black text-3xl md:text-5xl font-bold">Latest Videos</h1>
+      <a href="https://www.youtube.com/@KeubitbitAtjehEthnicMusic" class="btn btn-secondary btn-md md:btn-md capitalize">More Videos</a>
+    </div>
     <div class="py-2 md:py-4 grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-6">
       <div class="card shadow-xl bg-contain bg-[url('https://res.cloudinary.com/domqavi1p/image/upload/c_fill,h_200,w_500/v1690519461/ART_WORK_KEUBITBIT_emiyy9.webp')]">
         <iframe width="100%" height="315" src="https://www.youtube.com/embed/RcPB6GtYTYQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>

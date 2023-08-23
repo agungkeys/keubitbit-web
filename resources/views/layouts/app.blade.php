@@ -55,12 +55,12 @@
           id: 2,
           name: "video",
           label: "Video",
-          link: "/video"
+          link: "https://www.youtube.com/@KeubitbitAtjehEthnicMusic"
         },{
           id: 3,
           name: "music",
           label: "Music",
-          link: "/music"
+          link: "https://open.spotify.com/artist/6W34RUeAaZxU7giOCVfG25"
         },{
           id: 4,
           name: "tour",
@@ -68,9 +68,9 @@
           link: "/tour"
         },{
           id: 5,
-          name: "merchandise",
-          label: "Merchandise",
-          link: "/merchandise"
+          name: "news",
+          label: "News",
+          link: "/news"
         },{
           id: 6,
           name: "contact",

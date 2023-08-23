@@ -16,6 +16,10 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [App\Http\Controllers\IndexController::class, 'index'])->name('index');
+Route::get('/about', [App\Http\Controllers\AboutController::class, 'index'])->name('about');
+Route::get('/tour', [App\Http\Controllers\TourController::class, 'index'])->name('tour');
+Route::get('/news', [App\Http\Controllers\NewsController::class, 'index'])->name('news');
+Route::get('/contact', [App\Http\Controllers\ContactController::class, 'index'])->name('contact');
 Auth::routes();
 
 Route::group(['namespace' => 'Admin', 'as' => 'admin.'], function () {
@@ -28,7 +32,14 @@ Route::group(['namespace' => 'Admin', 'as' => 'admin.'], function () {
         Route::get('/admin/users/edit/{id}', 'UsersController@edit')->name('users.edit');
         Route::post('/admin/users/update', 'UsersController@update')->name('users.update');
         Route::delete('/admin/users/delete/{id}', 'UsersController@delete')->name('users.delete');
-        
+        //Master Member
+        Route::get('/admin/members', 'MembersController@index')->name('members');
+        Route::post('/admin/members/store', 'MembersController@store')->name('members.store');
+        Route::get('/admin/members/edit/{id}', 'MembersController@edit')->name('members.edit');
+        Route::post('/admin/members/update', 'MembersController@update')->name('members.update');
+        Route::delete('/admin/members/delete/{id}', 'MembersController@delete')->name('members.delete');
+
+
         Route::get('/admin/banners', 'BannersController@index')->name('banners');
     });
 });
