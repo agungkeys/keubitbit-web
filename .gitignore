@@ -8,6 +8,10 @@
 .env.backup
 .env.production
 .phpunit.result.cache
+.htaccess
+composer.lock
+index.php
+server.php
 Homestead.json
 Homestead.yaml
 auth.json
