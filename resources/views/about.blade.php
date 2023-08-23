@@ -68,7 +68,7 @@
     </div>
     <section class="bg-[url('https://res.cloudinary.com/domqavi1p/image/upload/c_fill,h_200,w_500/v1690519461/ART_WORK_KEUBITBIT_emiyy9.webp')]">
       <div class="container py-6">
-        <h1 class="text-center py-2 md:py-4 text-3xl md:text-5xl font-bold">Discoraphy</h1>
+        <h1 class="text-center py-2 md:py-4 text-3xl md:text-5xl font-bold">Discography</h1>
         <div x-data="{ data: datadiscography}" class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-4 mb-4">
           <template x-for="item in data">
             <a target="_blank" x-bind:href="item.link" class="bg-neutral duration-500 hover:bg-black hover:text-white group card w-full">
