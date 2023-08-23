@@ -1,32 +1,32 @@
 @extends('layouts.app') 
 @section('title', 'About - Keubitbit Aceh Ethnic Music - Official Website')
 @section('content')
-<div class="">
-  <div class="py-2 md:py-6" style="">
-    <div class="container">
-      <h1 class="text-center text-black py-2 md:py-4 text-3xl md:text-5xl font-bold">About</h1>
-      <div class="text-center">
-        <img
-          class="w-52 mx-auto"
-          src="https://res.cloudinary.com/domqavi1p/image/upload/v1690634689/logo-long_yewhbj.webp" 
-          alt="Logo Keubitbit"
-          width="144"
-          height="40"
-        />
-      </div>
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 my-3 md:my-6">
-        <div>
-          <div class="flex h-[180px] md:h-[280px]">
-            <img class="w-full object-cover rounded-xl" src="https://res.cloudinary.com/domqavi1p/image/upload/v1692713285/keubitbit-group_q4p9ac.webp" />
-          </div>
-          <div class="mt-4 text-base text-black md:text-lg tracking-wider text-justify">
-            <p>
-              Keubibitt departs from anxiety about culture which has begun to fade slowly with time. The feeling of love because the cause is no longer a reference, to foster longing for the process of cultural events.
-            </p>
-            <p class="mt-2">
-              Keubibit exists as an adhesive for modern culture and traditional culture side by side to present to the world.
-            </p>
-          </div>
+<div>
+  <div class="bg-gradient-to-r from-[#d9d9d9] to-[#8b8b8b]">
+    <div class="flex h-full md:h-[580px] w-[100%] md:w-[80%] mx-auto">
+      <img class="w-full object-cover" src="https://res.cloudinary.com/domqavi1p/image/upload/v1692713285/keubitbit-group_q4p9ac.webp" />
+    </div>
+  </div>
+  <div class="container">
+    <h1 class="text-center text-black py-2 md:py-4 text-3xl md:text-5xl font-bold">About</h1>
+    <div class="text-center">
+      <img
+        class="w-52 mx-auto"
+        src="https://res.cloudinary.com/domqavi1p/image/upload/v1690634689/logo-long_yewhbj.webp" 
+        alt="Logo Keubitbit"
+        width="144"
+        height="40"
+      />
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-14 my-3 md:my-3 pb-3 md:pb-10">
+      <div class="col-span-3 md:col-span-2">
+        <div class="text-base text-black md:text-lg tracking-wider text-justify">
+          <p>
+            Keubitbit departs from anxiety about culture which has begun to fade slowly with time. The feeling of love because the cause is no longer a reference, to foster longing for the process of cultural events.
+          </p>
+          <p class="mt-2">
+            Keubibit exists as an adhesive for modern culture and traditional culture side by side to present to the world.
+          </p>
         </div>
         <div class="text-base text-black md:text-lg tracking-wider text-justify">
           <p class="first-line:uppercase first-line:tracking-widest first-letter:text-7xl first-letter:font-bold first-letter:mr-2 first-letter:float-left">
@@ -65,52 +65,66 @@
           </p>
         </div>
       </div>
-    </div>
-    <section class="bg-[url('https://res.cloudinary.com/domqavi1p/image/upload/c_fill,h_200,w_500/v1690519461/ART_WORK_KEUBITBIT_emiyy9.webp')]">
-      <div class="container py-6">
-        <h1 class="text-center py-2 md:py-4 text-3xl md:text-5xl font-bold">Discography</h1>
-        <div x-data="{ data: datadiscography}" class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-4 mb-4">
-          <template x-for="item in data">
-            <a target="_blank" x-bind:href="item.link" class="bg-neutral duration-500 hover:bg-black hover:text-white group card w-full">
-              <div class="card-body p-4">
-                <div class="flex justify-between items-center">
-                  <h2 class="capitalize font-bold text-sm md:text-base" x-text="item.name"></h2>
-                  <div class="group-hover:translate-x-2 duration-500">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                      <path stroke-linecap="round" stroke-linejoin="round" d="M11.25 4.5l7.5 7.5-7.5 7.5m-6-15l7.5 7.5-7.5 7.5" />
-                    </svg> 
-                  </div>         
-                </div>
-              </div>
-            </a>
-          </template>
+      <div class="col-span-3 md:col-span-1">
+        <div class="card shadow-lg border-[1px]">
+          <div class="card-body">
+            <h1 class="text-black text-center text-2xl font-light">Est. 2014 | <span class="font-bold">Jakarta, ID</span></h1>
+          </div>
         </div>
+        <section class="mt-6 md:mt-10">
+          <div 
+            x-data="{ data: datamilestone.reverse(), ismore: false, classes: `grid grid-rows-${Math.ceil(datamilestone.length/2)} grid-flow-col gap-4 mt-4`}"
+          >
+            <h1 class="text-black text-xl md:text-2xl font-bold">Milestone</h1>
+            <ul x-show="!ismore" class="list-disc mx-4">
+              <template x-for="item in data.slice(0, 5)">
+                <li class="text-blue-900 text-lg tracking-wider" x-text="item.name"></li>
+              </template>
+            </ul>
+            <ul x-show="ismore" class="list-disc mx-4">
+              <template x-for="item in data">
+                <li class="text-blue-900 text-lg tracking-wider" x-text="item.name"></li>
+              </template>
+            </ul>
+            <button x-on:click="ismore = !ismore" x-text="ismore ? 'Hide' : 'More Milestone'" class="mt-2 btn btn-md btn-secondary w-full capitalize"></button>
+          </div>
+        </section>
+      </div> 
+    </div>
+  </div>
+
+  <section class="bg-[url('https://res.cloudinary.com/domqavi1p/image/upload/c_fill,h_200,w_500/v1690519461/ART_WORK_KEUBITBIT_emiyy9.webp')]">
+    <div class="container py-6">
+      <h1 class="text-center py-2 md:py-4 text-3xl md:text-5xl font-bold">Discography</h1>
+      <div x-data="{ data: datadiscography}" class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-4 mb-4">
+        <template x-for="item in data">
+          <a target="_blank" x-bind:href="item.link" class="bg-secondary duration-500 hover:bg-black hover:text-white group card w-full">
+            <div class="card-body p-5">
+              <div class="flex justify-between items-center">
+                <h2 class="capitalize font-bold text-sm md:text-base" x-text="item.name"></h2>
+                <div class="group-hover:translate-x-2 duration-500">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M11.25 4.5l7.5 7.5-7.5 7.5m-6-15l7.5 7.5-7.5 7.5" />
+                  </svg> 
+                </div>         
+              </div>
+            </div>
+          </a>
+        </template>
       </div>
-    </section>
+    </div>
+  </section>
+
+  <div class="bg-base-100">
     <section class="container">
       <div 
         x-data="{ data: datamilestone, classes: `grid grid-rows-${Math.ceil(datamilestone.length/2)} grid-flow-col gap-4 mt-4`}" 
         class="container py-6"
       >
-        <h1 class="text-center text-black py-2 md:py-4 text-3xl md:text-5xl font-bold">Milestone</h1>
-        <div 
-
-          class="grid gap-4 mt-4"
-        >
-          <template x-for="item in data">
-            <div class="bg-neutral duration-500 hover:bg-black hover:text-white group card w-full">
-              <div class="card-body p-4">
-                <h2 class="capitalize font-bold text-sm md:text-base" x-text="item.name"></h2>     
-              </div>
-            </div>
-          </template>
-        </div>
+        <h1 class="text-center py-2 md:py-4 text-3xl md:text-5xl font-bold">Personel</h1>
+        
       </div>
     </section>
-    <!-- <div class="divider"></div> 
-    <section class="container">
-      <h1 class="text-center text-black py-2 md:py-4 text-3xl md:text-5xl font-bold">Personel</h1>
-    </section> -->
   </div>
 </div>
 @endsection

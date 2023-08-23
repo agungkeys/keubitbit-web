@@ -82,8 +82,8 @@
       const datasocialfooter = [
         {
           id: 0,
-          name: "groundup",
-          image: "https://res.cloudinary.com/domqavi1p/image/upload/v1690539710/groundup-white_sivrmn.webp",
+          name: "solemnity",
+          image: "https://res.cloudinary.com/domqavi1p/image/upload/v1692809950/solemnity-size-01_ce2xa2.webp",
           link: "/"
         },
         {
