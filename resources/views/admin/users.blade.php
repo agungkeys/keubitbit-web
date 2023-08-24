@@ -23,13 +23,13 @@
               <thead>
                 <tr>
                   <th>
-                    <x-column-header column-name="id" :sort-column="$sortColumn" :sortDirection="$sortDirection">#</x-column-header>
+                    <x-column-header dataRoute="admin.users" column-name="id" :sort-column="$sortColumn" :sortDirection="$sortDirection">#</x-column-header>
                   </th>
                   <th>
-                    <x-column-header column-name="name" :sort-column="$sortColumn" :sortDirection="$sortDirection">Name</x-column-header>
+                    <x-column-header dataRoute="admin.users" column-name="name" :sort-column="$sortColumn" :sortDirection="$sortDirection">Name</x-column-header>
                   </th>
                   <th>
-                    <x-column-header column-name="email" :sort-column="$sortColumn" :sortDirection="$sortDirection">Email</x-column-header>
+                    <x-column-header dataRoute="admin.users" column-name="email" :sort-column="$sortColumn" :sortDirection="$sortDirection">Email</x-column-header>
                   </th>
                   <th width="100">
                     Action

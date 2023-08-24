@@ -17,7 +17,7 @@
 @endphp
 
 <div class="flex items-center gap-1">
-  <a href="{{ route('admin.users', ['sortDirection' => $sortDirection, 'sortColumn' => $columnName])}}">
+  <a href="{{ route($dataRoute, ['sortDirection' => $sortDirection, 'sortColumn' => $columnName])}}">
     <span class="text-primary text-base">{{$slot}}</span>
   </a>
   @if($columnName == $sortColumn)
