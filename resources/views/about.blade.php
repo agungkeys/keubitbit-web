@@ -78,12 +78,12 @@
             <h1 class="text-black text-xl md:text-2xl font-bold">Milestone</h1>
             <ul x-show="!ismore" class="list-disc mx-4">
               <template x-for="item in data.slice(0, 5)">
-                <li class="text-blue-900 text-lg tracking-wider" x-text="item.name"></li>
+                <li class="text-blue-900 text-base tracking-wider" x-text="item.name"></li>
               </template>
             </ul>
             <ul x-show="ismore" class="list-disc mx-4">
               <template x-for="item in data">
-                <li class="text-blue-900 text-lg tracking-wider" x-text="item.name"></li>
+                <li class="text-blue-900 text-base tracking-wider" x-text="item.name"></li>
               </template>
             </ul>
             <button x-on:click="ismore = !ismore" x-text="ismore ? 'Hide' : 'More Milestone'" class="mt-2 btn btn-md btn-secondary w-full capitalize"></button>
