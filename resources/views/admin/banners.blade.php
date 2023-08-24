@@ -33,13 +33,13 @@
                 <thead>
                   <tr>
                     <th>
-                      <x-column-header column-name="id" :sort-column="$sortColumn" :sortDirection="$sortDirection">#</x-column-header>
+                      <x-column-header dataRoute="admin.banners" column-name="id" :sort-column="$sortColumn" :sortDirection="$sortDirection">#</x-column-header>
                     </th>
                     <th>
-                      <x-column-header column-name="name" :sort-column="$sortColumn" :sortDirection="$sortDirection">Name</x-column-header>
+                      <x-column-header dataRoute="admin.banners" column-name="name" :sort-column="$sortColumn" :sortDirection="$sortDirection">Name</x-column-header>
                     </th>
                     <th>
-                      <x-column-header column-name="link" :sort-column="$sortColumn" :sortDirection="$sortDirection">Link</x-column-header>
+                      <x-column-header dataRoute="admin.banners" column-name="link" :sort-column="$sortColumn" :sortDirection="$sortDirection">Link</x-column-header>
                     </th>
                     <th width="100">Action</th>
                   </tr>
@@ -223,7 +223,15 @@
   @endif
   <script>
     function previewImageOnAdd() {
-      bannerPreview.src = URL.createObjectURL(event.target.files[0])
+      const file = event.target.files[0];
+      if (file.size > 3080000) {
+        toastr.error("Your files to large, please resize!");
+        setTimeout(() => {
+          window.location.replace("/admin/banners");
+        }, 1500)
+      } else {
+        bannerPreview.src = URL.createObjectURL(event.target.files[0])
+      }
     }
 
     function previewImageOnEdit() {
@@ -264,7 +272,7 @@
     function handleDelete(id) {
       Swal.fire({
         title: 'Are you sure?',
-        text: "You won't be able to revert this!",
+        text: "You won't be able to delete this!",
         icon: 'warning',
         showCancelButton: true,
         confirmButtonColor: '#3085d6',
