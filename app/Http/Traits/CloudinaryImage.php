@@ -34,4 +34,15 @@ trait CloudinaryImage
         ];
         return ['dataImage' => json_encode($detail_image)];
     }
+
+    public function UpdateImageCloudinary($data)
+    {
+        if ($data['collection']['image']) {
+            $key = json_decode($data['collection']['image']);
+            Cloudinary::destroy($key->public_id);
+            return $this->UploadImageCloudinary(['image' => $data['image'], 'folder' => $data['folder']]);
+        } else {
+            // return $this->UploadImageCloudinary(['image' => $data['image'], 'folder' => $data['folder']]);
+        }
+    }
 }

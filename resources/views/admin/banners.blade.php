@@ -89,7 +89,16 @@
   <dialog id="modal_banner" class="modal">
     <form class="modal-box" action="{{ route('admin.banners.store') }}" method="POST" enctype="multipart/form-data">
       @csrf
-      <a href="{{ route('admin.banners') }}" class="btn btn-sm btn-circle absolute right-2 top-2">✕</a>
+      @php
+        if (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on') {
+            $url = 'https://';
+        } else {
+            $url = 'http://';
+        }
+        $url .= $_SERVER['HTTP_HOST'];
+        $url .= $_SERVER['REQUEST_URI'];
+      @endphp
+      <a href="{{ $url }}" class="btn btn-sm btn-circle absolute right-2 top-2">✕</a>
       <h3 class="font-semibold text-2xl pb-6 text-center">Add New Banner</h3>
       <div class="form-control w-full mt-2">
         <label class="label">
@@ -129,7 +138,7 @@
       </div>
 
       <div class="modal-action">
-        <a href="{{ route('admin.banners') }}" class="btn btn-light">Close</a>
+        <a href="{{ $url }}" class="btn btn-light">Close</a>
         <button type="submit" class="btn btn-primary">Save changes</button>
       </div>
     </form>
@@ -156,7 +165,7 @@
         <label class="label">
           <span class="label-text text-base-content undefined">Image</span>
         </label>
-        <input name="image" id="image" type="file" accept="image/*" onchange="previewImageOnAdd()" class="file-input file-input-bordered w-full {{ $errors->has('name') ? ' input-error' : '' }}" />
+        <input name="image" id="image" type="file" accept="image/*" onchange="previewImageOnEdit()" class="file-input file-input-bordered w-full {{ $errors->has('name') ? ' input-error' : '' }}" />
         @if ($errors->has('image'))
           <label class="label">
             <span class="label-text-alt text-error">{{ $errors->first('image') }}</span>
@@ -164,7 +173,7 @@
         @endif
       </div>
       <div>
-        <img id="bannerPreview">
+        <img id="bannerPreviewEdit">
       </div>
       <div class="form-control w-full mt-2">
         <label class="label">
@@ -174,11 +183,12 @@
       </div>
 
       <div class="modal-action">
-        <a href="{{ route('admin.users') }}" class="btn btn-light">Close</a>
+        <a href="{{ route('admin.banners') }}" class="btn btn-light">Close</a>
         <button type="submit" class="btn btn-primary">Save changes</button>
       </div>
     </form>
   </dialog>
+
 @endsection
 @section('js')
   @if (count($errors) > 0)
@@ -191,15 +201,58 @@
       bannerPreview.src = URL.createObjectURL(event.target.files[0])
     }
 
+    function previewImageOnEdit() {
+      bannerPreviewEdit.src = URL.createObjectURL(event.target.files[0])
+    }
+
     function handleEdit(id) {
       modal_banner_edit.showModal();
       $.ajax({
         type: "GET",
         url: "/admin/banners/edit/" + id,
         success: function(response) {
+          const dataImage = response.banner.image;
+          const image = JSON.parse(dataImage);
           $("#name").val(response.banner.name);
-          $('#banner_id').val(response.banner.id);
+          $("#banner_id").val(response.banner.id);
           $("#link").val(response.banner.link);
+          $('#bannerPreviewEdit').attr('src', image.realImage);
+        }
+      })
+    }
+
+    function handleDelete(id) {
+      Swal.fire({
+        title: 'Are you sure?',
+        text: "You won't be able to revert this!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes, delete it!'
+      }).then((result) => {
+        if (result.isConfirmed) {
+          let _token = $('meta[name="csrf-token"]').attr('content');
+          const url = window.location.href;
+          $.ajax({
+            type: "DELETE",
+            url: "/admin/banners/delete/" + id,
+            data: {
+              _token: _token,
+              id: id
+            },
+            success: function(response) {
+              if (response.status == 200) {
+                Swal.fire(
+                  'Deleted!',
+                  'Your file has been deleted.',
+                  'success'
+                ).then(function() {
+                  window.location = url;
+                });
+              }
+            }
+          });
         }
       })
     }
