@@ -3,10 +3,10 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
 use App\Http\Traits\CloudinaryImage;
 use App\Models\Banner;
 use CloudinaryLabs\CloudinaryLaravel\Facades\Cloudinary;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 class BannersController extends Controller
@@ -39,7 +39,7 @@ class BannersController extends Controller
     {
         $request->validate([
             'name' => 'required',
-            'image' => 'required|image|mimes:jpeg,png,jpg,svg|max:8192',
+            'image' => 'required|image|mimes:jpeg,png,jpg,svg|max:3000',
             'link' => 'required'
         ]);
 
@@ -72,7 +72,7 @@ class BannersController extends Controller
     {
         $request->validate([
             'name' => 'required',
-            'image' => 'image|mimes:jpeg,png,jpg,svg|max:8192',
+            'image' => 'image|mimes:jpeg,png,jpg,svg|max:3000',
             'link' => 'required'
         ]);
 

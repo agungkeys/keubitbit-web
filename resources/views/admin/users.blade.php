@@ -13,7 +13,7 @@
             </button>
           </div>
         </form>
-        <button class="btn btn-md btn-primary" onclick="modal_user.showModal()">Add User</button>
+        <button class="btn btn-md btn-primary" onclick="modal_user.showModal()">Add</button>
       </div>
       <div class="card bg-white rounded-lg">
         <div class="card-body p-0">

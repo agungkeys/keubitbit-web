@@ -9,6 +9,16 @@ class Member extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'name', 'slug', 'position', 'detail', 'image'
+        'name', 
+        'slug', 
+        'position', 
+        'detail', 
+        'image', 
+        'social_facebook', 
+        'social_instagram',
+        'social_twitter',
+        'social_tiktok',
+        'social_youtube',
+        'social_linktree'
     ];
 }

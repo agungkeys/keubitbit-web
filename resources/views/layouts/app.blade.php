@@ -84,33 +84,33 @@
           id: 0,
           name: "solemnity",
           image: "https://res.cloudinary.com/domqavi1p/image/upload/v1692809950/solemnity-size-01_ce2xa2.webp",
-          link: "/"
+          link: "https://www.instagram.com/solemnity.records"
         },
         {
           id: 1,
           name: "apple-music",
           image: "https://res.cloudinary.com/domqavi1p/image/upload/v1690539805/applemusic-white_vhybzx.webp",
-          link: "/"
+          link: "https://music.apple.com/id/artist/keubitbit/1589699514"
         },{
           id: 2,
           name: "facebook",
           image: "https://res.cloudinary.com/domqavi1p/image/upload/v1690539844/facebook-white_ejzyil.webp",
-          link: "/"
+          link: "https://www.facebook.com/keubitbit"
         },{
           id: 3,
           name: "twitter",
           image: "https://res.cloudinary.com/domqavi1p/image/upload/v1690539886/twitter-white_zj1p5f.webp",
-          link: "/"
+          link: "https://twitter.com/keubitbit_am"
         },{
           id: 4,
           name: "instagram",
           image: "https://res.cloudinary.com/domqavi1p/image/upload/v1690539927/instagram-white_thzdpf.webp",
-          link: "/"
+          link: "https://www.instagram.com/keubitbit_am"
         },{
           id: 5,
           name: "youtube",
           image: "https://res.cloudinary.com/domqavi1p/image/upload/v1690539951/youtube-white_ciu5ol.webp",
-          link: "/"
+          link: "https://www.youtube.com/@KeubitbitAtjehEthnicMusic"
         }
       ];
 

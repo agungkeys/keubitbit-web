@@ -25,11 +25,8 @@ Default Page
 
   <!-- CSRF Token -->
   <meta name="csrf-token" content="{{ csrf_token() }}" />
-  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.12.3/dist/cdn.min.js"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+
   <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <link rel="dns-prefetch" href="//fonts.bunny.net" />
   <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet" />
 
@@ -96,6 +93,12 @@ Default Page
     <!-- <ModalLayout /> -->
 
   </div>
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.12.3/dist/cdn.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <!-- <script src="https://cdn.ckeditor.com/ckeditor5/23.0.0/classic/ckeditor.js"></script> -->
+  <script src="//cdn.ckeditor.com/4.21.0/standard/ckeditor.js"></script>
   <script>
     const datasidebar = [{
         id: 0,
