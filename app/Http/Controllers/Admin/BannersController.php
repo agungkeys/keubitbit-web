@@ -5,7 +5,9 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Traits\CloudinaryImage;
 use App\Models\Banner;
+use CloudinaryLabs\CloudinaryLaravel\Facades\Cloudinary;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class BannersController extends Controller
 {
@@ -54,7 +56,7 @@ class BannersController extends Controller
             'link' => $request->link
         ]);
 
-        return redirect(route('admin.banners'))->with('success', 'Banner berhasil disimpan!');
+        return redirect()->back()->with('success', 'Banner berhasil disimpan!');
     }
 
     public function edit($id)
@@ -64,5 +66,42 @@ class BannersController extends Controller
             'status' => 200,
             'banner' => $banner
         ]);
+    }
+
+    public function update(Request $request)
+    {
+        $request->validate([
+            'name' => 'required',
+            'image' => 'image|mimes:jpeg,png,jpg,svg|max:8192',
+            'link' => 'required'
+        ]);
+
+        $banner = Banner::findOrFail($request->banner_id);
+
+        if ($request->file('image')) {
+            $dataImage = $this->UpdateImageCloudinary([
+                'image' => $request->file('image'),
+                'folder' => 'banners',
+                'collection' => $banner
+            ]);
+            $image = $dataImage['dataImage'];
+        }
+        $banner->update([
+            'name' => $request->name,
+            'image' => $image ?? $banner->image,
+            'link' => $request->link
+        ]);
+
+        return redirect()->back()->with('success', 'Banner berhasil diubah!');
+    }
+
+    public function delete(Request $request)
+    {
+        $banner = Banner::findOrFail($request->id);
+        $key = json_decode($banner->image);
+        Cloudinary::destroy($key->public_id);
+
+        $banner->delete();
+        return response()->json(['status' => 200]);
     }
 }

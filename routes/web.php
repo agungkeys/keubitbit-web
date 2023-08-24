@@ -43,6 +43,7 @@ Route::group(['namespace' => 'Admin', 'as' => 'admin.'], function () {
         Route::post('/admin/banners/store', 'BannersController@store')->name('banners.store');
         Route::get('/admin/banners/edit/{id}', 'BannersController@edit')->name('banners.edit');
         Route::post('/admin/banners/update', 'BannersController@update')->name('banners.update');
+        Route::delete('/admin/banners/delete/{id}', 'BannersController@delete')->name('banners.delete');
     });
 });
 
