@@ -146,8 +146,13 @@ class MembersController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function delete(string $id)
     {
-        //
+        $member = Member::findOrFail($request->id);
+        $key = json_decode($member->image);
+        Cloudinary::destroy($key->public_id);
+
+        $member->delete();
+        return response()->json(['status' => 200]);
     }
 }

@@ -38,6 +38,18 @@ Route::group(['namespace' => 'Admin', 'as' => 'admin.'], function () {
         Route::get('/admin/members/edit/{id}', 'MembersController@edit')->name('members.edit');
         Route::post('/admin/members/update', 'MembersController@update')->name('members.update');
         Route::delete('/admin/members/delete/{id}', 'MembersController@delete')->name('members.delete');
+        //Master Music
+        Route::get('/admin/musics', 'MusicsController@index')->name('musics');
+        Route::post('/admin/musics/store', 'MusicsController@store')->name('musics.store');
+        Route::get('/admin/musics/edit/{id}', 'MusicsController@edit')->name('musics.edit');
+        Route::post('/admin/musics/update', 'MusicsController@update')->name('musics.update');
+        Route::delete('/admin/musics/delete/{id}', 'MusicsController@delete')->name('musics.delete');
+        //Master Tour
+        Route::get('/admin/tours', 'ToursController@index')->name('tours');
+        Route::post('/admin/tours/store', 'ToursController@store')->name('tours.store');
+        Route::get('/admin/tours/edit/{id}', 'ToursController@edit')->name('tours.edit');
+        Route::post('/admin/tours/update', 'ToursController@update')->name('tours.update');
+        Route::delete('/admin/tours/delete/{id}', 'ToursController@delete')->name('tours.delete');
         //Master Banners
         Route::get('/admin/banners', 'BannersController@index')->name('banners');
         Route::post('/admin/banners/store', 'BannersController@store')->name('banners.store');
