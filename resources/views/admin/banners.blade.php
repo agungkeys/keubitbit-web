@@ -96,7 +96,7 @@
   </div>
 
   <dialog id="modal_banner" class="modal">
-    <form class="modal-box" action="{{ route('admin.banners.store') }}" method="POST" enctype="multipart/form-data">
+    <form class="modal-box" action="{{ route('admin.banners.store') }}" onsubmit="disableButton()" method="POST" enctype="multipart/form-data">
       @csrf
       <a href="{{ $url }}" class="btn btn-sm btn-circle absolute right-2 top-2">✕</a>
       <h3 class="font-semibold text-2xl pb-6 text-center">Add New Banner</h3>
@@ -139,7 +139,7 @@
 
       <div class="modal-action">
         <a href="{{ $url }}" class="btn btn-light">Close</a>
-        <button type="submit" class="btn btn-primary">Save changes</button>
+        <button id="submitBtn" type="submit" class="btn btn-primary">Save changes<span id="loading" class="loading loading-spinner loading-xs hidden"></span></button>
       </div>
     </form>
   </dialog>
@@ -190,28 +190,25 @@
   </dialog>
 
   <dialog id="modal_banner_detail" class="modal">
-    <form class="modal-box" action="#" method="POST" enctype="multipart/form-data">
+    <div class="modal-box">
       <a href="{{ $url }}" class="btn btn-sm btn-circle absolute right-2 top-2">✕</a>
       <h3 class="font-semibold text-2xl pb-6 text-center">Detail Banner</h3>
-      <div class="form-control w-full mt-2">
-        <label class="label">
-          <span class="label-text text-base-content undefined">Name</span>
-        </label>
-        <input id="nameDetail" name="name" type="text" class="input input-bordered w-full" readonly />
-      </div>
-      <div class="form-control w-full mt-2">
-        <img id="bannerPreviewDetail">
-      </div>
-      <div class="form-control w-full mt-2">
-        <label class="label">
-          <span class="label-text text-base-content undefined">Link</span>
-        </label>
-        <input id="linkDetail" name="link" type="text" class="input input-bordered w-full" readonly />
-      </div>
+      <label class="label">
+        <span class="label-text text-gray-500">Name</span>
+      </label>
+      <span id="detail_name" class="label text-base">-</span>
+      <label class="label">
+        <span class="label-text text-gray-500">Image</span>
+      </label>
+      <img id="bannerPreviewDetail">
+      <label class="label">
+        <span class="label-text text-gray-500">Link</span>
+      </label>
+      <span id="detail_link" class="label text-base">-</span>
       <div class="modal-action">
         <a href="{{ $url }}" class="btn btn-light">Close</a>
       </div>
-    </form>
+    </div>
   </dialog>
 
 @endsection
@@ -262,11 +259,17 @@
         success: function(response) {
           const dataImage = response.banner.image;
           const image = JSON.parse(dataImage);
-          $("#nameDetail").val(response.banner.name);
-          $("#linkDetail").val(response.banner.link);
+          $("#detail_name").text(response?.banner?.name || '-');
+          $("#detail_link").text(response?.banner?.link || '-');
           $('#bannerPreviewDetail').attr('src', image.realImage);
         }
       })
+    }
+
+    function disableButton() {
+      var btn = document.getElementById('submitBtn');
+      btn.disabled = true;
+      $('#loading').show();
     }
 
     function handleDelete(id) {
