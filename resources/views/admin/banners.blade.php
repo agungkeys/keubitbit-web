@@ -1,6 +1,15 @@
 @extends('layouts.admin')
 @section('title', 'Master Banner')
 @section('content')
+  @php
+    if (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on') {
+        $url = 'https://';
+    } else {
+        $url = 'http://';
+    }
+    $url .= $_SERVER['HTTP_HOST'];
+    $url .= $_SERVER['REQUEST_URI'];
+  @endphp
   <div>
     <div class="row justify-content-center">
       <div class="col-md-8">
@@ -89,16 +98,7 @@
   <dialog id="modal_banner" class="modal">
     <form class="modal-box" action="{{ route('admin.banners.store') }}" method="POST" enctype="multipart/form-data">
       @csrf
-      @php
-        if (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on') {
-            $url = 'https://';
-        } else {
-            $url = 'http://';
-        }
-        $url .= $_SERVER['HTTP_HOST'];
-        $url .= $_SERVER['REQUEST_URI'];
-      @endphp
-      <a id="close-form-banner" href="{{ $url }}" class="btn btn-sm btn-circle absolute right-2 top-2">✕</a>
+      <a href="{{ $url }}" class="btn btn-sm btn-circle absolute right-2 top-2">✕</a>
       <h3 class="font-semibold text-2xl pb-6 text-center">Add New Banner</h3>
       <div class="form-control w-full mt-2">
         <label class="label">
@@ -147,7 +147,7 @@
   <dialog id="modal_banner_edit" class="modal">
     <form class="modal-box" action="{{ route('admin.banners.update') }}" method="POST" enctype="multipart/form-data">
       @csrf
-      <a href="{{ route('admin.banners') }}" class="btn btn-sm btn-circle absolute right-2 top-2">✕</a>
+      <a href="{{ $url }}" class="btn btn-sm btn-circle absolute right-2 top-2">✕</a>
       <h3 class="font-semibold text-2xl pb-6 text-center">Edit Banner</h3>
       <div class="form-control w-full mt-2">
         <label class="label">
@@ -183,8 +183,33 @@
       </div>
 
       <div class="modal-action">
-        <a href="{{ route('admin.banners') }}" class="btn btn-light">Close</a>
+        <a href="{{ $url }}" class="btn btn-light">Close</a>
         <button type="submit" class="btn btn-primary">Save changes</button>
+      </div>
+    </form>
+  </dialog>
+
+  <dialog id="modal_banner_detail" class="modal">
+    <form class="modal-box" action="#" method="POST" enctype="multipart/form-data">
+      <a href="{{ $url }}" class="btn btn-sm btn-circle absolute right-2 top-2">✕</a>
+      <h3 class="font-semibold text-2xl pb-6 text-center">Detail Banner</h3>
+      <div class="form-control w-full mt-2">
+        <label class="label">
+          <span class="label-text text-base-content undefined">Name</span>
+        </label>
+        <input id="nameDetail" name="name" type="text" class="input input-bordered w-full" readonly />
+      </div>
+      <div class="form-control w-full mt-2">
+        <img id="bannerPreviewDetail">
+      </div>
+      <div class="form-control w-full mt-2">
+        <label class="label">
+          <span class="label-text text-base-content undefined">Link</span>
+        </label>
+        <input id="linkDetail" name="link" type="text" class="input input-bordered w-full" readonly />
+      </div>
+      <div class="modal-action">
+        <a href="{{ $url }}" class="btn btn-light">Close</a>
       </div>
     </form>
   </dialog>
@@ -199,12 +224,12 @@
   <script>
     function previewImageOnAdd() {
       const file = event.target.files[0];
-      if(file.size > 3080000){
+      if (file.size > 3080000) {
         toastr.error("Your files to large, please resize!");
         setTimeout(() => {
           window.location.replace("/admin/banners");
         }, 1500)
-      }else{
+      } else {
         bannerPreview.src = URL.createObjectURL(event.target.files[0])
       }
     }
@@ -225,6 +250,21 @@
           $("#banner_id").val(response.banner.id);
           $("#link").val(response.banner.link);
           $('#bannerPreviewEdit').attr('src', image.realImage);
+        }
+      })
+    }
+
+    function handleDetail(id) {
+      modal_banner_detail.showModal();
+      $.ajax({
+        type: "GET",
+        url: "/admin/banners/edit/" + id,
+        success: function(response) {
+          const dataImage = response.banner.image;
+          const image = JSON.parse(dataImage);
+          $("#nameDetail").val(response.banner.name);
+          $("#linkDetail").val(response.banner.link);
+          $('#bannerPreviewDetail').attr('src', image.realImage);
         }
       })
     }
