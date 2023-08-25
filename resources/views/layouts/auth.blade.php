@@ -7,7 +7,13 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}" />
 
-    <title>{{ config("app.name", "Laravel") }}</title>
+    <title>CMS Administrator for Keubitbit</title>
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }} " />
+    <meta name="description" content="Everything about gigs, albums of Keubitbit Aceh Ethnic Music" />
+    <meta name="keywords" content="Keubitbit, Ethnic Music, Keubitbit Indonesia" />
+    <meta name="author" content="Agung Kurniawan" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta property="og:title" content="CMS Administrator for Keubitbit" />
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.bunny.net" />
