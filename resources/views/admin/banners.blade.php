@@ -136,7 +136,6 @@
           </label>
         @endif
       </div>
-
       <div class="modal-action">
         <a href="{{ $url }}" class="btn btn-light">Close</a>
         <button id="submitBtn" type="submit" class="btn btn-primary">Save changes<span id="loading" class="loading loading-spinner loading-xs hidden"></span></button>
@@ -145,7 +144,7 @@
   </dialog>
 
   <dialog id="modal_banner_edit" class="modal">
-    <form class="modal-box" action="{{ route('admin.banners.update') }}" method="POST" enctype="multipart/form-data">
+    <form class="modal-box" action="{{ route('admin.banners.update') }}" onsubmit="disableButton()" method="POST" enctype="multipart/form-data">
       @csrf
       <a href="{{ $url }}" class="btn btn-sm btn-circle absolute right-2 top-2">✕</a>
       <h3 class="font-semibold text-2xl pb-6 text-center">Edit Banner</h3>
@@ -181,10 +180,9 @@
         </label>
         <input id="link" name="link" type="text" placeholder="Link Banner" class="input input-bordered w-full" />
       </div>
-
       <div class="modal-action">
         <a href="{{ $url }}" class="btn btn-light">Close</a>
-        <button type="submit" class="btn btn-primary">Save changes</button>
+        <button id="submitEditBtn" type="submit" class="btn btn-primary">Save changes<span id="loadingEdit" class="loading loading-spinner loading-xs hidden"></span></button>
       </div>
     </form>
   </dialog>
@@ -268,8 +266,10 @@
 
     function disableButton() {
       var btn = document.getElementById('submitBtn');
+      var btnEdit = document.getElementById('submitEditBtn');
       btn.disabled = true;
-      $('#loading').show();
+      btnEdit.disabled = true;
+      $('#loadingEdit').show();
     }
 
     function handleDelete(id) {

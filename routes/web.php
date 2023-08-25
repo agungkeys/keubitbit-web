@@ -44,6 +44,8 @@ Route::group(['namespace' => 'Admin', 'as' => 'admin.'], function () {
         Route::get('/admin/banners/edit/{id}', 'BannersController@edit')->name('banners.edit');
         Route::post('/admin/banners/update', 'BannersController@update')->name('banners.update');
         Route::delete('/admin/banners/delete/{id}', 'BannersController@delete')->name('banners.delete');
+        //Master Newsletter
+        Route::get('/admin/newsletter', 'MailistsController@index')->name('newsletter');
     });
 });
 
