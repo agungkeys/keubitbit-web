@@ -114,7 +114,7 @@
 
     <div class="modal-action">
       <a href="{{ route('admin.users') }}" class="btn btn-light">Close</a>
-      <button type="submit" class="btn btn-primary">Save changes</button>
+      <button type="submit" class="btn btn-primary">Save</button>
     </div>
   </form>
 </dialog>
@@ -157,7 +157,7 @@
 
     <div class="modal-action">
       <a href="{{ route('admin.users') }}" class="btn btn-light">Close</a>
-      <button type="submit" class="btn btn-primary">Save changes</button>
+      <button type="submit" class="btn btn-primary">Update</button>
     </div>
   </form>
 </dialog>

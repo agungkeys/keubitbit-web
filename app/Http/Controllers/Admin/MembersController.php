@@ -89,15 +89,58 @@ class MembersController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $member = Member::find($id);
+        return response()->json([
+            'status' => 200,
+            'member' => $member
+        ]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request)
     {
-        //
+        $request->validate([
+            'edit_name' => 'required',
+            'edit_position' => 'required',
+            'edit_detail' => 'required'
+        ]);
+
+        $member = Member::findOrFail($request->member_id);
+
+        if ($request->file('edit_image')) {
+            $dataImage = $this->UpdateImageCloudinary([
+                'image' => $request->file('edit_image'),
+                'folder' => 'members',
+                'collection' => $member
+            ]);
+            $image = $dataImage['dataImage'];
+        }
+        $member->update([
+            // 'name' => $request->name,
+            // 'slug' => Str::slug(request('name')) . "-" . Str::random(5),
+            // 'position' => $request->position,
+            // 'detail' => $request->detail,
+            // 'social_facebook' => $request->facebook,
+            // 'social_instagram' => $request->instagram,
+            // 'social_twitter' => $request->twitter,
+            // 'social_tiktok' => $request->tiktok,
+            // 'social_youtube' => $request->youtube,
+            // 'image' => $image,
+
+            'name' => $request->edit_name,
+            'position' => $request->edit_position,
+            'detail' => $request->edit_detail,
+            'social_facebook' => $request->edit_facebook,
+            'social_instagram' => $request->edit_instagram,
+            'social_twitter' => $request->edit_twitter,
+            'social_tiktok' => $request->edit_tiktok,
+            'social_youtube' => $request->edit_youtube,
+            'image' => $image ?? $member->image
+        ]);
+
+        return redirect()->back()->with('success', 'Member berhasil diubah!');
     }
 
     /**

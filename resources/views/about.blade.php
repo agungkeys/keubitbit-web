@@ -115,12 +115,12 @@
     </div>
   </section>
 
-  <div class="bg-base-100">
+  <div>
     <section class="container">
       <div 
         class="py-6"
       >
-        <h1 class="text-center py-2 mb-4 md:py-4 text-3xl md:text-5xl font-bold pb-4 md:pb-6">The Band</h1>
+        <h1 class="text-center text-black py-2 mb-4 md:py-4 text-3xl md:text-5xl font-bold pb-4 md:pb-6">The Band</h1>
         @foreach ($members as $member)
           @php
             $img = json_decode($member->image);
@@ -130,7 +130,7 @@
               <img class="rounded-lg md:rounded-2xl w-full" src="{{ $img->realImage }}" alt="{{ $member->name }}">
             </div>
             <div class="col-span-2 pt-4 md:pt-0">
-              <h2 class="text-white text-3xl md:text-4xl font-medium tracking-wider">{{$member->name}}</h2>
+              <h2 class="text-black text-3xl md:text-4xl font-medium tracking-wider">{{$member->name}}</h2>
               <span class="text-lg font-medium tracking-wider">{{$member->position}}</span>
               <div class="flex items-center gap-2 my-3">
                 @if ($member->social_facebook)
@@ -164,7 +164,7 @@
                 </a>
                 @endif
               </div>
-              <div id="wysiwyg" class="text-white text-lg tracking-wider my-4">
+              <div id="wysiwyg" class="text-black text-lg tracking-wider my-4">
                 {!!$member->detail!!}
               </div>
             </div>
