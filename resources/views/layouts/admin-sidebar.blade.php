@@ -1,4 +1,4 @@
-<div class="drawer-side min" x-data="{ menus: datasidebar }">
+<div class="drawer-side min" x-data="{ menus: datasidebar, pathname: window.location.pathname.split('/') }">
   <label html-for="left-sidebar-drawer" class="drawer-overlay"></label> 
   <ul class="menu pt-2 w-80 min-h-screen bg-base-100 text-base">
     <button class="btn btn-ghost bg-base-300  btn-circle z-50 top-0 right-0 mt-4 mr-2 absolute lg:hidden" onClick={(e) =>close(e))}>
@@ -13,7 +13,12 @@
       <div>
         <template x-if="!item.isLabel">
           <li class="">
-            <a class="font-bold" x-bind:href="item.link">
+            <a 
+              class="font-bold" 
+              x-bind:class="pathname[1] === 'dashboard' && item.name === 'dashboard' && 'active' ||  pathname[2] === item.name ? 'active' : ''"
+              x-bind:href="item.link"
+            >
+              <!-- <span x-text="pathname[2]"></span> -->
               <span x-text="item.label">-</span>
               <!-- <span class="absolute inset-y-0 left-0 w-1 rounded-tr-md rounded-br-md bg-primary" aria-hidden="true"></span> -->
             </a>

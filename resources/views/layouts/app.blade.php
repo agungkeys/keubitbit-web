@@ -21,8 +21,6 @@
     <meta property="og:image:height" content="300" />
     <meta property="og:image:alt" content="keubitbit"/>
     <meta property="og:image:type" content="image/jpg" />
-
-    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.12.3/dist/cdn.min.js"></script>
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.bunny.net" />
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet" />
@@ -38,6 +36,7 @@
       <main>@yield('content')</main>
     </div>
     @include('layouts.app-footer')
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.12.3/dist/cdn.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.7.0/flowbite.min.js"></script>
     <script>
       const datamenu = [

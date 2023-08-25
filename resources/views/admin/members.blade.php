@@ -1,5 +1,5 @@
 @extends('layouts.admin') 
-@section('title', 'Master Member') 
+@section('title', 'Member') 
 
 @section('content')
 <section id="list">

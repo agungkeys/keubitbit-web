@@ -1,5 +1,5 @@
 @extends('layouts.admin')
-@section('title', 'Master Tours')
+@section('title', 'Jadwal Tour')
 @section('content')
 <div class="">
   halaman master tours

@@ -1,4 +1,4 @@
-@extends('layouts.admin') @section('title', 'Master User') @section('content')
+@extends('layouts.admin') @section('title', 'User') @section('content')
 <div class="">
   <div class="row justify-content-center">
     <div class="col-md-8">

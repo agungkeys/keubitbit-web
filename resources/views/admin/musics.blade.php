@@ -1,5 +1,5 @@
 @extends('layouts.admin')
-@section('title', 'Master Musics')
+@section('title', 'Music')
 @section('content')
 <div class="">
   halaman master musics
