@@ -1,7 +1,10 @@
 <?php
 
+use App\Exports\MailistsExport;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
+use Maatwebsite\Excel\Facades\Excel;
+
 // use Inertia\Inertia;
 
 /*
@@ -46,6 +49,9 @@ Route::group(['namespace' => 'Admin', 'as' => 'admin.'], function () {
         Route::delete('/admin/banners/delete/{id}', 'BannersController@delete')->name('banners.delete');
         //Master Newsletter
         Route::get('/admin/newsletter', 'MailistsController@index')->name('mailists');
+        Route::get('/admin/newsletter/export-csv', function () {
+            return Excel::download(new MailistsExport, 'Newsletter-' . now()->format('dmy') . '.csv');
+        })->name('mailists.export');
     });
 });
 

@@ -15,7 +15,7 @@
               </button>
             </div>
           </form>
-          <button class="btn btn-md btn-primary" onclick="modal_user.showModal()">Export CSV</button>
+          <a href="{{ route('admin.mailists.export') }}" class="btn btn-md btn-primary">Export CSV</a>
         </div>
         <div class="card bg-white rounded-lg">
           <div class="card-body p-0">
