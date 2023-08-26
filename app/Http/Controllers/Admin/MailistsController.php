@@ -22,7 +22,6 @@ class MailistsController extends Controller
         if ($searchParam) {
             $mailist_query = $mailist_query->where(function ($query) use ($searchParam) {
                 $query
-                    ->orWhere('name', 'like', "%$searchParam%")
                     ->orWhere('email', 'like', "%$searchParam%");
             });
         }
