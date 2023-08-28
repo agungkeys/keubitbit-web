@@ -23,6 +23,7 @@ Route::get('/about', [App\Http\Controllers\AboutController::class, 'index'])->na
 Route::get('/tour', [App\Http\Controllers\TourController::class, 'index'])->name('tour');
 Route::get('/news', [App\Http\Controllers\NewsController::class, 'index'])->name('news');
 Route::get('/contact', [App\Http\Controllers\ContactController::class, 'index'])->name('contact');
+Route::post('/newsletter/store', [App\Http\Controllers\IndexController::class, 'store'])->name('mailists.store');
 Auth::routes();
 
 Route::group(['namespace' => 'Admin', 'as' => 'admin.'], function () {

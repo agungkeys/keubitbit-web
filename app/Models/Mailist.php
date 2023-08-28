@@ -8,4 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Mailist extends Model
 {
     use HasFactory;
+    protected $fillable = [
+        'email'
+    ];
 }
