@@ -53,6 +53,8 @@ Route::group(['namespace' => 'Admin', 'as' => 'admin.'], function () {
         Route::get('/admin/newsletter/export-csv', function () {
             return Excel::download(new MailistsExport, 'Newsletter-' . now()->format('dmy') . '.csv');
         })->name('mailists.export');
+        //Master Article & News
+        Route::get('/admin/articles', 'NewsController@index')->name('news');
     });
 });
 

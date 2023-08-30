@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\News;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class NewsController extends Controller
@@ -14,7 +15,7 @@ class NewsController extends Controller
         $sortColumn = $request->query('sortColumn');
         $sortDirection = $request->query('sortDirection');
         $searchParam = $request->query('q');
-        $user =
+        $user = User::all();
 
         if ($sortColumn && $sortDirection) {
             $news_query->orderBy($sortColumn, $sortDirection ?: 'asc');
@@ -29,6 +30,6 @@ class NewsController extends Controller
         }
 
         $news = $news_query->paginate(5);
-        return view('admin.news', compact('news', 'sortColumn', 'sortDirection', 'searchParam'));
+        return view('admin.news', compact('news', 'sortColumn', 'sortDirection', 'searchParam', 'user'));
     }
 }
