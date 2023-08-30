@@ -115,15 +115,13 @@
         <label class="label">
           <span class="label-text text-base-content undefined">Image</span>
         </label>
+        <img id="bannerPreview" class="rounded-md mx-auto" hidden>
         <input name="image" id="image" type="file" accept="image/*" onchange="previewImageOnAdd()" class="file-input file-input-bordered w-full {{ $errors->has('name') ? ' input-error' : '' }}" />
         @if ($errors->has('image'))
           <label class="label">
             <span class="label-text-alt text-error">{{ $errors->first('image') }}</span>
           </label>
         @endif
-      </div>
-      <div>
-        <img id="bannerPreview">
       </div>
       <div class="form-control w-full mt-2">
         <label class="label">
@@ -164,15 +162,13 @@
         <label class="label">
           <span class="label-text text-base-content undefined">Image</span>
         </label>
+        <img id="bannerPreviewEdit" class="rounded-md mx-auto">
         <input name="image" id="image" type="file" accept="image/*" onchange="previewImageOnEdit()" class="file-input file-input-bordered w-full {{ $errors->has('name') ? ' input-error' : '' }}" />
         @if ($errors->has('image'))
           <label class="label">
             <span class="label-text-alt text-error">{{ $errors->first('image') }}</span>
           </label>
         @endif
-      </div>
-      <div>
-        <img id="bannerPreviewEdit">
       </div>
       <div class="form-control w-full mt-2">
         <label class="label">
@@ -225,6 +221,7 @@
           window.location.replace("/admin/banners");
         }, 1500)
       } else {
+        $('#bannerPreview').show();
         bannerPreview.src = URL.createObjectURL(event.target.files[0])
       }
     }
@@ -237,6 +234,7 @@
           window.location.replace("/admin/banners");
         }, 1500)
       } else {
+        $('#bannerPreviewEdit').show();
         bannerPreviewEdit.src = URL.createObjectURL(event.target.files[0])
       }
     }

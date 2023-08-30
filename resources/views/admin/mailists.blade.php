@@ -28,9 +28,6 @@
                       <x-column-header dataRoute="admin.mailists" column-name="id" :sort-column="$sortColumn" :sortDirection="$sortDirection">#</x-column-header>
                     </th>
                     <th>
-                      <x-column-header dataRoute="admin.mailists" column-name="name" :sort-column="$sortColumn" :sortDirection="$sortDirection">Name</x-column-header>
-                    </th>
-                    <th>
                       <x-column-header dataRoute="admin.mailists" column-name="email" :sort-column="$sortColumn" :sortDirection="$sortDirection">Email</x-column-header>
                     </th>
                     <th width="100">
@@ -42,7 +39,6 @@
                   @foreach ($mailists as $mailist)
                     <tr>
                       <th>{{ $mailist->id }}</th>
-                      <td>{{ $mailist->email }}</td>
                       <td>{{ $mailist->email }}</td>
                       <td>
                         <div class="flex items-center justify-end gap-2">
