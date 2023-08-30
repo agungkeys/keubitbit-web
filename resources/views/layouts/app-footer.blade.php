@@ -3,7 +3,9 @@
     <div class="h-full w-full container">
       <div class="grid grid-cols-3 md:grid-cols-6 gap-2 md:gap-3 items-center">
         <template x-for="item in data">
-          <img x-bind:src="item.image" x-bind:alt="item.name" />
+          <a x-bind:href="item.link" target="_blank">
+            <img x-bind:src="item.image" x-bind:alt="item.name" />
+          </a>
         </template>
       </div>
     </div>

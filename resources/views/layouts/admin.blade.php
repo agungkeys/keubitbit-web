@@ -25,11 +25,8 @@ Default Page
 
   <!-- CSRF Token -->
   <meta name="csrf-token" content="{{ csrf_token() }}" />
-  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.12.3/dist/cdn.min.js"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+
   <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <link rel="dns-prefetch" href="//fonts.bunny.net" />
   <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet" />
 
@@ -96,6 +93,12 @@ Default Page
     <!-- <ModalLayout /> -->
 
   </div>
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.12.3/dist/cdn.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <!-- <script src="https://cdn.ckeditor.com/ckeditor5/23.0.0/classic/ckeditor.js"></script> -->
+  <script src="//cdn.ckeditor.com/4.21.0/standard/ckeditor.js"></script>
   <script>
     const datasidebar = [{
         id: 0,
@@ -112,61 +115,61 @@ Default Page
         isLabel: true,
       }, {
         id: 2,
-        name: "user",
+        name: "users",
         label: "User",
         link: "/admin/users?sortDirection=desc&sortColumn=id",
         isLabel: false,
       }, {
         id: 3,
-        name: "member",
+        name: "members",
         label: "Member",
         link: "/admin/members",
         isLabel: false,
       }, {
         id: 4,
-        name: "music",
+        name: "musics",
         label: "Music",
         link: "/admin/musics",
         isLabel: false,
       }, {
         id: 5,
-        name: "tour",
-        label: "Tour",
+        name: "tours",
+        label: "Jadwal Tour",
         link: "/admin/tours",
         isLabel: false,
       }, {
         id: 6,
-        name: "store",
+        name: "stores",
         label: "Store",
         link: "/admin/stores",
         isLabel: false,
       }, {
         id: 7,
-        name: "article",
+        name: "articles",
         label: "Article & News",
         link: "/admin/articles",
         isLabel: false,
       }, {
         id: 8,
-        name: "gallery",
+        name: "galleries",
         label: "Gallery",
         link: "/admin/galleries",
         isLabel: false,
       }, {
         id: 9,
-        name: "video",
+        name: "videos",
         label: "Video",
         link: "/admin/videos",
         isLabel: false,
       }, {
         id: 10,
-        name: "banner",
+        name: "banners",
         label: "Banner",
         link: "/admin/banners",
         isLabel: false,
       }, {
         id: 11,
-        name: "newsletter",
+        name: "newsletters",
         label: "Newsletter",
         link: "/admin/newsletter",
         isLabel: false,

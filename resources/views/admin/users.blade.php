@@ -1,4 +1,4 @@
-@extends('layouts.admin') @section('title', 'Master User') @section('content')
+@extends('layouts.admin') @section('title', 'User') @section('content')
 <div class="">
   <div class="row justify-content-center">
     <div class="col-md-8">
@@ -13,7 +13,7 @@
             </button>
           </div>
         </form>
-        <button class="btn btn-md btn-primary" onclick="modal_user.showModal()">Add User</button>
+        <button class="btn btn-md btn-primary" onclick="modal_user.showModal()">Add</button>
       </div>
       <div class="card bg-white rounded-lg">
         <div class="card-body p-0">
@@ -114,7 +114,7 @@
 
     <div class="modal-action">
       <a href="{{ route('admin.users') }}" class="btn btn-light">Close</a>
-      <button type="submit" class="btn btn-primary">Save changes</button>
+      <button type="submit" class="btn btn-primary">Save</button>
     </div>
   </form>
 </dialog>
@@ -157,7 +157,7 @@
 
     <div class="modal-action">
       <a href="{{ route('admin.users') }}" class="btn btn-light">Close</a>
-      <button type="submit" class="btn btn-primary">Save changes</button>
+      <button type="submit" class="btn btn-primary">Update</button>
     </div>
   </form>
 </dialog>

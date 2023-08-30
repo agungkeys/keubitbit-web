@@ -24,7 +24,7 @@
               </button>
             </div>
           </form>
-          <button class="btn btn-md btn-primary" onclick="modal_banner.showModal()">Add Banner</button>
+          <button class="btn btn-md btn-primary" onclick="modal_banner.showModal()">Add</button>
         </div>
         <div class="card bg-white rounded-lg">
           <div class="card-body p-0">
@@ -138,7 +138,7 @@
       </div>
       <div class="modal-action">
         <a href="{{ $url }}" class="btn btn-light">Close</a>
-        <button id="submitBtn" type="submit" class="btn btn-primary">Save changes<span id="loading" class="loading loading-spinner loading-xs hidden"></span></button>
+        <button id="submitBtn" type="submit" class="btn btn-primary">Save <span id="loading" class="loading loading-spinner loading-xs hidden"></span></button>
       </div>
     </form>
   </dialog>
@@ -230,7 +230,15 @@
     }
 
     function previewImageOnEdit() {
-      bannerPreviewEdit.src = URL.createObjectURL(event.target.files[0])
+      const file = event.target.files[0];
+      if (file.size > 3080000) {
+        toastr.error("Your files to large, please resize!");
+        setTimeout(() => {
+          window.location.replace("/admin/banners");
+        }, 1500)
+      } else {
+        bannerPreviewEdit.src = URL.createObjectURL(event.target.files[0])
+      }
     }
 
     function handleEdit(id) {

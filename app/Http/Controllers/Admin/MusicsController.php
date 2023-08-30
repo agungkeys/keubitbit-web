@@ -5,35 +5,36 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Traits\CloudinaryImage;
-use App\Models\Banner;
+
 use CloudinaryLabs\CloudinaryLaravel\Facades\Cloudinary;
 use Illuminate\Support\Facades\DB;
 
-class BannersController extends Controller
+class MusicsController extends Controller
 {
     use CloudinaryImage;
 
     public function index(Request $request)
     {
-        $banner_query = Banner::query();
-        $sortColumn = $request->query('sortColumn');
-        $sortDirection = $request->query('sortDirection');
-        $searchParam = $request->query('q');
+        // $banner_query = Banner::query();
+        // $sortColumn = $request->query('sortColumn');
+        // $sortDirection = $request->query('sortDirection');
+        // $searchParam = $request->query('q');
 
-        if ($sortColumn && $sortDirection) {
-            $banner_query->orderBy($sortColumn, $sortDirection ?: 'asc');
-        }
+        // if ($sortColumn && $sortDirection) {
+        //     $banner_query->orderBy($sortColumn, $sortDirection ?: 'asc');
+        // }
 
-        if ($searchParam) {
-            $banner_query = $banner_query->where(function ($query) use ($searchParam) {
-                $query
-                    ->orWhere('name', 'like', "%$searchParam%")
-                    ->orWhere('link', 'like', "%$searchParam%");
-            });
-        }
+        // if ($searchParam) {
+        //     $banner_query = $banner_query->where(function ($query) use ($searchParam) {
+        //         $query
+        //             ->orWhere('name', 'like', "%$searchParam%")
+        //             ->orWhere('link', 'like', "%$searchParam%");
+        //     });
+        // }
 
-        $banners = $banner_query->paginate(5);
-        return view('admin.banners', compact('banners', 'sortColumn', 'sortDirection', 'searchParam'));
+        // $banners = $banner_query->paginate(5);
+        // return view('admin.musics', compact('banners', 'sortColumn', 'sortDirection', 'searchParam'));
+        return view('admin.musics');
     }
     public function store(Request $request)
     {

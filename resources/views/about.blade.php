@@ -115,13 +115,61 @@
     </div>
   </section>
 
-  <div class="bg-base-100">
+  <div>
     <section class="container">
       <div 
-        x-data="{ data: datamilestone, classes: `grid grid-rows-${Math.ceil(datamilestone.length/2)} grid-flow-col gap-4 mt-4`}" 
-        class="container py-6"
+        class="py-6"
       >
-        <h1 class="text-center py-2 md:py-4 text-3xl md:text-5xl font-bold">Personel</h1>
+        <h1 class="text-center text-black py-2 mb-4 md:py-4 text-3xl md:text-5xl font-bold pb-4 md:pb-6">The Band</h1>
+        @foreach ($members as $member)
+          @php
+            $img = json_decode($member->image);
+          @endphp
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-0 md:gap-12 pb-10 md:pb-20">
+            <div class="col-span-1">
+              <img class="rounded-lg md:rounded-2xl w-full" src="{{ $img->realImage }}" alt="{{ $member->name }}">
+            </div>
+            <div class="col-span-2 pt-4 md:pt-0">
+              <h2 class="text-black text-3xl md:text-4xl font-medium tracking-wider">{{$member->name}}</h2>
+              <span class="text-lg font-medium tracking-wider">{{$member->position}}</span>
+              <div class="flex items-center gap-2 my-3">
+                @if ($member->social_facebook)
+                <a href="{{$member->social_facebook}}" target="_blank">
+                  <img class="w-10 h-10" src="https://res.cloudinary.com/domqavi1p/image/upload/v1692882266/icons/img.icons8.com_wvhfgi.webp" />
+                </a>
+                @endif
+                @if ($member->social_instagram)
+                <a href="{{$member->social_instagram}}" target="_blank">
+                  <img class="w-10 h-10" src="https://res.cloudinary.com/domqavi1p/image/upload/v1692882217/icons/img.icons8.com_ooftuv.webp" />
+                </a>
+                @endif
+                @if ($member->social_twitter)
+                <a href="{{$member->social_twitter}}" target="_blank">
+                  <img class="w-10 h-10" src="https://res.cloudinary.com/domqavi1p/image/upload/v1692882190/icons/img.icons8.com_blvbtt.webp" />
+                </a>
+                @endif
+                @if ($member->social_tiktok)
+                <a href="{{$member->social_tiktok}}" target="_blank">
+                  <img class="w-10 h-10" src="https://res.cloudinary.com/domqavi1p/image/upload/v1692882239/icons/img.icons8.com_dqksbg.webp" />
+                </a>
+                @endif
+                @if ($member->social_youtube)
+                <a href="{{$member->social_youtube}}" target="_blank">
+                  <img class="w-10 h-10" src="https://res.cloudinary.com/domqavi1p/image/upload/v1692882166/icons/img.icons8.com_ekvdqu.webp" />
+                </a>
+                @endif
+                @if ($member->social_linktree)
+                <a href="{{$member->social_linktree}}" target="_blank">
+                  <img class="w-10 h-10" src="https://res.cloudinary.com/domqavi1p/image/upload/v1692882134/icons/img.icons8.com_ypsjli.webp" />
+                </a>
+                @endif
+              </div>
+              <div id="wysiwyg" class="text-black text-lg tracking-wider my-4">
+                {!!$member->detail!!}
+              </div>
+            </div>
+          </div>
+        @endforeach
         
       </div>
     </section>

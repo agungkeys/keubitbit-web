@@ -5,20 +5,17 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Member extends Model
+class Tour extends Model
 {
     use HasFactory;
     protected $fillable = [
         'name', 
         'slug', 
-        'position', 
         'detail', 
+        'date_gigs',
+        'location',
         'image', 
-        'social_facebook', 
-        'social_instagram',
-        'social_twitter',
-        'social_tiktok',
-        'social_youtube',
-        'social_linktree'
+        'link',
+        'is_active'
     ];
 }

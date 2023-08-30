@@ -5,20 +5,19 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Member extends Model
+class Music extends Model
 {
     use HasFactory;
     protected $fillable = [
         'name', 
         'slug', 
-        'position', 
         'detail', 
+        'date_release',
         'image', 
-        'social_facebook', 
-        'social_instagram',
-        'social_twitter',
-        'social_tiktok',
-        'social_youtube',
-        'social_linktree'
+        'iframe',
+        'link_spotify',
+        'link_youtube',
+        'link_apple',
+        'is_featured'
     ];
 }
