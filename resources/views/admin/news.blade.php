@@ -46,7 +46,7 @@
                       <td> {{ $news_item->slug }} </td>
                       <td>
                         <div class="flex items-center justify-end gap-2">
-                          <input type="checkbox" class="toggle toggle-xs toggle-info" checked />
+                          <input id="isActive" onchange="changeActiveStatus()" data-id="{{ $news_item->id }}" type="checkbox" class="toggle toggle-xs toggle-info" {{ $news_item->is_active == 1 ? 'checked' : '' }} />
                           <button onClick="handleDetail(`{{ $news_item->id }}`)" class="btn btn-sm btn-square btn-ghost">
                             <x-heroicon-m-bars-3-bottom-left class="w-3 h-3" />
                           </button>
@@ -120,7 +120,7 @@
         @endif
       </div>
       <div class="modal-action">
-        <a href="{{ route('admin.users') }}" class="btn btn-light">Close</a>
+        <a href="{{ route('admin.news') }}" class="btn btn-light">Close</a>
         <button type="submit" class="btn btn-primary">Save</button>
       </div>
     </form>
@@ -129,6 +129,26 @@
 @section('js')
   <script>
     CKEDITOR.replace('detail');
+
+    function changeActiveStatus() {
+      var status = $('#isActive').prop('checked') == true ? 1 : 0;
+      var news_id = $('#isActive').data('id');
+
+      $.ajax({
+        type: "GET",
+        dataType: "json",
+        url: "/admin/articles/changeactive",
+        data: {
+          'status': status,
+          'news_id': news_id
+        },
+        success: function(response) {
+          if (response.status == 200) {
+            toastr.success('Changed Successfuly')
+          }
+        }
+      });
+    }
 
     function previewImageOnAdd() {
       const file = event.target.files[0];

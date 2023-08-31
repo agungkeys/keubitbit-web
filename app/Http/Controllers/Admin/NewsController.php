@@ -63,4 +63,13 @@ class NewsController extends Controller
 
         return redirect()->back()->with('success', 'Berita berhasil disimpan!');
     }
+
+    public function changeActive(Request $request)
+    {
+        $news = News::findOrFail($request->news_id);
+        $news->is_active = $request->is_active;
+        $news->save();
+
+        return response()->json(['status' => 200]);
+    }
 }

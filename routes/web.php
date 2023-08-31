@@ -68,6 +68,7 @@ Route::group(['namespace' => 'Admin', 'as' => 'admin.'], function () {
         //Master Article & News
         Route::get('/admin/articles', 'NewsController@index')->name('news');
         Route::post('/admin/articles/store', 'NewsController@store')->name('news.store');
+        Route::get('/admin/articles/changeactive', 'NewsController@changeActive')->name('news.isactive');
     });
 });
 
