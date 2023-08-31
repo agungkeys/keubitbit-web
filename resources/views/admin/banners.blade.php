@@ -275,6 +275,7 @@
       var btnEdit = document.getElementById('submitEditBtn');
       btn.disabled = true;
       btnEdit.disabled = true;
+      $('#loading').show();
       $('#loadingEdit').show();
     }
 

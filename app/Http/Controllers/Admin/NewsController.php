@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Traits\CloudinaryImage;
 use App\Models\News;
 use App\Models\User;
+use CloudinaryLabs\CloudinaryLaravel\Facades\Cloudinary;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
@@ -70,6 +71,53 @@ class NewsController extends Controller
         $news->is_active = $request->is_active;
         $news->save();
 
+        return response()->json(['status' => 200]);
+    }
+    public function edit($id)
+    {
+        $news = News::find($id);
+        return response()->json([
+            'status' => 200,
+            'news' => $news
+        ]);
+    }
+
+    public function update(Request $request)
+    {
+        $request->validate([
+            'name' => 'required',
+            'detail' => 'required',
+            'image' => 'image|mimes:jpeg,png,jpg,svg|max:3000'
+        ]);
+
+        $news = News::findOrFail($request->news_id);
+
+        if ($request->file('image')) {
+            $dataImage = $this->UpdateImageCloudinary([
+                'image' => $request->file('image'),
+                'folder' => 'news',
+                'collection' => $news
+            ]);
+            $image = $dataImage['dataImage'];
+        }
+        $news->update([
+            'name' => $request->name,
+            'detail' => $request->detail,
+            'image' => $image ?? $news->image,
+            'reference' => $request->reference,
+            'user_id' => Auth::user()->id
+        ]);
+
+        return redirect()->back()->with('success', 'Berita berhasil diubah!');
+    }
+
+    public function delete(Request $request)
+    {
+        $news = News::findOrFail($request->id);
+        $key = json_decode($news->image);
+        Cloudinary::destroy($key->public_id);
+
+        $news->delete();
         return response()->json(['status' => 200]);
     }
 }

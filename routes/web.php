@@ -69,6 +69,9 @@ Route::group(['namespace' => 'Admin', 'as' => 'admin.'], function () {
         Route::get('/admin/articles', 'NewsController@index')->name('news');
         Route::post('/admin/articles/store', 'NewsController@store')->name('news.store');
         Route::get('/admin/articles/changeactive', 'NewsController@changeActive')->name('news.isactive');
+        Route::get('/admin/articles/edit/{id}', 'NewsController@edit')->name('news.edit');
+        Route::post('/admin/articles/update', 'NewsController@update')->name('news.update');
+        Route::delete('/admin/articles/delete/{id}', 'NewsController@delete')->name('news.delete');
     });
 });
 
