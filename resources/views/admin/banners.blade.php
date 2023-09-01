@@ -115,15 +115,13 @@
         <label class="label">
           <span class="label-text text-base-content undefined">Image</span>
         </label>
+        <img id="bannerPreview" class="rounded-md mx-auto" hidden>
         <input name="image" id="image" type="file" accept="image/*" onchange="previewImageOnAdd()" class="file-input file-input-bordered w-full {{ $errors->has('name') ? ' input-error' : '' }}" />
         @if ($errors->has('image'))
           <label class="label">
             <span class="label-text-alt text-error">{{ $errors->first('image') }}</span>
           </label>
         @endif
-      </div>
-      <div>
-        <img id="bannerPreview">
       </div>
       <div class="form-control w-full mt-2">
         <label class="label">
@@ -136,7 +134,6 @@
           </label>
         @endif
       </div>
-
       <div class="modal-action">
         <a href="{{ $url }}" class="btn btn-light">Close</a>
         <button id="submitBtn" type="submit" class="btn btn-primary">Save <span id="loading" class="loading loading-spinner loading-xs hidden"></span></button>
@@ -145,7 +142,7 @@
   </dialog>
 
   <dialog id="modal_banner_edit" class="modal">
-    <form class="modal-box" action="{{ route('admin.banners.update') }}" method="POST" enctype="multipart/form-data">
+    <form class="modal-box" action="{{ route('admin.banners.update') }}" onsubmit="disableButton()" method="POST" enctype="multipart/form-data">
       @csrf
       <a href="{{ $url }}" class="btn btn-sm btn-circle absolute right-2 top-2">✕</a>
       <h3 class="font-semibold text-2xl pb-6 text-center">Edit Banner</h3>
@@ -165,6 +162,7 @@
         <label class="label">
           <span class="label-text text-base-content undefined">Image</span>
         </label>
+        <img id="bannerPreviewEdit" class="rounded-md mx-auto">
         <input name="image" id="image" type="file" accept="image/*" onchange="previewImageOnEdit()" class="file-input file-input-bordered w-full {{ $errors->has('name') ? ' input-error' : '' }}" />
         @if ($errors->has('image'))
           <label class="label">
@@ -172,19 +170,15 @@
           </label>
         @endif
       </div>
-      <div>
-        <img id="bannerPreviewEdit">
-      </div>
       <div class="form-control w-full mt-2">
         <label class="label">
           <span class="label-text text-base-content undefined">Link</span>
         </label>
         <input id="link" name="link" type="text" placeholder="Link Banner" class="input input-bordered w-full" />
       </div>
-
       <div class="modal-action">
         <a href="{{ $url }}" class="btn btn-light">Close</a>
-        <button type="submit" class="btn btn-primary">Update</button>
+        <button id="submitEditBtn" type="submit" class="btn btn-primary">Save changes<span id="loadingEdit" class="loading loading-spinner loading-xs hidden"></span></button>
       </div>
     </form>
   </dialog>
@@ -227,6 +221,7 @@
           window.location.replace("/admin/banners");
         }, 1500)
       } else {
+        $('#bannerPreview').show();
         bannerPreview.src = URL.createObjectURL(event.target.files[0])
       }
     }
@@ -239,6 +234,7 @@
           window.location.replace("/admin/banners");
         }, 1500)
       } else {
+        $('#bannerPreviewEdit').show();
         bannerPreviewEdit.src = URL.createObjectURL(event.target.files[0])
       }
     }
@@ -276,8 +272,11 @@
 
     function disableButton() {
       var btn = document.getElementById('submitBtn');
+      var btnEdit = document.getElementById('submitEditBtn');
       btn.disabled = true;
+      btnEdit.disabled = true;
       $('#loading').show();
+      $('#loadingEdit').show();
     }
 
     function handleDelete(id) {

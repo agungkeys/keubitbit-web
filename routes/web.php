@@ -1,7 +1,10 @@
 <?php
 
+use App\Exports\MailistsExport;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
+use Maatwebsite\Excel\Facades\Excel;
+
 // use Inertia\Inertia;
 
 /*
@@ -20,6 +23,7 @@ Route::get('/about', [App\Http\Controllers\AboutController::class, 'index'])->na
 Route::get('/tour', [App\Http\Controllers\TourController::class, 'index'])->name('tour');
 Route::get('/news', [App\Http\Controllers\NewsController::class, 'index'])->name('news');
 Route::get('/contact', [App\Http\Controllers\ContactController::class, 'index'])->name('contact');
+Route::post('/newsletter/store', [App\Http\Controllers\IndexController::class, 'store'])->name('mailists.store');
 Auth::routes();
 
 Route::group(['namespace' => 'Admin', 'as' => 'admin.'], function () {
@@ -56,6 +60,18 @@ Route::group(['namespace' => 'Admin', 'as' => 'admin.'], function () {
         Route::get('/admin/banners/edit/{id}', 'BannersController@edit')->name('banners.edit');
         Route::post('/admin/banners/update', 'BannersController@update')->name('banners.update');
         Route::delete('/admin/banners/delete/{id}', 'BannersController@delete')->name('banners.delete');
+        //Master Newsletter
+        Route::get('/admin/newsletter', 'MailistsController@index')->name('mailists');
+        Route::get('/admin/newsletter/export-csv', function () {
+            return Excel::download(new MailistsExport, 'Newsletter-' . now()->format('dmy') . '.csv');
+        })->name('mailists.export');
+        //Master Article & News
+        Route::get('/admin/articles', 'NewsController@index')->name('news');
+        Route::post('/admin/articles/store', 'NewsController@store')->name('news.store');
+        Route::get('/admin/articles/changeactive', 'NewsController@changeActive')->name('news.isactive');
+        Route::get('/admin/articles/edit/{id}', 'NewsController@edit')->name('news.edit');
+        Route::post('/admin/articles/update', 'NewsController@update')->name('news.update');
+        Route::delete('/admin/articles/delete/{id}', 'NewsController@delete')->name('news.delete');
     });
 });
 
