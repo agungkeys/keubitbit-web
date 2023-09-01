@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Traits\CloudinaryImage;
-
+use App\Models\Music;
 use CloudinaryLabs\CloudinaryLaravel\Facades\Cloudinary;
 use Illuminate\Support\Facades\DB;
 
@@ -15,26 +15,24 @@ class MusicsController extends Controller
 
     public function index(Request $request)
     {
-        // $banner_query = Banner::query();
-        // $sortColumn = $request->query('sortColumn');
-        // $sortDirection = $request->query('sortDirection');
-        // $searchParam = $request->query('q');
+        $music_query = Music::query();
+        $sortColumn = $request->query('sortColumn');
+        $sortDirection = $request->query('sortDirection');
+        $searchParam = $request->query('q');
 
-        // if ($sortColumn && $sortDirection) {
-        //     $banner_query->orderBy($sortColumn, $sortDirection ?: 'asc');
-        // }
+        if ($sortColumn && $sortDirection) {
+            $music_query->orderBy($sortColumn, $sortDirection ?: 'asc');
+        }
 
-        // if ($searchParam) {
-        //     $banner_query = $banner_query->where(function ($query) use ($searchParam) {
-        //         $query
-        //             ->orWhere('name', 'like', "%$searchParam%")
-        //             ->orWhere('link', 'like', "%$searchParam%");
-        //     });
-        // }
+        if ($searchParam) {
+            $music_query = $music_query->where(function ($query) use ($searchParam) {
+                $query
+                    ->orWhere('name', 'like', "%$searchParam%");
+            });
+        }
 
-        // $banners = $banner_query->paginate(5);
-        // return view('admin.musics', compact('banners', 'sortColumn', 'sortDirection', 'searchParam'));
-        return view('admin.musics');
+        $musics = $music_query->paginate(5);
+        return view('admin.musics', compact('musics', 'sortColumn', 'sortDirection', 'searchParam'));
     }
     public function store(Request $request)
     {
@@ -57,7 +55,7 @@ class MusicsController extends Controller
             'link' => $request->link
         ]);
 
-        return redirect()->back()->with('success', 'Banner berhasil disimpan!');
+        return redirect()->back()->with('success', 'Music berhasil disimpan!');
     }
 
     public function edit($id)

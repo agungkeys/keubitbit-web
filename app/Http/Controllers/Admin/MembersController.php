@@ -29,7 +29,7 @@ class MembersController extends Controller
             });
         }
 
-        $members = $member_query->paginate(5);
+        $members = $member_query->get();
         return view('admin.members', compact('members', 'searchParam'));
     }
 

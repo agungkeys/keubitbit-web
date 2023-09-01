@@ -88,6 +88,7 @@
     </div>
   </div>
 </section>
+
 <section id="add" hidden>
   <div class="card bg-white">
     <form class="card-body p-4" action="{{ route('admin.members.store') }}" method="POST" enctype="multipart/form-data">
@@ -330,6 +331,7 @@
     $("#add").hide();
     $("#edit").hide();
   }
+  
   function addMember(){
     $("#list").hide();
     $("#add").show();

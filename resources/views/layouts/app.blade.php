@@ -43,37 +43,37 @@
         {
           id: 0,
           name: "home",
-          label: "Home",
+          label: "HOME",
           link: "/"
         },{
           id: 1,
           name: "about",
-          label: "About",
+          label: "ABOUT",
           link: "/about"
         },{
           id: 2,
           name: "video",
-          label: "Video",
+          label: "VIDEO",
           link: "https://www.youtube.com/@KeubitbitAtjehEthnicMusic"
         },{
           id: 3,
           name: "music",
-          label: "Music",
+          label: "MUSIC",
           link: "https://open.spotify.com/artist/6W34RUeAaZxU7giOCVfG25"
         },{
           id: 4,
           name: "tour",
-          label: "Tour",
+          label: "TOUR",
           link: "/tour"
         },{
           id: 5,
           name: "news",
-          label: "News",
+          label: "NEWS",
           link: "/news"
         },{
           id: 6,
           name: "contact",
-          label: "Contact",
+          label: "CONTACT",
           link: "/contact"
         }
       ];

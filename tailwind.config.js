@@ -23,6 +23,7 @@ module.exports = {
         hindi: ["Hind Siliguri", 'sans-serif'],
         kaushan: ["Kaushan Script", "cursive"],
         great: ["Great Vibes", "cursive"],
+        philosopher: ["Philosopher", 'sans-serif']
       },
     },
   },

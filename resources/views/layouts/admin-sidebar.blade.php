@@ -14,13 +14,11 @@
         <template x-if="!item.isLabel">
           <li class="">
             <a 
-              class="font-bold" 
+              class="font-bold my-[3px]" 
               x-bind:class="pathname[1] === 'dashboard' && item.name === 'dashboard' && 'active' ||  pathname[2] === item.name ? 'active' : ''"
               x-bind:href="item.link"
             >
-              <!-- <span x-text="pathname[2]"></span> -->
               <span x-text="item.label">-</span>
-              <!-- <span class="absolute inset-y-0 left-0 w-1 rounded-tr-md rounded-br-md bg-primary" aria-hidden="true"></span> -->
             </a>
           </li>
         </template>
@@ -32,52 +30,6 @@
         </template>
       </div>
     </template>
-    <!-- <li class="">
-      <a class="font-bold">
-        Dashboard
-        <span class="absolute inset-y-0 left-0 w-1 rounded-tr-md rounded-br-md bg-primary" aria-hidden="true"></span>
-      </a>
-    </li>
-    <div class="mt-3">
-      <span class="text-yellow-800 text-sm">
-        Data
-      </span>
-    </div>
-    <li class="">
-      <a class="font-normal">
-        Member
-      </a>
-    </li>
-    <li class="">
-      <a class="font-normal">
-        Banner
-      </a>
-    </li>
-    <li class="">
-      <a class="font-normal">
-        Video
-      </a>
-    </li>
-    <li class="">
-      <a class="font-normal">
-        Music
-      </a>
-    </li>
-    <li class="">
-      <a class="font-normal">
-        Gigs
-      </a>
-    </li>
-    <li class="">
-      <a class="font-normal">
-        Article & News
-      </a>
-    </li>
-    <li class="">
-      <a class="font-normal">
-        Store
-      </a>
-    </li> -->
   </ul>
 </div>
 
