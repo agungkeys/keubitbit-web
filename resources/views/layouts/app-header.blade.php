@@ -23,7 +23,7 @@
                   x-text="item.label" 
                   x-bind:href="item.link"
                   x-bind:class="!pathname && item.name === 'home' && styleselected || pathname === item.name ? styleselected : ''"
-                  class="hover:text-white text-base md:text-lg font-light md:font-light px-1 md:px-2 py-1 md:py-2"
+                  class="hover:text-white text-[12px] md:text-lg font-light md:font-light px-1 md:px-2 py-1 md:py-2"
                 >
                   -
               </a>

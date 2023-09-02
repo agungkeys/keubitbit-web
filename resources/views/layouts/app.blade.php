@@ -39,7 +39,8 @@ Default Page
   <link rel="dns-prefetch" href="//fonts.bunny.net" />
   <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet" />
   <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.7.0/flowbite.min.css" rel="stylesheet" />
-  <!-- {{ asset('rockinger.png') }} -->
+  <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+  <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
 
   <!-- Scripts -->
   @vite('resources/css/app.css')
@@ -51,6 +52,7 @@ Default Page
     <main>@yield('content')</main>
   </div>
   @include('layouts.app-footer')
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
   <script>
     const datamenu = [
       {

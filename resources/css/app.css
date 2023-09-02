@@ -4,6 +4,46 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Carousel Slick Style */
+.slider {
+  position:relative;
+}
+.item {
+  position:relative;
+  width: auto;
+}
+.carousel{
+  width:90%;
+  margin:0px auto;
+}
+.slick-slide{
+  margin:10px;
+}
+.slick-slide img{
+  /* width:100%; */
+  border: 2px solid #fff;
+}
+.wrapper .slick-dots li button:before {
+  font-size:20px;
+  color:white;
+}
+
+.slick-prev:before, .slick-next:before {
+  font-size: 30px;
+  color: white;
+}
+
+.slick-prev, .slick-next {
+  z-index: 2 !important;
+  opacity: 1 !important;
+}
+.slick-next {
+  right: 25px !important;
+}
+.slick-prev {
+  left: 20px !important;
+}
+
 #wysiwyg h1 {
   font-weight: bold;
   padding-top: 14px;
