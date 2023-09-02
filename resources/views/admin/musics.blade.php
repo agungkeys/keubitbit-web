@@ -33,10 +33,10 @@
                   <th>
                     <x-column-header dataRoute="admin.musics" column-name="date_release" :sort-column="$sortColumn" :sortDirection="$sortDirection">Release</x-column-header>
                   </th>
-                  <th>
-                    Link
+                  <th class="text-base">
+                    Featured
                   </th>
-                  <th width="100">
+                  <th class="text-base" width="100">
                     Action
                   </th>
                 </tr>
@@ -65,16 +65,24 @@
                       </div>
                     </td>
                     <td>{{ $music->date_release }}</td>
-                    <td></td>
+                    <td>
+                      @if($music->is_featured)
+                      <div class="text-green-500">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                          <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12c0 1.268-.63 2.39-1.593 3.068a3.745 3.745 0 01-1.043 3.296 3.745 3.745 0 01-3.296 1.043A3.745 3.745 0 0112 21c-1.268 0-2.39-.63-3.068-1.593a3.746 3.746 0 01-3.296-1.043 3.745 3.745 0 01-1.043-3.296A3.745 3.745 0 013 12c0-1.268.63-2.39 1.593-3.068a3.745 3.745 0 011.043-3.296 3.746 3.746 0 013.296-1.043A3.746 3.746 0 0112 3c1.268 0 2.39.63 3.068 1.593a3.746 3.746 0 013.296 1.043 3.746 3.746 0 011.043 3.296A3.745 3.745 0 0121 12z" />
+                        </svg>                        
+                      </div>
+                      @endif
+                    </td>
                     <td>
                       <div class="flex items-center justify-end gap-2">
                         <button onClick="handleDetail(`{{ $music->id }}`)" class="btn btn-sm btn-square btn-ghost">
-                          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-3 h-3">
+                          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25H12" />
                           </svg>
                         </button>
                         <button onClick="handleEdit(`{{ $music->id }}`)" class="btn btn-sm btn-square btn-ghost">
-                          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-3 h-3">
+                          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L6.832 19.82a4.5 4.5 0 01-1.897 1.13l-2.685.8.8-2.685a4.5 4.5 0 011.13-1.897L16.863 4.487zm0 0L19.5 7.125" />
                           </svg>
                         </button>
@@ -194,7 +202,7 @@
             <span class="label-text text-base-content undefined">Image</span>
           </label>
           <img class="my-2 max-w-lg rounded-md" id="musicPreviewEdit">
-          <input name="edit_image" id="edit_image" type="file" accept="image/*" onchange="previewImageOnEdit()" class="file-input file-input-bordered w-full {{ $errors->has('image') ? ' input-error' : '' }}" />
+          <input name="image" id="image" type="file" accept="image/*" onchange="previewImageOnEdit()" class="file-input file-input-bordered w-full {{ $errors->has('image') ? ' input-error' : '' }}" />
           @if ($errors->has('image'))
           <label class="label">
             <span class="label-text-alt text-error">{{ $errors->first('image') }}</span>
@@ -205,7 +213,7 @@
 
       <div class="modal-action">
         <button type="button" onClick="backMusic()" class="btn btn-light">Close</button>
-        <button type="submit" class="btn btn-primary">Update</button>
+        <button type="submit" class="btn btn-primary">Save</button>
       </div>
     </form>
   </div>
@@ -216,9 +224,15 @@
 @endsection
 
 @section('js')
+  @if (count($errors) > 0)
+    <script>
+      $("#list").hide();
+      $("#add").show();
+    </script>
+  @endif
 <script>
   CKEDITOR.replace('detail');
-  CKEDITOR.replace('edit_detail');
+  // CKEDITOR.replace('edit_detail');
 
   function previewImageOnAdd() {
     const file = event.target.files[0];

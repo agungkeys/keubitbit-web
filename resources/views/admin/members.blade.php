@@ -19,7 +19,7 @@
         <button class="btn btn-md btn-primary" onClick="addMember()">Add</button>
       </div>
   
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 pb-10">
         @foreach ($members as $member)
           @php
             $img = json_decode($member->image);
@@ -298,6 +298,12 @@
 
 @endsection
 @section('js')
+  @if (count($errors) > 0)
+    <script>
+      $("#list").hide();
+      $("#add").show();
+    </script>
+  @endif
 <script>
   CKEDITOR.replace('detail');
   CKEDITOR.replace('edit_detail');

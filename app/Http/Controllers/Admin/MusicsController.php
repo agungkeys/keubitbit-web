@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 use App\Http\Traits\CloudinaryImage;
 use App\Models\Music;
 use CloudinaryLabs\CloudinaryLaravel\Facades\Cloudinary;
@@ -38,21 +39,29 @@ class MusicsController extends Controller
     {
         $request->validate([
             'name' => 'required',
+            'date' => 'required',
+            'iframe' => 'required',
             'image' => 'required|image|mimes:jpeg,png,jpg,svg|max:3000',
-            'link' => 'required'
         ]);
 
         if ($request->file('image')) {
-            $dataImage = $this->UploadImageCloudinary(['image' => $request->file('image'), 'folder' => 'banners']);
+            $dataImage = $this->UploadImageCloudinary(['image' => $request->file('image'), 'folder' => 'musics']);
             $image = $dataImage['dataImage'];
         } else {
             $image = '';
         };
 
-        Banner::create([
-            'name' => $request->name,
-            'image' => $image,
-            'link' => $request->link
+        Music::create([
+            'name' => $request->name, 
+            'slug' => Str::slug(request('name')) . "-" . Str::random(5),
+            'detail' => $request->detail, 
+            'date_release' => $request->date,
+            'image' => $image, 
+            'iframe' => $request->iframe,
+            'link_spotify' => $request->spotify,
+            'link_youtube' => $request->youtube,
+            'link_apple' => $request->apple,
+            'is_featured' => $request->featured ? 1 : 0
         ]);
 
         return redirect()->back()->with('success', 'Music berhasil disimpan!');
