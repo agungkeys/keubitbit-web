@@ -140,7 +140,7 @@ Default Page
       }, {
         id: 6,
         name: "tours",
-        label: "Jadwal Tour",
+        label: "Tour Schedule",
         link: "/admin/tours",
         isLabel: false,
       }, {
