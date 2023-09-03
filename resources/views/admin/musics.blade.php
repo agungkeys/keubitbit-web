@@ -144,7 +144,6 @@
           <span class="label-text text-base-content">Detail</span>
         </label>
         <textarea class="textarea h-60 textarea-bordered textarea-md w-full" id="detail" placeholder="Enter the Description" name="detail"></textarea>
-        <!-- <input name="email" type="text" placeholder="Your email" class="input input-bordered w-full {{ $errors->has('name') ? ' input-error' : '' }}" /> -->
         @if ($errors->has('detail'))
           <label class="label">
             <span class="label-text-alt text-error">{{ $errors->first('detail') }}</span>
@@ -386,12 +385,10 @@
       type: "GET",
       url: "/admin/musics/edit/" + id,
       success: function(response) {
-        console.log("🚀 ~ file: musics.blade.php:392 ~ editMusic ~ response:", response)
         const music = response?.music || {};
         const dataImage = music?.image || {};
         const image = JSON.parse(dataImage);
         const value_is_featured = music.is_featured == 1 ? true : false;
-        console.log("🚀 ~ file: musics.blade.php:397 ~ editMusic ~ value_is_featured:", value_is_featured)
         $("#music_id").val(music.id);
         $("#edit_name").val(music.name);
         $("#edit_date").val(music.date_release);
@@ -407,7 +404,39 @@
   }
 
   function handleDelete(id){
-
+    Swal.fire({
+      title: 'Are you sure?',
+      text: "You won't be able to delete this!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, delete it!'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        let _token = $('meta[name="csrf-token"]').attr('content');
+        const url = window.location.href;
+        $.ajax({
+          type: "DELETE",
+          url: "/admin/musics/delete/" + id,
+          data: {
+            _token: _token,
+            id: id
+          },
+          success: function(response) {
+            if (response.status == 200) {
+              Swal.fire(
+                'Deleted!',
+                'Your file has been deleted.',
+                'success'
+              ).then(function() {
+                window.location = url;
+              });
+            }
+          }
+        });
+      }
+    })
   }
 
   function disableButton() {

@@ -1,7 +1,7 @@
 @extends('layouts.admin') @section('title', 'Master Newsletter')
 
 @section('content')
-  <div class="">
+  <section id="list">
     <div class="row justify-content-center">
       <div class="col-md-8">
         <div class="flex justify-between items-center pb-6">
@@ -57,7 +57,7 @@
         {{ $mailists->appends(['sortDirection' => request()->sortDirection, 'sortColumn' => request()->sortColumn, 'q' => request()->q])->onEachSide(5)->links() }}
       </div>
     </div>
-  </div>
+  </section>
 @endsection
 @section('js')
   <script>

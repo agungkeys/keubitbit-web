@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('year');
-            $table->longText('detail');
+            $table->longText('detail')->nullable();
             $table->timestamps();
         });
     }

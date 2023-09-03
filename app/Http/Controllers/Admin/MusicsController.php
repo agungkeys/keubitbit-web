@@ -113,11 +113,11 @@ class MusicsController extends Controller
 
     public function delete(Request $request)
     {
-        $banner = Music::findOrFail($request->id);
-        $key = json_decode($banner->image);
+        $music = Music::findOrFail($request->id);
+        $key = json_decode($music->image);
         Cloudinary::destroy($key->public_id);
 
-        $banner->delete();
+        $music->delete();
         return response()->json(['status' => 200]);
     }
 }

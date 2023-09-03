@@ -10,7 +10,7 @@
     $url .= $_SERVER['HTTP_HOST'];
     $url .= $_SERVER['REQUEST_URI'];
   @endphp
-  <div>
+  <section id="list">
     <div class="row justify-content-center">
       <div class="col-md-8">
         <div class="flex justify-between items-center pb-6">
@@ -73,13 +73,13 @@
                       <td>
                         <div class="flex items-center justify-end gap-2">
                           <button onClick="handleDetail(`{{ $banner->id }}`)" class="btn btn-sm btn-square btn-ghost">
-                            <x-heroicon-m-bars-3-bottom-left class="w-3 h-3" />
+                            <x-heroicon-m-bars-3-bottom-left class="w-4 h-4" />
                           </button>
                           <button onClick="handleEdit(`{{ $banner->id }}`)" class="btn btn-sm btn-square btn-ghost">
-                            <x-heroicon-o-pencil class="w-3 h-3" />
+                            <x-heroicon-o-pencil class="w-4 h-4" />
                           </button>
                           <button onClick="handleDelete(`{{ $banner->id }}`)" class="btn btn-sm btn-square btn-ghost">
-                            <x-heroicon-o-trash class="w-3 h-3" />
+                            <x-heroicon-o-trash class="w-4 h-4" />
                           </button>
                         </div>
                       </td>
@@ -93,7 +93,7 @@
         {{ $banners->appends(['sortDirection' => request()->sortDirection, 'sortColumn' => request()->sortColumn, 'q' => request()->q])->onEachSide(5)->links() }}
       </div>
     </div>
-  </div>
+  </section>
 
   <dialog id="modal_banner" class="modal">
     <form class="modal-box" action="{{ route('admin.banners.store') }}" onsubmit="disableButton()" method="POST" enctype="multipart/form-data">
