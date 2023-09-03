@@ -55,15 +55,15 @@
                       <td> {{ $news_item->slug }} </td>
                       <td>
                         <div class="flex items-center justify-end gap-2">
-                          <input data-id="{{ $news_item->id }}" type="checkbox" class="toggle toggle-xs toggle-info isActive" {{ $news_item->is_active == 1 ? 'checked' : '' }} />{{ $news_item->id }}
+                          <input data-id="{{ $news_item->id }}" type="checkbox" class="toggle toggle-sm toggle-info isActive" {{ $news_item->is_active == 1 ? 'checked' : '' }} />
                           <button onClick="handleDetail(`{{ $news_item->id }}`)" class="btn btn-sm btn-square btn-ghost">
-                            <x-heroicon-m-bars-3-bottom-left class="w-3 h-3" />
+                            <x-heroicon-m-bars-3-bottom-left class="w-4 h-4" />
                           </button>
                           <button onClick="handleEdit(`{{ $news_item->id }}`)" class="btn btn-sm btn-square btn-ghost">
-                            <x-heroicon-o-pencil class="w-3 h-3" />
+                            <x-heroicon-o-pencil class="w-4 h-4" />
                           </button>
                           <button onClick="handleDelete(`{{ $news_item->id }}`)" class="btn btn-sm btn-square btn-ghost">
-                            <x-heroicon-o-trash class="w-3 h-3" />
+                            <x-heroicon-o-trash class="w-4 h-4" />
                           </button>
                         </div>
                       </td>

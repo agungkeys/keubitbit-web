@@ -104,7 +104,8 @@ class MembersController extends Controller
         $request->validate([
             'edit_name' => 'required',
             'edit_position' => 'required',
-            'edit_detail' => 'required'
+            'edit_detail' => 'required',
+            'edit_image' => 'required|image|mimes:jpeg,png,jpg,svg|max:3000',
         ]);
 
         $member = Member::findOrFail($request->member_id);
@@ -118,17 +119,6 @@ class MembersController extends Controller
             $image = $dataImage['dataImage'];
         }
         $member->update([
-            // 'name' => $request->name,
-            // 'slug' => Str::slug(request('name')) . "-" . Str::random(5),
-            // 'position' => $request->position,
-            // 'detail' => $request->detail,
-            // 'social_facebook' => $request->facebook,
-            // 'social_instagram' => $request->instagram,
-            // 'social_twitter' => $request->twitter,
-            // 'social_tiktok' => $request->tiktok,
-            // 'social_youtube' => $request->youtube,
-            // 'image' => $image,
-
             'name' => $request->edit_name,
             'position' => $request->edit_position,
             'detail' => $request->edit_detail,

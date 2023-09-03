@@ -76,15 +76,11 @@
                     </td>
                     <td>
                       <div class="flex items-center justify-end gap-2">
-                        <button onClick="handleDetail(`{{ $music->id }}`)" class="btn btn-sm btn-square btn-ghost">
-                          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25H12" />
-                          </svg>
+                        <button onClick="editMusic(`{{ $music->id }}`)" class="btn btn-sm btn-square btn-ghost">
+                          <x-heroicon-o-pencil class="w-4 h-4" />
                         </button>
-                        <button onClick="handleEdit(`{{ $music->id }}`)" class="btn btn-sm btn-square btn-ghost">
-                          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L6.832 19.82a4.5 4.5 0 01-1.897 1.13l-2.685.8.8-2.685a4.5 4.5 0 011.13-1.897L16.863 4.487zm0 0L19.5 7.125" />
-                          </svg>
+                        <button onClick="handleDelete(`{{ $music->id }}`)" class="btn btn-sm btn-square btn-ghost">
+                          <x-heroicon-o-trash class="w-4 h-4" />
                         </button>
                         <!-- <button class="btn btn-sm btn-error">
                               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-3 h-3">
@@ -113,7 +109,7 @@
       <div class="grid grid-cols-2 gap-4">
         <div class="form-control w-full mt-2">
           <label class="label">
-            <span class="label-text text-base-content undefined">Album Name</span>
+            <span class="label-text text-base-content">Album Name</span>
           </label>
           <input name="name" type="text" placeholder="Your album name" class="input input-bordered w-full {{ $errors->has('name') ? ' input-error' : '' }}" />
           @if ($errors->has('name'))
@@ -124,7 +120,7 @@
         </div>
         <div class="form-control w-full mt-2">
           <label class="label">
-            <span class="label-text text-base-content undefined">Date Release</span>
+            <span class="label-text text-base-content">Date Release</span>
           </label>
           <input name="date" type="number" placeholder="Your date release" class="input input-bordered w-full {{ $errors->has('date') ? ' input-error' : '' }}" />
           @if ($errors->has('date'))
@@ -136,7 +132,7 @@
       </div>
       <div class="form-control w-full mt-2">
         <label class="label">
-          <span class="label-text text-base-content undefined">Detail</span>
+          <span class="label-text text-base-content">Detail</span>
         </label>
         <textarea class="textarea h-60 textarea-bordered textarea-md w-full" id="detail" placeholder="Enter the Description" name="detail"></textarea>
         <!-- <input name="email" type="text" placeholder="Your email" class="input input-bordered w-full {{ $errors->has('name') ? ' input-error' : '' }}" /> -->
@@ -148,7 +144,7 @@
       </div>
       <div class="form-control w-full mt-2">
         <label class="label">
-          <span class="label-text text-base-content undefined">Link IFrame</span>
+          <span class="label-text text-base-content">Link IFrame</span>
         </label>
         <input name="iframe" type="text" placeholder="Your link iframe" class="input input-bordered w-full {{ $errors->has('iframe') ? ' input-error' : '' }}" />
         @if ($errors->has('iframe'))
@@ -159,7 +155,7 @@
       </div>
       <div class="form-control w-full mt-2">
         <label class="label">
-          <span class="label-text text-base-content undefined">Link Spotify</span>
+          <span class="label-text text-base-content">Link Spotify</span>
         </label>
         <input name="spotify" type="text" placeholder="Your link spotify" class="input input-bordered w-full {{ $errors->has('spotify') ? ' input-error' : '' }}" />
         @if ($errors->has('spotify'))
@@ -170,7 +166,7 @@
       </div>
       <div class="form-control w-full mt-2">
         <label class="label">
-          <span class="label-text text-base-content undefined">Link Youtube</span>
+          <span class="label-text text-base-content">Link Youtube</span>
         </label>
         <input name="youtube" type="text" placeholder="Your link youtube" class="input input-bordered w-full {{ $errors->has('youtube') ? ' input-error' : '' }}" />
         @if ($errors->has('youtube'))
@@ -181,7 +177,7 @@
       </div>
       <div class="form-control w-full mt-2">
         <label class="label">
-          <span class="label-text text-base-content undefined">Link Apple</span>
+          <span class="label-text text-base-content">Link Apple</span>
         </label>
         <input name="apple" type="text" placeholder="Your link apple" class="input input-bordered w-full {{ $errors->has('apple') ? ' input-error' : '' }}" />
         @if ($errors->has('apple'))
@@ -192,17 +188,17 @@
       </div>
       <div class="form-control w-full mt-2">
         <label class="label">
-          <span class="label-text text-base-content undefined">Featured Album</span>
+          <span class="label-text text-base-content">Featured Album</span>
         </label>
         <input name="featured" type="checkbox" class="toggle" />
       </div>
       <div class="max-w-lg">
         <div class="form-control w-full mt-2">
           <label class="label">
-            <span class="label-text text-base-content undefined">Image</span>
+            <span class="label-text text-base-content">Image</span>
           </label>
-          <img class="my-2 max-w-lg rounded-md" id="musicPreviewEdit">
-          <input name="image" id="image" type="file" accept="image/*" onchange="previewImageOnEdit()" class="file-input file-input-bordered w-full {{ $errors->has('image') ? ' input-error' : '' }}" />
+          <img class="my-2 max-w-lg rounded-md" id="musicPreview">
+          <input name="image" id="image" type="file" accept="image/*" onchange="previewImageOnAdd()" class="file-input file-input-bordered w-full {{ $errors->has('image') ? ' input-error' : '' }}" />
           @if ($errors->has('image'))
           <label class="label">
             <span class="label-text-alt text-error">{{ $errors->first('image') }}</span>
@@ -219,7 +215,120 @@
   </div>
 </section>
 
-<section id="edit" hidden></section>
+<section id="edit" hidden>
+  <div class="card bg-white">
+    <form class="card-body p-4" action="{{ route('admin.musics.update') }}" method="POST" enctype="multipart/form-data">
+      @csrf
+      <h3 class="font-semibold text-2xl pb-2">Edit Music</h3>
+      <div class="grid grid-cols-2 gap-4">
+        <div class="form-control w-full mt-2">
+          <label class="label">
+            <span class="label-text text-base-content">Album Name</span>
+          </label>
+          <input name="edit_name" id="edit_name" type="text" placeholder="Your album name" class="input input-bordered w-full {{ $errors->has('edit_name') ? ' input-error' : '' }}" />
+          <input type="hidden" name="music_id" id="music_id" />
+          @if ($errors->has('edit_name'))
+            <label class="label">
+              <span class="label-text-alt text-error">{{ $errors->first('edit_name') }}</span>
+            </label>
+          @endif
+        </div>
+        <div class="form-control w-full mt-2">
+          <label class="label">
+            <span class="label-text text-base-content">Date Release</span>
+          </label>
+          <input name="edit_date" id="edit_date" type="number" placeholder="Your date release" class="input input-bordered w-full {{ $errors->has('edit_date') ? ' input-error' : '' }}" />
+          @if ($errors->has('edit_date'))
+            <label class="label">
+              <span class="label-text-alt text-error">{{ $errors->first('edit_date') }}</span>
+            </label>
+          @endif
+        </div>
+      </div>
+      <div class="form-control w-full mt-2">
+        <label class="label">
+          <span class="label-text text-base-content">Detail</span>
+        </label>
+        <textarea class="textarea h-60 textarea-bordered textarea-md w-full" id="edit_detail" placeholder="Enter the Description" name="detail"></textarea>
+        <!-- <input name="email" type="text" placeholder="Your email" class="input input-bordered w-full {{ $errors->has('name') ? ' input-error' : '' }}" /> -->
+        @if ($errors->has('edit_detail'))
+          <label class="label">
+            <span class="label-text-alt text-error">{{ $errors->first('edit_detail') }}</span>
+          </label>
+        @endif
+      </div>
+      <div class="form-control w-full mt-2">
+        <label class="label">
+          <span class="label-text text-base-content">Link IFrame</span>
+        </label>
+        <input name="edit_iframe" id="edit_iframe" type="text" placeholder="Your link iframe" class="input input-bordered w-full {{ $errors->has('edit_iframe') ? ' input-error' : '' }}" />
+        @if ($errors->has('edit_iframe'))
+          <label class="label">
+            <span class="label-text-alt text-error">{{ $errors->first('edit_iframe') }}</span>
+          </label>
+        @endif
+      </div>
+      <div class="form-control w-full mt-2">
+        <label class="label">
+          <span class="label-text text-base-content">Link Spotify</span>
+        </label>
+        <input name="edit_spotify" id="edit_spotify" type="text" placeholder="Your link spotify" class="input input-bordered w-full {{ $errors->has('edit_spotify') ? ' input-error' : '' }}" />
+        @if ($errors->has('edit_spotify'))
+          <label class="label">
+            <span class="label-text-alt text-error">{{ $errors->first('edit_spotify') }}</span>
+          </label>
+        @endif
+      </div>
+      <div class="form-control w-full mt-2">
+        <label class="label">
+          <span class="label-text text-base-content">Link Youtube</span>
+        </label>
+        <input name="edit_youtube" id="edit_youtube" type="text" placeholder="Your link youtube" class="input input-bordered w-full {{ $errors->has('edit_youtube') ? ' input-error' : '' }}" />
+        @if ($errors->has('edit_youtube'))
+          <label class="label">
+            <span class="label-text-alt text-error">{{ $errors->first('edit_youtube') }}</span>
+          </label>
+        @endif
+      </div>
+      <div class="form-control w-full mt-2">
+        <label class="label">
+          <span class="label-text text-base-content">Link Apple</span>
+        </label>
+        <input name="edit_apple" id="edit_apple" type="text" placeholder="Your link apple" class="input input-bordered w-full {{ $errors->has('edit_apple') ? ' input-error' : '' }}" />
+        @if ($errors->has('edit_apple'))
+          <label class="label">
+            <span class="label-text-alt text-error">{{ $errors->first('edit_apple') }}</span>
+          </label>
+        @endif
+      </div>
+      <div class="form-control w-full mt-2">
+        <label class="label">
+          <span class="label-text text-base-content">Featured Album</span>
+        </label>
+        <input name="edit_featured" id="edit_featured" type="checkbox" class="toggle" />
+      </div>
+      <div class="max-w-lg">
+        <div class="form-control w-full mt-2">
+          <label class="label">
+            <span class="label-text text-base-content">Image</span>
+          </label>
+          <img class="my-2 max-w-lg rounded-md" id="musicPreviewEdit">
+          <input name="edit_image" id="edit_image" type="file" accept="image/*" onchange="previewImageOnEdit()" class="file-input file-input-bordered w-full {{ $errors->has('edit_image') ? ' input-error' : '' }}" />
+          @if ($errors->has('edit_image'))
+          <label class="label">
+            <span class="label-text-alt text-error">{{ $errors->first('edit_image') }}</span>
+          </label>
+          @endif
+        </div>
+      </div>
+
+      <div class="modal-action">
+        <button type="button" onClick="backMusic()" class="btn btn-light">Close</button>
+        <button type="submit" class="btn btn-primary">Update</button>
+      </div>
+    </form>
+  </div>
+</section>
 
 @endsection
 
@@ -232,7 +341,7 @@
   @endif
 <script>
   CKEDITOR.replace('detail');
-  // CKEDITOR.replace('edit_detail');
+  CKEDITOR.replace('edit_detail');
 
   function previewImageOnAdd() {
     const file = event.target.files[0];
@@ -272,6 +381,28 @@
   function editMusic(id){
     $("#list").hide();
     $("#edit").show();
+    $.ajax({
+      type: "GET",
+      url: "/admin/musics/edit/" + id,
+      success: function(response) {
+        console.log("🚀 ~ file: musics.blade.php:392 ~ editMusic ~ response:", response)
+        const music = response?.music || {};
+        const dataImage = music?.image || {};
+        const image = JSON.parse(dataImage);
+        const value_is_featured = music.is_featured == 1 ? true : false;
+        console.log("🚀 ~ file: musics.blade.php:397 ~ editMusic ~ value_is_featured:", value_is_featured)
+        $("#music_id").val(music.id);
+        $("#edit_name").val(music.name);
+        $("#edit_date").val(music.date_release);
+        $("#edit_iframe").val(music.iframe);
+        $("#edit_spotify").val(music.link_spotify);
+        $("#edit_youtube").val(music.link_youtube);
+        $("#edit_apple").val(music.link_apple);
+        $('#musicPreviewEdit').attr('src', image.realImage || '');
+        CKEDITOR.instances['edit_detail'].setData(music.detail);
+        $("#edit_featured").prop('checked', value_is_featured);
+      }
+    })
   }
 
   function handleDelete(id){

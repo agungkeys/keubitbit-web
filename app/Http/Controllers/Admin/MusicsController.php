@@ -69,43 +69,51 @@ class MusicsController extends Controller
 
     public function edit($id)
     {
-        $banner = Banner::find($id);
+        $music = Music::find($id);
         return response()->json([
             'status' => 200,
-            'banner' => $banner
+            'music' => $music
         ]);
     }
 
     public function update(Request $request)
     {
         $request->validate([
-            'name' => 'required',
-            'image' => 'image|mimes:jpeg,png,jpg,svg|max:3000',
-            'link' => 'required'
+            'edit_name' => 'required',
+            'edit_date' => 'required',
+            'edit_iframe' => 'required',
+            'edit_image' => 'image|mimes:jpeg,png,jpg,svg|max:3000',
         ]);
 
-        $banner = Banner::findOrFail($request->banner_id);
+        $music = Music::findOrFail($request->music_id);
 
-        if ($request->file('image')) {
+        if ($request->file('edit_image')) {
             $dataImage = $this->UpdateImageCloudinary([
-                'image' => $request->file('image'),
-                'folder' => 'banners',
-                'collection' => $banner
+                'image' => $request->file('edit_image'),
+                'folder' => 'musics',
+                'collection' => $music
             ]);
             $image = $dataImage['dataImage'];
         }
-        $banner->update([
-            'name' => $request->name,
-            'image' => $image ?? $banner->image,
-            'link' => $request->link
+
+        $music->update([
+            'name' => $request->edit_name, 
+            'detail' => $request->edit_detail, 
+            'date_release' => $request->edit_date,
+            'image' => $image ?? $music->image,
+            'iframe' => $request->edit_iframe,
+            'link_spotify' => $request->edit_spotify,
+            'link_youtube' => $request->edit_youtube,
+            'link_apple' => $request->edit_apple,
+            'is_featured' => $request->edit_featured ? 1 : 0
         ]);
 
-        return redirect()->back()->with('success', 'Banner berhasil diubah!');
+        return redirect()->back()->with('success', 'Music berhasil diubah!');
     }
 
     public function delete(Request $request)
     {
-        $banner = Banner::findOrFail($request->id);
+        $banner = Music::findOrFail($request->id);
         $key = json_decode($banner->image);
         Cloudinary::destroy($key->public_id);
 

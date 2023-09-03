@@ -9,7 +9,7 @@
   </div>
   <div class="container">
     <!-- <h1 class="text-center text-black py-2 md:py-4 text-3xl md:text-5xl font-bold">About</h1> -->
-    <div class="text-center py-2 md:py-6">
+    <div class="text-center pt-6 md:scroll-pt-10 md:py-6">
       <img
         class="w-52 mx-auto"
         src="https://res.cloudinary.com/domqavi1p/image/upload/v1690634689/logo-long_yewhbj.webp" 

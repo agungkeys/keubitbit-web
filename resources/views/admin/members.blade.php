@@ -350,7 +350,6 @@
       type: "GET",
       url: "/admin/members/edit/" + id,
       success: function(response) {
-        console.log("🚀 ~ file: members.blade.php:230 ~ editMember ~ response:", response)
         const member = response?.member || {};
         const dataImage = member.image;
         const image = JSON.parse(dataImage);
