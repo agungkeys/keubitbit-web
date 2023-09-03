@@ -36,6 +36,12 @@ Route::group(['namespace' => 'Admin', 'as' => 'admin.'], function () {
         Route::get('/admin/users/edit/{id}', 'UsersController@edit')->name('users.edit');
         Route::post('/admin/users/update', 'UsersController@update')->name('users.update');
         Route::delete('/admin/users/delete/{id}', 'UsersController@delete')->name('users.delete');
+        //Master Milestone
+        Route::get('/admin/milestones', 'MilestonesController@index')->name('milestones');
+        Route::post('/admin/milestones/store', 'MilestonesController@store')->name('milestones.store');
+        Route::get('/admin/milestones/edit/{id}', 'MilestonesController@edit')->name('milestones.edit');
+        Route::post('/admin/milestones/update', 'MilestonesController@update')->name('milestones.update');
+        Route::delete('/admin/milestones/delete/{id}', 'MilestonesController@delete')->name('milestones.delete');
         //Master Member
         Route::get('/admin/members', 'MembersController@index')->name('members');
         Route::post('/admin/members/store', 'MembersController@store')->name('members.store');
