@@ -134,10 +134,7 @@
           </label>
         @endif
       </div>
-      <div class="modal-action">
-        <a href="{{ $url }}" class="btn btn-light">Close</a>
-        <button id="submitBtn" type="submit" class="btn btn-primary">Save <span id="loading" class="loading loading-spinner loading-xs hidden"></span></button>
-      </div>
+      <x-form-action type="save" route="/admin/banners" />
     </form>
   </dialog>
 
@@ -176,10 +173,7 @@
         </label>
         <input id="link" name="link" type="text" placeholder="Link Banner" class="input input-bordered w-full" />
       </div>
-      <div class="modal-action">
-        <a href="{{ $url }}" class="btn btn-light">Close</a>
-        <button id="submitEditBtn" type="submit" class="btn btn-primary">Save changes<span id="loadingEdit" class="loading loading-spinner loading-xs hidden"></span></button>
-      </div>
+      <x-form-action type="update" route="/admin/banners" />
     </form>
   </dialog>
 
@@ -271,11 +265,11 @@
     }
 
     function disableButton() {
-      var btn = document.getElementById('submitBtn');
-      var btnEdit = document.getElementById('submitEditBtn');
-      btn.disabled = true;
-      btnEdit.disabled = true;
-      $('#loading').show();
+      var add = document.getElementById('submitAdd');
+      var edit = document.getElementById('submitEdit');
+      add.disabled = true;
+      edit.disabled = true;
+      $('#loadingAdd').show();
       $('#loadingEdit').show();
     }
 

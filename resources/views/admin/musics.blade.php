@@ -1,6 +1,15 @@
 @extends('layouts.admin')
 @section('title', 'Music')
 @section('content')
+  @php
+    if (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on') {
+        $url = 'https://';
+    } else {
+        $url = 'http://';
+    }
+    $url .= $_SERVER['HTTP_HOST'];
+    $url .= $_SERVER['REQUEST_URI'];
+  @endphp
 <section id="list">
   <div class="row justify-content-center">
     <div class="col-md-8">
@@ -103,7 +112,7 @@
 
 <section id="add" hidden>
   <div class="card bg-white">
-    <form class="card-body p-4" action="{{ route('admin.musics.store') }}" method="POST" enctype="multipart/form-data">
+    <form class="card-body p-4" onsubmit="disableButton()" action="{{ route('admin.musics.store') }}" method="POST" enctype="multipart/form-data">
       @csrf
       <h3 class="font-semibold text-2xl pb-2">Add New Music</h3>
       <div class="grid grid-cols-2 gap-4">
@@ -206,18 +215,14 @@
           @endif
         </div>
       </div>
-
-      <div class="modal-action">
-        <button type="button" onClick="backMusic()" class="btn btn-light">Close</button>
-        <button type="submit" class="btn btn-primary">Save</button>
-      </div>
+      <x-form-action type="save" route="{{ $url }}" />
     </form>
   </div>
 </section>
 
 <section id="edit" hidden>
   <div class="card bg-white">
-    <form class="card-body p-4" action="{{ route('admin.musics.update') }}" method="POST" enctype="multipart/form-data">
+    <form class="card-body p-4" onsubmit="disableButton()" action="{{ route('admin.musics.update') }}" method="POST" enctype="multipart/form-data">
       @csrf
       <h3 class="font-semibold text-2xl pb-2">Edit Music</h3>
       <div class="grid grid-cols-2 gap-4">
@@ -321,11 +326,7 @@
           @endif
         </div>
       </div>
-
-      <div class="modal-action">
-        <button type="button" onClick="backMusic()" class="btn btn-light">Close</button>
-        <button type="submit" class="btn btn-primary">Update</button>
-      </div>
+      <x-form-action type="update" route="{{ $url }}" />
     </form>
   </div>
 </section>
@@ -407,6 +408,15 @@
 
   function handleDelete(id){
 
+  }
+
+  function disableButton() {
+    var add = document.getElementById('submitAdd');
+    var edit = document.getElementById('submitEdit');
+    add.disabled = true;
+    edit.disabled = true;
+    $('#loadingAdd').show();
+    $('#loadingEdit').show();
   }
 </script>
 @endsection

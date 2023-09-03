@@ -1,4 +1,15 @@
-@extends('layouts.admin') @section('title', 'User') @section('content')
+@extends('layouts.admin') 
+@section('title', 'User') 
+@section('content')
+  @php
+    if (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on') {
+        $url = 'https://';
+    } else {
+        $url = 'http://';
+    }
+    $url .= $_SERVER['HTTP_HOST'];
+    $url .= $_SERVER['REQUEST_URI'];
+  @endphp
 <div class="row justify-content-center">
   <div class="col-md-8">
     <div class="flex justify-between items-center pb-6">
@@ -72,7 +83,7 @@
 </div>
 <!-- Open the modal using ID.showModal() method -->
 <dialog id="modal_user" class="modal">
-  <form class="modal-box" action="{{ route('admin.users.store') }}" method="POST" enctype="multipart/form-data">
+  <form class="modal-box" onsubmit="disableButton()" action="{{ route('admin.users.store') }}" method="POST" enctype="multipart/form-data">
     @csrf
     <a href="{{ route('admin.users') }}" class="btn btn-sm btn-circle absolute right-2 top-2">✕</a>
     <h3 class="font-semibold text-2xl pb-6 text-center">Add New User</h3>
@@ -109,17 +120,13 @@
         </label>
       @endif
     </div>
-
-    <div class="modal-action">
-      <a href="{{ route('admin.users') }}" class="btn btn-light">Close</a>
-      <button type="submit" class="btn btn-primary">Save</button>
-    </div>
+    <x-form-action type="save" route="{{ $url }}" />
   </form>
 </dialog>
 
 <!-- Open the modal user edit -->
 <dialog id="modal_user_edit" class="modal">
-  <form class="modal-box" action="{{ route('admin.users.update') }}" method="POST" enctype="multipart/form-data">
+  <form class="modal-box" onsubmit="disableButton()" action="{{ route('admin.users.update') }}" method="POST" enctype="multipart/form-data">
     @csrf
     <a href="{{ route('admin.users') }}" class="btn btn-sm btn-circle absolute right-2 top-2">✕</a>
     <h3 class="font-semibold text-2xl pb-6 text-center">Edit User</h3>
@@ -152,11 +159,7 @@
       </label>
       <input id="password" name="password" type="password" placeholder="Your password" class="input input-bordered w-full" />
     </div>
-
-    <div class="modal-action">
-      <a href="{{ route('admin.users') }}" class="btn btn-light">Close</a>
-      <button type="submit" class="btn btn-primary">Update</button>
-    </div>
+    <x-form-action type="update" route="{{ $url }}" />
   </form>
 </dialog>
 
@@ -220,6 +223,15 @@
         $("#detail_created_at").text(date);
       }
     })
+  }
+
+  function disableButton() {
+    var add = document.getElementById('submitAdd');
+    var edit = document.getElementById('submitEdit');
+    add.disabled = true;
+    edit.disabled = true;
+    $('#loadingAdd').show();
+    $('#loadingEdit').show();
   }
 </script>
 @endsection

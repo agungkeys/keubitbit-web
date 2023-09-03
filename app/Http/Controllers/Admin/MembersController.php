@@ -104,8 +104,7 @@ class MembersController extends Controller
         $request->validate([
             'edit_name' => 'required',
             'edit_position' => 'required',
-            'edit_detail' => 'required',
-            'edit_image' => 'required|image|mimes:jpeg,png,jpg,svg|max:3000',
+            'edit_detail' => 'required'
         ]);
 
         $member = Member::findOrFail($request->member_id);
