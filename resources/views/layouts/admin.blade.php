@@ -129,13 +129,13 @@ Default Page
         id: 4,
         name: "milestones",
         label: "Milestone",
-        link: "/admin/milestones",
+        link: "/admin/milestones?sortDirection=desc&sortColumn=id",
         isLabel: false,
       }, {
         id: 5,
         name: "musics",
         label: "Music",
-        link: "/admin/musics",
+        link: "/admin/musics?sortDirection=desc&sortColumn=id",
         isLabel: false,
       }, {
         id: 6,
@@ -171,13 +171,13 @@ Default Page
         id: 11,
         name: "banners",
         label: "Banner",
-        link: "/admin/banners",
+        link: "/admin/banners?sortDirection=desc&sortColumn=id",
         isLabel: false,
       }, {
         id: 12,
-        name: "newsletters",
+        name: "newsletter",
         label: "Newsletter",
-        link: "/admin/newsletter",
+        link: "/admin/newsletter?sortDirection=desc&sortColumn=id",
         isLabel: false,
       }
     ];

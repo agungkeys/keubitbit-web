@@ -135,7 +135,7 @@ class MembersController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function delete(string $id)
+    public function delete(Request $request)
     {
         $member = Member::findOrFail($request->id);
         $key = json_decode($member->image);

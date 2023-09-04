@@ -1,5 +1,5 @@
 @extends('layouts.admin')
-@section('title', 'Master Articles & News')
+@section('title', 'Articles & News')
 @section('content')
   @php
     if (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on') {

@@ -50,7 +50,7 @@
                 <tbody>
                   @foreach ($milestones as $milestone)
                     <tr>
-                      <th>{{ $milestone->id }}</th>
+                      <th width="3%">{{ $milestone->id }}</th>
                       <td>{{ $milestone->name }}</td>
                       <td>{{ $milestone->year }}</td>
                       <td>

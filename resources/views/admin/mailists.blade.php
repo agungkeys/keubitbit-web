@@ -1,4 +1,4 @@
-@extends('layouts.admin') @section('title', 'Master Newsletter')
+@extends('layouts.admin') @section('title', 'Newsletter')
 
 @section('content')
   <section id="list">
@@ -24,7 +24,7 @@
                 <!-- head -->
                 <thead>
                   <tr>
-                    <th>
+                    <th width="3%">
                       <x-column-header dataRoute="admin.mailists" column-name="id" :sort-column="$sortColumn" :sortDirection="$sortDirection">#</x-column-header>
                     </th>
                     <th>

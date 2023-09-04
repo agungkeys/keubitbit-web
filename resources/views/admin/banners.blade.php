@@ -1,5 +1,5 @@
 @extends('layouts.admin')
-@section('title', 'Master Banner')
+@section('title', 'Banner')
 @section('content')
   @php
     if (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on') {
@@ -32,7 +32,7 @@
               <table class="table">
                 <thead>
                   <tr>
-                    <th>
+                    <th width="3%">
                       <x-column-header dataRoute="admin.banners" column-name="id" :sort-column="$sortColumn" :sortDirection="$sortDirection">#</x-column-header>
                     </th>
                     <th>

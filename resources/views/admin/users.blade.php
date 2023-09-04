@@ -32,7 +32,7 @@
             <!-- head -->
             <thead>
               <tr>
-                <th>
+                <th width="3%">
                   <x-column-header dataRoute="admin.users" column-name="id" :sort-column="$sortColumn" :sortDirection="$sortDirection">#</x-column-header>
                 </th>
                 <th>
