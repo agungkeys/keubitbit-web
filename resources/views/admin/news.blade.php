@@ -102,7 +102,7 @@
           <label class="label">
             <span class="label-text text-base-content undefined">Title</span>
           </label>
-          <input name="name" type="text" placeholder="News Title" class="input input-bordered w-full {{ $errors->has('name') ? ' input-error' : '' }}" />
+          <input name="name" type="text" placeholder="Your news title" class="input input-bordered w-full {{ $errors->has('name') ? ' input-error' : '' }}" />
           @if ($errors->has('name'))
             <label class="label">
               <span class="label-text-alt text-error">{{ $errors->first('name') }}</span>
@@ -113,7 +113,7 @@
           <label class="label">
             <span class="label-text text-base-content undefined">Detail</span>
           </label>
-          <textarea class="textarea h-60 textarea-bordered textarea-md w-full" id="detail" placeholder="Enter the Description" name="detail"></textarea>
+          <textarea class="textarea h-60 textarea-bordered textarea-md w-full" id="detail" name="detail"></textarea>
           @if ($errors->has('detail'))
             <label class="label">
               <span class="label-text-alt text-error">{{ $errors->first('detail') }}</span>
@@ -136,7 +136,7 @@
           <label class="label">
             <span class="label-text text-base-content undefined">Reference</span>
           </label>
-          <input name="reference" type="text" placeholder="News Reference" class="input input-bordered w-full {{ $errors->has('reference') ? ' input-error' : '' }}" />
+          <input name="reference" type="text" placeholder="Ypur news reference" class="input input-bordered w-full {{ $errors->has('reference') ? ' input-error' : '' }}" />
           @if ($errors->has('reference'))
             <label class="label">
               <span class="label-text-alt text-error">{{ $errors->first('reference') }}</span>
@@ -265,7 +265,6 @@
       $('.isActive').change(function() {
         var is_active = $(this).prop('checked') == true ? 1 : 0;
         var news_id = $(this).data('id');
-
         $.ajax({
           type: "GET",
           dataType: "json",
@@ -290,6 +289,10 @@
     function previewImageOnAdd() {
       const file = event.target.files[0];
       if (file.size > 3080000) {
+        toastr.options = {
+          "closeButton": true,
+          "progressBar": true
+        }
         toastr.error("Your files to large, please resize!");
         $("#image").val("");
         newsPreview.src = "";
@@ -302,6 +305,10 @@
     function previewImageOnEdit() {
       const file = event.target.files[0];
       if (file.size > 3080000) {
+        toastr.options = {
+          "closeButton": true,
+          "progressBar": true
+        }
         toastr.error("Your files to large, please resize!");
       } else {
         $('#newsPreviewEdit').show();

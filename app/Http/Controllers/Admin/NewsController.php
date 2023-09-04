@@ -50,7 +50,7 @@ class NewsController extends Controller
             $image = $dataImage['dataImage'];
         } else {
             $image = '';
-        };
+        }
 
         News::create([
             'name' => $request->name,
