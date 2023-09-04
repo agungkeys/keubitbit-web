@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('name');
             $table->text('slug');
             $table->text('detail')->nullable();
-            $table->string('date_gigs')->nullable();
+            $table->date('date_gigs')->nullable();
             $table->text('location')->nullable();
             $table->text('image')->nullable();
             $table->text('link')->nullable();
