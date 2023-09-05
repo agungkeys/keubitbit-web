@@ -78,6 +78,11 @@ Route::group(['namespace' => 'Admin', 'as' => 'admin.'], function () {
         Route::get('/admin/articles/edit/{id}', 'NewsController@edit')->name('news.edit');
         Route::post('/admin/articles/update', 'NewsController@update')->name('news.update');
         Route::delete('/admin/articles/delete/{id}', 'NewsController@delete')->name('news.delete');
+        //Master Stores
+        Route::get('/admin/stores', 'StoresController@index')->name('stores');
+        Route::post('/admin/stores/store', 'StoresController@store')->name('stores.store');
+        Route::get('/admin/stores/edit/{id}', 'StoresController@edit')->name('stores.edit');
+        Route::post('/admin/stores/update', 'StoresController@update')->name('stores.update');
     });
 });
 

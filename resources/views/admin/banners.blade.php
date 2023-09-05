@@ -104,7 +104,7 @@
         <label class="label">
           <span class="label-text text-base-content undefined">Name</span>
         </label>
-        <input name="name" type="text" placeholder="Banner Name" class="input input-bordered w-full {{ $errors->has('name') ? ' input-error' : '' }}" />
+        <input name="name" type="text" placeholder="Your banner name" class="input input-bordered w-full {{ $errors->has('name') ? ' input-error' : '' }}" />
         @if ($errors->has('name'))
           <label class="label">
             <span class="label-text-alt text-error">{{ $errors->first('name') }}</span>
@@ -127,7 +127,7 @@
         <label class="label">
           <span class="label-text text-base-content undefined">Link</span>
         </label>
-        <input name="link" type="text" placeholder="Link Banner" class="input input-bordered w-full {{ $errors->has('name') ? ' input-error' : '' }}" />
+        <input name="link" type="text" placeholder="Your banner link" class="input input-bordered w-full {{ $errors->has('name') ? ' input-error' : '' }}" />
         @if ($errors->has('link'))
           <label class="label">
             <span class="label-text-alt text-error">{{ $errors->first('link') }}</span>
@@ -147,7 +147,7 @@
         <label class="label">
           <span class="label-text text-base-content undefined">Name</span>
         </label>
-        <input id="name" name="name" type="text" placeholder="Banner Name" class="input input-bordered w-full {{ $errors->has('name') ? ' input-error' : '' }}" />
+        <input id="name" name="name" type="text" placeholder="Your banner name" class="input input-bordered w-full {{ $errors->has('name') ? ' input-error' : '' }}" />
         <input type="hidden" name="banner_id" id="banner_id" />
         @if ($errors->has('name'))
           <label class="label">
@@ -171,7 +171,7 @@
         <label class="label">
           <span class="label-text text-base-content undefined">Link</span>
         </label>
-        <input id="link" name="link" type="text" placeholder="Link Banner" class="input input-bordered w-full" />
+        <input id="link" name="link" type="text" placeholder="Your link banner" class="input input-bordered w-full" />
       </div>
       <x-form-action type="update" route="/admin/banners" />
     </form>
@@ -203,7 +203,8 @@
 @section('js')
   @if (count($errors) > 0)
     <script>
-      modal_banner.showModal();
+      $("#list").hide();
+      $("#add").show();
     </script>
   @endif
   <script>

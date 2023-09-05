@@ -10,7 +10,7 @@
     $url .= $_SERVER['HTTP_HOST'];
     $url .= $_SERVER['REQUEST_URI'];
   @endphp
-  <div>
+  <section id="list">
     <div class="row justify-content-center">
       <div class="col-md-8">
         <div class="flex justify-between items-center pb-6">
@@ -24,7 +24,7 @@
               </button>
             </div>
           </form>
-          <button class="btn btn-md btn-primary" onclick="modal_news.showModal()">Add</button>
+          <button onclick="addNews()" class="btn btn-md btn-primary">Add</button>
         </div>
         <div class="card bg-white rounded-lg">
           <div class="card-body p-0">
@@ -51,7 +51,21 @@
                     @endphp
                     <tr>
                       <td>{{ $news_item->id }}</td>
-                      <td> {{ $news_item->name }} </td>
+                      <td>
+                        <div class="flex items-center space-x-3">
+                          <div class="avatar">
+                            <div class="mask mask-squircle w-9 h-9">
+                              @if ($news_item->image != '')
+                                <img src="{{ $img->realImage }}" alt="{{ $news_item->name }}">
+                              @else
+                                <img src="https://placehold.co/100x100" alt="blank" />
+                              @endif
+                            </div>
+                          </div>
+                          <div>
+                            <div class="font-bold">{{ $news_item->name }}</div>
+                          </div>
+                      </td>
                       <td> {{ $news_item->slug }} </td>
                       <td>
                         <div class="flex items-center justify-end gap-2">
@@ -59,7 +73,7 @@
                           <button onClick="handleDetail(`{{ $news_item->id }}`)" class="btn btn-sm btn-square btn-ghost">
                             <x-heroicon-m-bars-3-bottom-left class="w-4 h-4" />
                           </button>
-                          <button onClick="handleEdit(`{{ $news_item->id }}`)" class="btn btn-sm btn-square btn-ghost">
+                          <button onClick="editNews(`{{ $news_item->id }}`)" class="btn btn-sm btn-square btn-ghost">
                             <x-heroicon-o-pencil class="w-4 h-4" />
                           </button>
                           <button onClick="handleDelete(`{{ $news_item->id }}`)" class="btn btn-sm btn-square btn-ghost">
@@ -77,127 +91,129 @@
         {{ $news->appends(['sortDirection' => request()->sortDirection, 'sortColumn' => request()->sortColumn, 'q' => request()->q])->onEachSide(5)->links() }}
       </div>
     </div>
-  </div>
+  </section>
 
-  <dialog id="modal_news" class="modal">
-    <form class="modal-box w-11/12 max-w-5xl" onsubmit="disableButton()" action="{{ route('admin.news.store') }}" method="POST" enctype="multipart/form-data">
-      @csrf
-      <a href="{{ $url }}" class="btn btn-sm btn-circle absolute right-2 top-2">✕</a>
-      <h3 class="font-semibold text-2xl pb-6 text-center">Add New News</h3>
-      <div class="form-control w-full mt-2">
-        <label class="label">
-          <span class="label-text text-base-content undefined">Title</span>
-        </label>
-        <input name="name" type="text" placeholder="News Title" class="input input-bordered w-full {{ $errors->has('name') ? ' input-error' : '' }}" />
-        @if ($errors->has('name'))
+  <section id="add" hidden>
+    <div class="card bg-white">
+      <form class="card-body p-4" onsubmit="disableButton()" action="{{ route('admin.news.store') }}" method="POST" enctype="multipart/form-data">
+        @csrf
+        <h3 class="font-semibold text-2xl pb-6">Add New News</h3>
+        <div class="form-control w-full mt-2">
           <label class="label">
-            <span class="label-text-alt text-error">{{ $errors->first('name') }}</span>
+            <span class="label-text text-base-content undefined">Title</span>
           </label>
-        @endif
-      </div>
-      <div class="form-control w-full mt-2">
-        <label class="label">
-          <span class="label-text text-base-content undefined">Detail</span>
-        </label>
-        <textarea class="textarea h-60 textarea-bordered textarea-md w-full" id="detail" placeholder="Enter the Description" name="detail"></textarea>
-        @if ($errors->has('detail'))
+          <input name="name" type="text" placeholder="Your news title" class="input input-bordered w-full {{ $errors->has('name') ? ' input-error' : '' }}" />
+          @if ($errors->has('name'))
+            <label class="label">
+              <span class="label-text-alt text-error">{{ $errors->first('name') }}</span>
+            </label>
+          @endif
+        </div>
+        <div class="form-control w-full mt-2">
           <label class="label">
-            <span class="label-text-alt text-error">{{ $errors->first('detail') }}</span>
+            <span class="label-text text-base-content undefined">Detail</span>
           </label>
-        @endif
-      </div>
-      <div class="form-control w-full mt-2">
-        <label class="label">
-          <span class="label-text text-base-content undefined">Image</span>
-        </label>
-        <img class="my-2 max-w-lg rounded-md mx-auto" id="newsPreview" hidden>
-        <input name="image" id="image" type="file" accept="image/*" onchange="previewImageOnAdd()" class="file-input file-input-bordered w-full {{ $errors->has('image') ? ' input-error' : '' }}" />
-        @if ($errors->has('image'))
+          <textarea class="textarea h-60 textarea-bordered textarea-md w-full" id="detail" name="detail"></textarea>
+          @if ($errors->has('detail'))
+            <label class="label">
+              <span class="label-text-alt text-error">{{ $errors->first('detail') }}</span>
+            </label>
+          @endif
+        </div>
+        <div class="form-control w-full mt-2">
           <label class="label">
-            <span class="label-text-alt text-error">{{ $errors->first('image') }}</span>
+            <span class="label-text text-base-content undefined">Image</span>
           </label>
-        @endif
-      </div>
-      <div class="form-control w-full mt-2">
-        <label class="label">
-          <span class="label-text text-base-content undefined">Reference</span>
-        </label>
-        <input name="reference" type="text" placeholder="News Reference" class="input input-bordered w-full {{ $errors->has('reference') ? ' input-error' : '' }}" />
-        @if ($errors->has('reference'))
+          <img class="my-2 max-w-lg rounded-md mx-auto" id="newsPreview" hidden>
+          <input name="image" id="image" type="file" accept="image/*" onchange="previewImageOnAdd()" class="file-input file-input-bordered w-full {{ $errors->has('image') ? ' input-error' : '' }}" />
+          @if ($errors->has('image'))
+            <label class="label">
+              <span class="label-text-alt text-error">{{ $errors->first('image') }}</span>
+            </label>
+          @endif
+        </div>
+        <div class="form-control w-full mt-2">
           <label class="label">
-            <span class="label-text-alt text-error">{{ $errors->first('reference') }}</span>
+            <span class="label-text text-base-content undefined">Reference</span>
           </label>
-        @endif
-      </div>
-      <x-form-action type="save" route="{{ $url }}" />
-    </form>
-  </dialog>
+          <input name="reference" type="text" placeholder="Ypur news reference" class="input input-bordered w-full {{ $errors->has('reference') ? ' input-error' : '' }}" />
+          @if ($errors->has('reference'))
+            <label class="label">
+              <span class="label-text-alt text-error">{{ $errors->first('reference') }}</span>
+            </label>
+          @endif
+        </div>
+        <x-form-action type="save" route="{{ $url }}" />
+      </form>
+    </div>
+  </section>
 
-  <dialog id="modal_news_edit" class="modal">
-    <form class="modal-box w-11/12 max-w-5xl" onsubmit="disableButton()" action="{{ route('admin.news.update') }}" method="POST" enctype="multipart/form-data">
-      @csrf
-      <a href="{{ $url }}" class="btn btn-sm btn-circle absolute right-2 top-2">✕</a>
-      <h3 class="font-semibold text-2xl pb-6 text-center">Update News</h3>
-      <div class="form-control w-full mt-2">
-        <label class="label">
-          <span class="label-text text-base-content undefined">Title</span>
-        </label>
-        <input type="hidden" id="news_id" name="news_id">
-        <input name="name" id="name" type="text" placeholder="News Title" class="input input-bordered w-full {{ $errors->has('name') ? ' input-error' : '' }}" />
-        @if ($errors->has('name'))
+  <section id="edit" hidden>
+    <div class="card bg-white">
+      <form class="card-body p-4" onsubmit="disableButton()" action="{{ route('admin.news.update') }}" method="POST" enctype="multipart/form-data">
+        @csrf
+        <h3 class="font-semibold text-2xl pb-6">Edit News</h3>
+        <div class="form-control w-full mt-2">
           <label class="label">
-            <span class="label-text-alt text-error">{{ $errors->first('name') }}</span>
+            <span class="label-text text-base-content undefined">Title</span>
           </label>
-        @endif
-      </div>
-      <div class="form-control w-full mt-2">
-        <label class="label">
-          <span class="label-text text-base-content undefined">Slug</span>
-        </label>
-        <input name="slug" id="slug" type="text" placeholder="News Title" class="input input-bordered w-full {{ $errors->has('slug') ? ' input-error' : '' }}" disabled />
-        @if ($errors->has('name'))
+          <input type="hidden" id="news_id" name="news_id">
+          <input name="name" id="name" type="text" placeholder="News Title" class="input input-bordered w-full {{ $errors->has('name') ? ' input-error' : '' }}" />
+          @if ($errors->has('name'))
+            <label class="label">
+              <span class="label-text-alt text-error">{{ $errors->first('name') }}</span>
+            </label>
+          @endif
+        </div>
+        <div class="form-control w-full mt-2">
           <label class="label">
-            <span class="label-text-alt text-error">{{ $errors->first('slug') }}</span>
+            <span class="label-text text-base-content undefined">Slug</span>
           </label>
-        @endif
-      </div>
-      <div class="form-control w-full mt-2">
-        <label class="label">
-          <span class="label-text text-base-content undefined">Detail</span>
-        </label>
-        <textarea class="textarea h-60 textarea-bordered textarea-md w-full" id="detailEdit" placeholder="Enter the Description" name="detail"></textarea>
-        @if ($errors->has('detail'))
+          <input name="slug" id="slug" type="text" placeholder="News Title" class="input input-bordered w-full {{ $errors->has('slug') ? ' input-error' : '' }}" disabled />
+          @if ($errors->has('name'))
+            <label class="label">
+              <span class="label-text-alt text-error">{{ $errors->first('slug') }}</span>
+            </label>
+          @endif
+        </div>
+        <div class="form-control w-full mt-2">
           <label class="label">
-            <span class="label-text-alt text-error">{{ $errors->first('detail') }}</span>
+            <span class="label-text text-base-content undefined">Detail</span>
           </label>
-        @endif
-      </div>
-      <div class="form-control w-full mt-2">
-        <label class="label">
-          <span class="label-text text-base-content undefined">Image</span>
-        </label>
-        <img class="my-2 max-w-lg rounded-md mx-auto" id="newsPreviewEdit">
-        <input name="image" id="image" type="file" accept="image/*" onchange="previewImageOnEdit()" class="file-input file-input-bordered w-full {{ $errors->has('image') ? ' input-error' : '' }}" />
-        @if ($errors->has('image'))
+          <textarea class="textarea h-60 textarea-bordered textarea-md w-full" id="detailEdit" placeholder="Enter the Description" name="detail"></textarea>
+          @if ($errors->has('detail'))
+            <label class="label">
+              <span class="label-text-alt text-error">{{ $errors->first('detail') }}</span>
+            </label>
+          @endif
+        </div>
+        <div class="form-control w-full mt-2">
           <label class="label">
-            <span class="label-text-alt text-error">{{ $errors->first('image') }}</span>
+            <span class="label-text text-base-content undefined">Image</span>
           </label>
-        @endif
-      </div>
-      <div class="form-control w-full mt-2">
-        <label class="label">
-          <span class="label-text text-base-content undefined">Reference</span>
-        </label>
-        <input name="reference" id="reference" type="text" placeholder="News Reference" class="input input-bordered w-full {{ $errors->has('reference') ? ' input-error' : '' }}" />
-        @if ($errors->has('reference'))
+          <img class="my-2 max-w-lg rounded-md mx-auto" id="newsPreviewEdit">
+          <input name="image" id="image" type="file" accept="image/*" onchange="previewImageOnEdit()" class="file-input file-input-bordered w-full {{ $errors->has('image') ? ' input-error' : '' }}" />
+          @if ($errors->has('image'))
+            <label class="label">
+              <span class="label-text-alt text-error">{{ $errors->first('image') }}</span>
+            </label>
+          @endif
+        </div>
+        <div class="form-control w-full mt-2">
           <label class="label">
-            <span class="label-text-alt text-error">{{ $errors->first('reference') }}</span>
+            <span class="label-text text-base-content undefined">Reference</span>
           </label>
-        @endif
-      </div>
-      <x-form-action type="update" route="{{ $url }}" />
-    </form>
-  </dialog>
+          <input name="reference" id="reference" type="text" placeholder="News Reference" class="input input-bordered w-full {{ $errors->has('reference') ? ' input-error' : '' }}" />
+          @if ($errors->has('reference'))
+            <label class="label">
+              <span class="label-text-alt text-error">{{ $errors->first('reference') }}</span>
+            </label>
+          @endif
+        </div>
+        <x-form-action type="update" route="{{ $url }}" />
+      </form>
+    </div>
+  </section>
 
   <dialog id="modal_news_detail" class="modal">
     <div class="modal-box">
@@ -232,8 +248,15 @@
       </div>
     </div>
   </dialog>
+
 @endsection
 @section('js')
+  @if (count($errors) > 0)
+    <script>
+      $("#list").hide();
+      $("#add").show();
+    </script>
+  @endif
   <script>
     CKEDITOR.replace('detail');
     CKEDITOR.replace('detailEdit');
@@ -242,7 +265,6 @@
       $('.isActive').change(function() {
         var is_active = $(this).prop('checked') == true ? 1 : 0;
         var news_id = $(this).data('id');
-
         $.ajax({
           type: "GET",
           dataType: "json",
@@ -267,6 +289,10 @@
     function previewImageOnAdd() {
       const file = event.target.files[0];
       if (file.size > 3080000) {
+        toastr.options = {
+          "closeButton": true,
+          "progressBar": true
+        }
         toastr.error("Your files to large, please resize!");
         $("#image").val("");
         newsPreview.src = "";
@@ -279,11 +305,26 @@
     function previewImageOnEdit() {
       const file = event.target.files[0];
       if (file.size > 3080000) {
+        toastr.options = {
+          "closeButton": true,
+          "progressBar": true
+        }
         toastr.error("Your files to large, please resize!");
       } else {
         $('#newsPreviewEdit').show();
         newsPreviewEdit.src = URL.createObjectURL(event.target.files[0])
       }
+    }
+
+    function backNews() {
+      $("#list").show();
+      $("#add").hide();
+      $("#edit").hide();
+    }
+
+    function addNews() {
+      $("#list").hide();
+      $("#add").show();
     }
 
     function disableButton() {
@@ -295,23 +336,25 @@
       $('#loadingEdit').show();
     }
 
-    function handleEdit(id) {
-      modal_news_edit.showModal();
+    function editNews(id) {
+      $("#list").hide();
+      $("#edit").show();
       $.ajax({
         type: "GET",
         url: "/admin/articles/edit/" + id,
         success: function(response) {
-          const dataImage = response.news.image;
+          const news = response?.news || {};
+          const dataImage = news?.image || {};
           var image;
-          if (dataImage) {
+          if (response.news.image != '') {
             image = JSON.parse(dataImage);
           }
-          $("#news_id").val(response.news.id);
-          $("#name").val(response.news.name);
-          $("#slug").val(response.news.slug);
-          $("#reference").val(response.news.reference);
-          $('#newsPreviewEdit').attr('src', image.realImage);
-          CKEDITOR.instances['detailEdit'].setData(response.news.detail);
+          $("#news_id").val(news.id);
+          $("#name").val(news.name);
+          $("#slug").val(news.slug);
+          $("#reference").val(news.reference);
+          $('#newsPreviewEdit').attr('src', image?.realImage || '');
+          CKEDITOR.instances['detailEdit'].setData(news.detail);
         }
       })
     }
@@ -322,14 +365,18 @@
         type: "GET",
         url: "/admin/articles/edit/" + id,
         success: function(response) {
-          const dataImage = response.news.image;
-          const image = JSON.parse(dataImage);
-          $("#detail_name").text(response?.news?.name || '-');
-          $("#detail_slug").text(response?.news?.slug || '-');
-          $("#detail_detail").html(response?.news?.detail || '-');
-          $("#detail_reference").text(response?.news?.reference || '-');
-          $("#detail_user").text(response?.news?.user_id || '-');
-          $('#newsPreviewDetail').attr('src', image.realImage);
+          const news = response?.news || {};
+          const dataImage = news?.image || {};
+          var image;
+          if (response.news.image != '') {
+            image = JSON.parse(dataImage);
+          }
+          $("#detail_name").text(news?.name);
+          $("#detail_slug").text(news?.slug);
+          $("#detail_detail").html(news?.detail);
+          $("#detail_reference").text(news?.reference);
+          $("#detail_user").text(news?.user_id);
+          $('#newsPreviewDetail').attr('src', image?.realImage || '');
         }
       })
     }
