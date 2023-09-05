@@ -115,8 +115,9 @@ class NewsController extends Controller
     {
         $news = News::findOrFail($request->id);
         $key = json_decode($news->image);
-        Cloudinary::destroy($key->public_id);
-
+        if($key){
+            Cloudinary::destroy($key->public_id);
+        }
         $news->delete();
         return response()->json(['status' => 200]);
     }

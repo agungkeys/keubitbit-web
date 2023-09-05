@@ -30,7 +30,6 @@
           <div class="card-body p-0">
             <div class="overflow-x-auto">
               <table class="table">
-                <!-- head -->
                 <thead>
                   <tr>
                     <th>
@@ -190,7 +189,6 @@
         type: "GET",
         url: "/admin/milestones/edit/" + id,
         success: function(response) {
-          console.log("🚀 ~ file: milestones.blade.php:193 ~ editMilestone ~ response:", response)
           const milestone = response?.milestone || {};
           $("#milestone_id").val(milestone.id);
           $("#edit_name").val(milestone.name);

@@ -99,8 +99,9 @@ class BannersController extends Controller
     {
         $banner = Banner::findOrFail($request->id);
         $key = json_decode($banner->image);
-        Cloudinary::destroy($key->public_id);
-
+        if($key){
+            Cloudinary::destroy($key->public_id);
+        }
         $banner->delete();
         return response()->json(['status' => 200]);
     }

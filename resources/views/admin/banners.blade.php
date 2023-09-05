@@ -244,7 +244,7 @@
           $("#name").val(response.banner.name);
           $("#banner_id").val(response.banner.id);
           $("#link").val(response.banner.link);
-          $('#bannerPreviewEdit').attr('src', image.realImage);
+          image ? $('#bannerPreviewEdit').attr('src', image.realImage || '') : null;
         }
       })
     }
@@ -259,7 +259,7 @@
           const image = JSON.parse(dataImage);
           $("#detail_name").text(response?.banner?.name || '-');
           $("#detail_link").text(response?.banner?.link || '-');
-          $('#bannerPreviewDetail').attr('src', image.realImage);
+          image ? $('#bannerPreviewDetail').attr('src', image.realImage || '') : null;
         }
       })
     }

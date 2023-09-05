@@ -139,8 +139,9 @@ class MembersController extends Controller
     {
         $member = Member::findOrFail($request->id);
         $key = json_decode($member->image);
-        Cloudinary::destroy($key->public_id);
-
+        if($key){
+            Cloudinary::destroy($key->public_id);
+        }
         $member->delete();
         return response()->json(['status' => 200]);
     }

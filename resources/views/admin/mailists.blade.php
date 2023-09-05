@@ -21,7 +21,6 @@
           <div class="card-body p-0">
             <div class="overflow-x-auto">
               <table class="table">
-                <!-- head -->
                 <thead>
                   <tr>
                     <th width="3%">

@@ -115,8 +115,9 @@ class MusicsController extends Controller
     {
         $music = Music::findOrFail($request->id);
         $key = json_decode($music->image);
-        Cloudinary::destroy($key->public_id);
-
+        if($key){
+            Cloudinary::destroy($key->public_id);
+        }
         $music->delete();
         return response()->json(['status' => 200]);
     }

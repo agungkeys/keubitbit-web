@@ -358,8 +358,7 @@
         $("#edit_tiktok").val(member.social_tiktok);
         $("#edit_youtube").val(member.social_youtube);
         $("#edit_linktree").val(member.social_linktree);
-
-        $('#memberPreviewEdit').attr('src', image.realImage);
+        image ? $('#memberPreviewEdit').attr('src', image.realImage || '') : null;
         CKEDITOR.instances['edit_detail'].setData(member.detail);
       }
     })

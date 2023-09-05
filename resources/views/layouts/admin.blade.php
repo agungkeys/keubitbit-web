@@ -141,19 +141,19 @@ Default Page
         id: 6,
         name: "tours",
         label: "Tour Schedule",
-        link: "/admin/tours",
+        link: "/admin/tours?sortDirection=desc&sortColumn=id",
         isLabel: false,
       }, {
         id: 7,
         name: "stores",
         label: "Store",
-        link: "/admin/stores",
+        link: "/admin/stores?sortDirection=desc&sortColumn=id",
         isLabel: false,
       }, {
         id: 8,
         name: "articles",
         label: "Article & News",
-        link: "/admin/articles",
+        link: "/admin/articles?sortDirection=desc&sortColumn=id",
         isLabel: false,
       }, {
         id: 9,
@@ -165,7 +165,7 @@ Default Page
         id: 10,
         name: "videos",
         label: "Video",
-        link: "/admin/videos",
+        link: "/admin/videos?sortDirection=desc&sortColumn=id",
         isLabel: false,
       }, {
         id: 11,
