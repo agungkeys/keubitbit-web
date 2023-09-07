@@ -69,11 +69,10 @@
                       <td> Rp {{ number_format($store->price, 2, ',', '.') }} </td>
                       <td>
                         <div class="flex items-center justify-end gap-2">
-                          <input data-id="{{ $store->id }}" type="checkbox" class="toggle toggle-sm toggle-info isActive" {{ $store->is_active == 1 ? 'checked' : '' }} />
                           <button onClick="handleDetail(`{{ $store->id }}`)" class="btn btn-sm btn-square btn-ghost">
                             <x-heroicon-m-bars-3-bottom-left class="w-4 h-4" />
                           </button>
-                          <button onClick="editNews(`{{ $store->id }}`)" class="btn btn-sm btn-square btn-ghost">
+                          <button onClick="editStore(`{{ $store->id }}`)" class="btn btn-sm btn-square btn-ghost">
                             <x-heroicon-o-pencil class="w-4 h-4" />
                           </button>
                           <button onClick="handleDelete(`{{ $store->id }}`)" class="btn btn-sm btn-square btn-ghost">
@@ -135,7 +134,7 @@
           <label class="label">
             <span class="label-text text-base-content undefined">Image</span>
           </label>
-          <img class="my-2 max-w-lg rounded-md mx-auto" id="newsPreview" hidden>
+          <img class="my-2 max-w-lg rounded-md mx-auto" id="storePreview" hidden>
           <input name="image" id="image" type="file" accept="image/*" onchange="previewImageOnAdd()" class="file-input file-input-bordered w-full {{ $errors->has('image') ? ' input-error' : '' }}" />
           @if ($errors->has('image'))
             <label class="label">
@@ -168,7 +167,8 @@
           <label class="label">
             <span class="label-text text-base-content undefined">Name</span>
           </label>
-          <input name="name" type="text" placeholder="Your store name" class="input input-bordered w-full {{ $errors->has('name') ? ' input-error' : '' }}" />
+          <input type="text" name="store_id" id="store_id" hidden>
+          <input name="name" id="name" type="text" placeholder="Your store name" class="input input-bordered w-full {{ $errors->has('name') ? ' input-error' : '' }}" />
           @if ($errors->has('name'))
             <label class="label">
               <span class="label-text-alt text-error">{{ $errors->first('name') }}</span>
@@ -179,7 +179,7 @@
           <label class="label">
             <span class="label-text text-base-content undefined">Detail</span>
           </label>
-          <textarea class="textarea h-60 textarea-bordered textarea-md w-full" id="detail" name="detail"></textarea>
+          <textarea id="detailEdit" class="textarea h-60 textarea-bordered textarea-md w-full" id="detail" name="detail"></textarea>
           @if ($errors->has('detail'))
             <label class="label">
               <span class="label-text-alt text-error">{{ $errors->first('detail') }}</span>
@@ -190,7 +190,7 @@
           <label class="label">
             <span class="label-text text-base-content undefined">Price</span>
           </label>
-          <input name="price" min="0" placeholder="Your price store" type="number" class="input input-bordered w-full {{ $errors->has('price') ? ' input-error' : '' }}" />
+          <input name="price" id="price" min="0" placeholder="Your price store" type="number" class="input input-bordered w-full {{ $errors->has('price') ? ' input-error' : '' }}" />
           @if ($errors->has('price'))
             <label class="label">
               <span class="label-text-alt text-error">{{ $errors->first('price') }}</span>
@@ -201,7 +201,7 @@
           <label class="label">
             <span class="label-text text-base-content undefined">Image</span>
           </label>
-          <img class="my-2 max-w-lg rounded-md mx-auto" id="newsPreview" hidden>
+          <img class="my-2 max-w-lg rounded-md mx-auto" id="storePreview" hidden>
           <input name="image" id="image" type="file" accept="image/*" onchange="previewImageOnAdd()" class="file-input file-input-bordered w-full {{ $errors->has('image') ? ' input-error' : '' }}" />
           @if ($errors->has('image'))
             <label class="label">
@@ -213,7 +213,7 @@
           <label class="label">
             <span class="label-text text-base-content undefined">Link</span>
           </label>
-          <input name="link" type="text" placeholder="Your link store" class="input input-bordered w-full {{ $errors->has('link') ? ' input-error' : '' }}" />
+          <input name="link" id="link" type="text" placeholder="Your link store" class="input input-bordered w-full {{ $errors->has('link') ? ' input-error' : '' }}" />
           @if ($errors->has('link'))
             <label class="label">
               <span class="label-text-alt text-error">{{ $errors->first('link') }}</span>
@@ -224,6 +224,40 @@
       </form>
     </div>
   </section>
+
+  <dialog id="modal_store_detail" class="modal">
+    <div class="modal-box">
+      <a href="{{ $url }}" class="btn btn-sm btn-circle absolute right-2 top-2">✕</a>
+      <h3 class="font-semibold text-2xl pb-6 text-center">Detail Store</h3>
+      <label class="label">
+        <span class="label-text text-gray-500">Name</span>
+      </label>
+      <span id="detail_name" class="label text-base">-</span>
+      <label class="label">
+        <span class="label-text text-gray-500">Slug</span>
+      </label>
+      <span id="detail_slug" class="label text-base">-</span>
+      <label class="label">
+        <span class="label-text text-gray-500">Detail</span>
+      </label>
+      <span id="detail_detail" class="label text-base">-</span>
+      <label class="label">
+        <span class="label-text text-gray-500">Price</span>
+      </label>
+      <span id="detail_price" class="label text-base">-</span>
+      <label class="label">
+        <span class="label-text text-gray-500">Image</span>
+      </label>
+      <img id="newsPreviewDetail">
+      <label class="label">
+        <span class="label-text text-gray-500">Link</span>
+      </label>
+      <span id="detail_link" class="label text-base">-</span>
+      <div class="modal-action">
+        <a href="{{ $url }}" class="btn btn-light">Close</a>
+      </div>
+    </div>
+  </dialog>
 @endsection
 @section('js')
   @if (count($errors) > 0)
@@ -245,10 +279,10 @@
         }
         toastr.error("Your files to large, please resize!");
         $("#image").val("");
-        newsPreview.src = "";
+        storePreview.src = "";
       } else {
-        $("#newsPreview").show();
-        newsPreview.src = URL.createObjectURL(event.target.files[0])
+        $("#storePreview").show();
+        storePreview.src = URL.createObjectURL(event.target.files[0])
       }
     }
 
@@ -261,8 +295,8 @@
         }
         toastr.error("Your files to large, please resize!");
       } else {
-        $('#newsPreviewEdit').show();
-        newsPreviewEdit.src = URL.createObjectURL(event.target.files[0])
+        $('#storePreviewEdit').show();
+        storePreviewEdit.src = URL.createObjectURL(event.target.files[0])
       }
     }
 
@@ -284,6 +318,88 @@
       edit.disabled = true;
       $('#loadingAdd').show();
       $('#loadingEdit').show();
+    }
+
+    function editStore(id) {
+      $("#list").hide();
+      $("#edit").show();
+      $.ajax({
+        type: "GET",
+        url: "/admin/stores/edit/" + id,
+        success: function(response) {
+          const store = response?.store || {};
+          const dataImage = store?.image || {};
+          var image;
+          if (response.store.image != '') {
+            image = JSON.parse(dataImage);
+          }
+          $("#store_id").val(store.id);
+          $("#name").val(store.name);
+          $("#slug").val(store.slug);
+          $("#link").val(store.link);
+          $("#price").val(store.price);
+          $('#storePreviewEdit').attr('src', image?.realImage || '');
+          CKEDITOR.instances['detailEdit'].setData(store.detail);
+        }
+      })
+    }
+
+    function handleDelete(id) {
+      Swal.fire({
+        title: 'Are you sure?',
+        text: "You won't be able to delete this!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes, delete it!'
+      }).then((result) => {
+        if (result.isConfirmed) {
+          let _token = $('meta[name="csrf-token"]').attr('content');
+          const url = window.location.href;
+          $.ajax({
+            type: "DELETE",
+            url: "/admin/stores/delete/" + id,
+            data: {
+              _token: _token,
+              id: id
+            },
+            success: function(response) {
+              if (response.status == 200) {
+                Swal.fire(
+                  'Deleted!',
+                  'Your file has been deleted.',
+                  'success'
+                ).then(function() {
+                  window.location = url;
+                });
+              }
+            }
+          });
+        }
+      })
+    }
+
+    function handleDetail(id) {
+      modal_store_detail.showModal();
+      $.ajax({
+        type: "GET",
+        url: "/admin/stores/edit/" + id,
+        success: function(response) {
+          const store = response?.store || {};
+          const dataImage = store?.image || {};
+          var image;
+          if (response.store.image != '') {
+            image = JSON.parse(dataImage);
+          }
+          $("#detail_name").text(store?.name);
+          $("#detail_slug").text(store?.slug);
+          $("#detail_detail").html(store?.detail);
+          $("#detail_price").text(store?.price);
+          $("#detail_link").text(store?.link);
+          $('#storePreviewDetail').attr('src', image?.realImage || '');
+        }
+      })
     }
   </script>
 @endsection
