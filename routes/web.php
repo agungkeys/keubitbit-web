@@ -83,6 +83,7 @@ Route::group(['namespace' => 'Admin', 'as' => 'admin.'], function () {
         Route::post('/admin/stores/store', 'StoresController@store')->name('stores.store');
         Route::get('/admin/stores/edit/{id}', 'StoresController@edit')->name('stores.edit');
         Route::post('/admin/stores/update', 'StoresController@update')->name('stores.update');
+        Route::delete('/admin/stores/delete/{id}', 'StoresController@delete')->name('stores.delete');
     });
 });
 

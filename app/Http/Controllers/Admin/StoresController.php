@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Traits\CloudinaryImage;
 use App\Models\Store;
-use Cloudinary\Configuration\CloudConfigTrait;
+use CloudinaryLabs\CloudinaryLaravel\Facades\Cloudinary;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
@@ -70,5 +70,46 @@ class StoresController extends Controller
             'status' => 200,
             'store' => $store
         ]);
+    }
+
+    public function update(Request $request)
+    {
+        $request->validate([
+            'name' => 'required',
+            'detail' => 'required',
+            'price' => 'required',
+            'image' => 'image|mimes:jpeg,png,jpg,svg|max:3000'
+        ]);
+
+        $store = Store::findOrFail($request->store_id);
+
+        if ($request->file('image')) {
+            $dataImage = $this->UpdateImageCloudinary([
+                'image' => $request->file('image'),
+                'folder' => 'stores',
+                'collection' => $store
+            ]);
+            $image = $dataImage['dataImage'];
+        }
+        $store->update([
+            'name' => $request->name,
+            'detail' => $request->detail,
+            'image' => $image ?? $store->image,
+            'price' => $request->price,
+            'link' => $request->link,
+        ]);
+
+        return redirect()->back()->with('success', 'Produk berhasil diubah!');
+    }
+
+    public function delete(Request $request)
+    {
+        $store = Store::findOrFail($request->id);
+        $key = json_decode($store->image);
+        if ($key) {
+            Cloudinary::destroy($key->public_id);
+        }
+        $store->delete();
+        return response()->json(['status' => 200]);
     }
 }
