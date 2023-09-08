@@ -247,7 +247,7 @@
         <label class="label">
           <span class="label-text text-base-content">Detail</span>
         </label>
-        <textarea class="textarea h-60 textarea-bordered textarea-md w-full" id="edit_detail" placeholder="Enter the Description" name="detail"></textarea>
+        <textarea class="textarea h-60 textarea-bordered textarea-md w-full" id="edit_detail" placeholder="Enter the Description" name="edit_detail"></textarea>
         <!-- <input name="email" type="text" placeholder="Your email" class="input input-bordered w-full {{ $errors->has('name') ? ' input-error' : '' }}" /> -->
         @if ($errors->has('edit_detail'))
           <label class="label">

@@ -74,7 +74,7 @@ Default Page
         id: 3,
         name: "music",
         label: "MUSIC",
-        link: "https://open.spotify.com/artist/6W34RUeAaZxU7giOCVfG25"
+        link: "/music"
       },{
         id: 4,
         name: "tour",

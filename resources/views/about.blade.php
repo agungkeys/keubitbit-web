@@ -91,6 +91,13 @@
         </section>
       </div> 
     </div>
+    <div class="text-center pb-8">
+      <h1 class="text-center text-black py-2 mb-4 md:py-4 text-3xl md:text-5xl font-bold pb-4 md:pb-6">Award</h1>
+      <div class="grid grid-cols-2 gap-4 justify-center items-center">
+        <img width="200" height="200" src="https://res.cloudinary.com/domqavi1p/image/upload/v1694183195/icons/LOGO-AMI-Linkedin_oh1jts.webp" />
+        <img width="350" height="200"  src="https://res.cloudinary.com/domqavi1p/image/upload/v1694183680/icons/94184754882-logo-api-2_jzkz7l.webp" />
+      </div>
+    </div>
   </div>
 
   <section class="bg-[url('https://res.cloudinary.com/domqavi1p/image/upload/c_fill,h_200,w_500/v1690519461/ART_WORK_KEUBITBIT_emiyy9.webp')]">

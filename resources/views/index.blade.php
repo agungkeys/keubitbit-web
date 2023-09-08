@@ -1,31 +1,49 @@
 @extends('layouts.app') 
 @section('title', 'Keubitbit Aceh Ethnic Music - Official Website')
 @section('content')
-<div class="">
-  <div 
-    x-data="{ data: datalatestrelease}"
-    class="relative bg-cover bg-center bg-[url(https://res.cloudinary.com/domqavi1p/image/upload/v1690546337/ab67616d0000b273adaa917ccb54739ec80f2684_vgms6p.webp)]">
-    <div class="py-2 md:py-6" style="background: rgba(0, 0, 0, 0.8)">
+<div>
+  @if($musicFeatured)
+  @php
+    $img = json_decode($musicFeatured->image);
+  @endphp
+  <div style='background: url("{{$img->realImage}}"); background-size: contain; background-position: top center;' class="relative bg-cover bg-center">
+    <div class="py-2 md:py-6 h-auto md:h-[48rem]" style="background: rgba(0, 0, 0, 0.8)">
       <h1 class="text-center py-2 md:py-4 text-3xl md:text-5xl font-bold">Latest Release</h1>
       <div class="container pt-2 md:pt-4">
         <span class="text-base md:text-lg">Album:</span>
-        <h1 class="text-white pt-1 text-2xl md:text-5xl" x-text="data.album"></h1>
+        <h1 class="text-white pt-1 text-2xl md:text-5xl font-philosopher">{{$musicFeatured->name}}</h1>
       </div>
       <div class="container grid grid-cols-3 gap-6 pt-1 md:pt-3">
         <div class="col-span-3 md:col-span-1">
-          <img class="rounded-md w-full" width="400" height="400" src="https://res.cloudinary.com/domqavi1p/image/upload/v1690546337/ab67616d0000b273adaa917ccb54739ec80f2684_vgms6p.webp" alt="album #1" />
+          <img class="rounded-md w-full" width="400" height="400" src="{{$img->realImage}}" alt="album #1" />
         </div>
         <div class="col-span-3 md:col-span-2">
-          <!-- <div class="flex gap-3">
-            <button class="btn btn-sm md:btn-md btn-success btn-outline">Spotify</button>
-            <button class="btn btn-sm md:btn-md btn-primary btn-outline">Apple Music</button>
-            <button class="btn btn-sm md:btn-md btn-error btn-outline">Youtube</button>
-          </div> -->
-          <iframe style="border-radius:12px" src="https://open.spotify.com/embed/album/2WItxRtYnXr3rZPsSEq8S0?utm_source=generator&theme=0" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+          <div class="flex gap-2 mb-4">
+            @if($musicFeatured->link_spotify)
+            <a href="{{$musicFeatured->link_spotify}}" target="_blank" class="btn glass">
+              <img src="https://res.cloudinary.com/domqavi1p/image/upload/v1694177096/icons/3669986_lu9urg.webp" width="25" height="25" />
+              Spotify
+            </a>
+            @endif
+            @if($musicFeatured->link_youtube)
+            <a href="{{$musicFeatured->link_youtube}}" target="_blank" class="btn glass">
+              <img src="https://res.cloudinary.com/domqavi1p/image/upload/v1694177235/icons/10091411_llil1j.webp" width="25" height="25" />
+              Music
+            </a>
+            @endif
+            @if($musicFeatured->link_apple)
+            <a href="{{$musicFeatured->link_apple}}" target="_blank" class="btn glass">
+              <img src="https://res.cloudinary.com/domqavi1p/image/upload/v1694177281/icons/7566380_iqnpmb.webp" width="25" height="25" />
+              Apple
+            </a>
+            @endif
+          </div>
+          {!!$musicFeatured->iframe!!}
         </div>
       </div>
     </div>
   </div>
+  @endif
   
   <section class="hero container mt-10 md:mt-14 pb-3 md:pb-6">
     <div class="flex md:flex-row flex-col-reverse gap-2 items-center">
@@ -41,27 +59,18 @@
       </div>
       <div class="basis-1/1 md:basis-1/2">
         <div class="slider grid">
-          <div class="item">
-            <img
-              src="https://res.cloudinary.com/domqavi1p/image/upload/v1690457739/keubitbit_p9zx93.webp"
-              class="object-cover rounded-lg"
-              alt="Photo Slider 1" 
-            />
-          </div>
-          <div class="item">
-            <img
-              src="https://res.cloudinary.com/domqavi1p/image/upload/v1690536179/Indra_121_teelfi.webp"
-              class="object-cover rounded-lg"
-              alt="Photo Slider 2" 
-            />
-          </div>
-          <div class="item">
-            <img
-              src="https://res.cloudinary.com/domqavi1p/image/upload/v1690536801/Indra_88_bnhtd1.webp"
-              class="object-cover rounded-lg"
-              alt="Photo Slider 3" 
-            />
-          </div>
+          @foreach ($banners as $banner)
+            @php
+              $img = json_decode($banner->image);
+            @endphp
+            <div class="item">
+              <img
+                src="{{$img->realImage}}"
+                class="object-cover rounded-lg"
+                alt="{{$banner->name}}" 
+              />
+            </div>
+          @endforeach
         </div>
       </div>
     </div>

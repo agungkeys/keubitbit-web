@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Banner;
+use App\Models\Music;
 use App\Models\Mailist;
 use Illuminate\Http\Request;
 
@@ -9,7 +11,9 @@ class IndexController extends Controller
 {
     public function index(Request $request)
     {
-        return view('index');
+        $banners = Banner::all();
+        $musicFeatured = Music::where('is_featured', 1)->first();
+        return view('index', compact(['banners', 'musicFeatured']));
     }
     public function store(Request $request)
     {
