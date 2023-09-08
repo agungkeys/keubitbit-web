@@ -136,7 +136,7 @@
           <label class="label">
             <span class="label-text text-base-content undefined">Reference</span>
           </label>
-          <input name="reference" type="text" placeholder="Ypur news reference" class="input input-bordered w-full {{ $errors->has('reference') ? ' input-error' : '' }}" />
+          <input name="reference" type="text" placeholder="Your news reference" class="input input-bordered w-full {{ $errors->has('reference') ? ' input-error' : '' }}" />
           @if ($errors->has('reference'))
             <label class="label">
               <span class="label-text-alt text-error">{{ $errors->first('reference') }}</span>

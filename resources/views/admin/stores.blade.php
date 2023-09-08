@@ -392,6 +392,7 @@
           if (response.store.image != '') {
             image = JSON.parse(dataImage);
           }
+
           $("#detail_name").text(store?.name);
           $("#detail_slug").text(store?.slug);
           $("#detail_detail").html(store?.detail);

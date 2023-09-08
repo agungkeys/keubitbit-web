@@ -4,34 +4,35 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Traits\CloudinaryImage;
-use App\Models\Store;
+use App\Models\Video;
 use CloudinaryLabs\CloudinaryLaravel\Facades\Cloudinary;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
-class StoresController extends Controller
+class VideosController extends Controller
 {
     use CloudinaryImage;
+
     public function index(Request $request)
     {
-        $store_query = Store::query();
+        $video_query = Video::query();
         $sortColumn = $request->query('sortColumn');
         $sortDirection = $request->query('sortDirection');
         $searchParam = $request->query('q');
 
         if ($sortColumn && $sortDirection) {
-            $store_query->orderBy($sortColumn, $sortDirection ?: 'asc');
+            $video_query->orderBy($sortColumn, $sortDirection ?: 'asc');
         }
 
         if ($searchParam) {
-            $store_query = $store_query->where(function ($query) use ($searchParam) {
+            $video_query = $video_query->where(function ($query) use ($searchParam) {
                 $query
                     ->orWhere('name', 'like', "%$searchParam%");
             });
         }
 
-        $stores = $store_query->paginate(5);
-        return view('admin.stores', compact('stores', 'sortColumn', 'sortDirection', 'searchParam'));
+        $videos = $video_query->paginate(5);
+        return view('admin.videos', compact('videos', 'sortColumn', 'sortDirection', 'searchParam'));
     }
 
     public function store(Request $request)
@@ -39,35 +40,35 @@ class StoresController extends Controller
         $request->validate([
             'name' => 'required',
             'detail' => 'required',
-            'price' => 'required',
+            'iframe_youtube' => 'required',
+            'link' => 'required',
             'image' => 'required|image|mimes:jpeg,png,jpg,svg|max:3000'
         ]);
 
         if ($request->file('image')) {
-            $dataImage = $this->UploadImageCloudinary(['image' => $request->file('image'), 'folder' => 'stores']);
+            $dataImage = $this->UploadImageCloudinary(['image' => $request->file('image'), 'folder' => 'videos']);
             $image = $dataImage['dataImage'];
         } else {
             $image = '';
         }
 
-        Store::create([
+        Video::create([
             'name' => $request->name,
             'slug' => Str::slug($request->name) . '-' . Str::random(5),
             'detail' => $request->detail,
-            'image' => $image,
-            'price' => $request->price,
-            'link' => $request->link
+            'iframe_youtube' => $request->iframe_youtube,
+            'link' => $request->link,
+            'image' => $image
         ]);
-
-        return redirect()->back()->with('success', 'Store berhasil disimpan!');
+        return redirect()->back()->with('success', 'Video berhasil disimpan!');
     }
 
     public function edit($id)
     {
-        $store = Store::find($id);
+        $video = Video::find($id);
         return response()->json([
             'status' => 200,
-            'store' => $store
+            'video' => $video
         ]);
     }
 
@@ -76,39 +77,40 @@ class StoresController extends Controller
         $request->validate([
             'name' => 'required',
             'detail' => 'required',
-            'price' => 'required',
+            'iframe_youtube' => 'required',
+            'link' => 'required',
             'image' => 'image|mimes:jpeg,png,jpg,svg|max:3000'
         ]);
 
-        $store = Store::findOrFail($request->store_id);
+        $video = Video::findOrFail($request->video_id);
 
         if ($request->file('image')) {
             $dataImage = $this->UpdateImageCloudinary([
                 'image' => $request->file('image'),
-                'folder' => 'stores',
-                'collection' => $store
+                'folder' => 'videos ',
+                'collection' => $video
             ]);
             $image = $dataImage['dataImage'];
         }
-        $store->update([
+        $video->update([
             'name' => $request->name,
             'detail' => $request->detail,
-            'image' => $image ?? $store->image,
-            'price' => $request->price,
+            'image' => $image ?? $video->image,
+            'iframe_youtube' => $request->iframe_youtube,
             'link' => $request->link,
         ]);
 
-        return redirect()->back()->with('success', 'Produk berhasil diubah!');
+        return redirect()->back()->with('success', 'Video berhasil diubah!');
     }
 
     public function delete(Request $request)
     {
-        $store = Store::findOrFail($request->id);
-        $key = json_decode($store->image);
+        $video = Video::findOrFail($request->id);
+        $key = json_decode($video->image);
         if ($key) {
             Cloudinary::destroy($key->public_id);
         }
-        $store->delete();
+        $video->delete();
         return response()->json(['status' => 200]);
     }
 }
