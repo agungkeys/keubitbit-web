@@ -20,6 +20,7 @@ use Maatwebsite\Excel\Facades\Excel;
 
 Route::get('/', [App\Http\Controllers\IndexController::class, 'index'])->name('index');
 Route::get('/about', [App\Http\Controllers\AboutController::class, 'index'])->name('about');
+Route::get('/video', [App\Http\Controllers\VideoController::class, 'index'])->name('video');
 Route::get('/music', [App\Http\Controllers\MusicController::class, 'index'])->name('music');
 Route::get('/tour', [App\Http\Controllers\TourController::class, 'index'])->name('tour');
 Route::get('/news', [App\Http\Controllers\NewsController::class, 'index'])->name('news');

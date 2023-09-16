@@ -69,7 +69,7 @@ Default Page
         id: 2,
         name: "video",
         label: "VIDEO",
-        link: "https://www.youtube.com/@KeubitbitAtjehEthnicMusic"
+        link: "/video"
       },{
         id: 3,
         name: "music",
