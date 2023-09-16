@@ -46,7 +46,7 @@ Default Page
   @vite('resources/css/app.css')
 </head>
 
-<body data-theme="luxury" class="font-hindi">
+<body data-theme="bumblebee" class="font-hindi">
   @include('layouts.app-header')
   <div id="root" class="bg-white">
     <main>@yield('content')</main>

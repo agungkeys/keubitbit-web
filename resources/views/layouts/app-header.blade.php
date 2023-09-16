@@ -16,7 +16,7 @@
           class="w-full md:w-auto"
           x-data="{ data: datamenu, pathname: window.location.pathname.split('/')[1], styleselected: 'text-white font-[100px] text-[14px] md:text-xl'}"
         >
-          <ul class="mx-auto menu menu-horizontal items-center justify-center md:my-1">
+          <ul class="mx-auto menu menu-horizontal items-center justify-center md:my-1 text-secondary">
             <template x-for="item in data">
               <li>
                 <a

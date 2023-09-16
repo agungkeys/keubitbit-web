@@ -10,7 +10,7 @@
     <div class="py-2 md:py-6 h-auto md:h-[48rem]" style="background: rgba(0, 0, 0, 0.8)">
       <h1 class="text-center py-2 md:py-4 text-3xl md:text-5xl font-bold">Latest Release</h1>
       <div class="container pt-2 md:pt-4">
-        <span class="text-base md:text-lg">Album:</span>
+        <span class="text-secondary text-base md:text-xl">Album:</span>
         <h1 class="text-white pt-1 text-2xl md:text-5xl font-philosopher">{{$musicFeatured->name}}</h1>
       </div>
       <div class="container grid grid-cols-3 gap-6 pt-1 md:pt-3">
@@ -55,7 +55,7 @@
         <p class="mt-2 text-black py-b md:pb-6 text-base md:text-lg">
           Keubibit exists as an adhesive for modern culture and traditional culture side by side to present to the world.
         </p>
-        <a href="/about" class="mt-4 md:mt-4 btn btn-secondary btn-md md:btn-md capitalize">Read More</a>
+        <a href="/about" class="mt-4 md:mt-4 btn btn-secondary btn-md md:btn-lg capitalize">Read More</a>
       </div>
       <div class="basis-1/1 md:basis-1/2">
         <div class="slider grid">
@@ -109,7 +109,7 @@
       
     </div>
     <div class="text-center py-4 md:py-8">
-      <a href="https://www.youtube.com/@KeubitbitAtjehEthnicMusic" class="btn btn-secondary btn-md md:btn-md capitalize">More Videos</a>
+      <a href="https://www.youtube.com/@KeubitbitAtjehEthnicMusic" class="btn btn-secondary btn-md md:btn-lg capitalize">More Videos</a>
     </div>
   </section>
 
