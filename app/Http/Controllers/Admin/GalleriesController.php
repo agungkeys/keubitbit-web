@@ -8,6 +8,7 @@ use App\Models\Gallery;
 use App\Models\Photo;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
+use CloudinaryLabs\CloudinaryLaravel\Facades\Cloudinary;
 
 class GalleriesController extends Controller
 {
@@ -121,5 +122,17 @@ class GalleriesController extends Controller
         ]);
 
         return redirect()->back()->with('success', 'Foto berhasil disimpan!');
+    }
+
+    public function photoDelete(Request $request)
+    {
+
+        $photo = Photo::findOrFail($request->id);
+        $key = json_decode($photo->image);
+        if ($key) {
+            Cloudinary::destroy($key->public_id);
+        }
+        $photo->delete();
+        return response()->json(['status' => 200]);
     }
 }

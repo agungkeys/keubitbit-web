@@ -142,7 +142,7 @@
             <img class="my-2 max-w-lg h-40 rounded-md" id="preview_image1" src="https://placehold.co/512x160?text=No+Image">
             <div class="grid grid-cols-6 gap-2">
               <input name="image1" id="image1" type="file" accept="image/*" onchange="previewImageOnAdd(image1)" class="file-input file-input-bordered w-full col-span-5 {{ $errors->has('image1') ? ' input-error' : '' }}" />
-              <button class="btn btn-error" id="delete1" disabled><x-heroicon-o-trash class="w-4 h-4" /></button>
+              <button type="button" class="btn btn-error delete1" onclick="photoDelete(this.id)" disabled><x-heroicon-o-trash class="w-4 h-4" /></button>
             </div>
             @if ($errors->has('image1'))
               <label class="label">
@@ -154,7 +154,7 @@
             <img class="my-2 max-w-lg h-40 rounded-md" id="preview_image2" src="https://placehold.co/512x160?text=No+Image">
             <div class="grid grid-cols-6 gap-2">
               <input name="image2" id="image2" type="file" accept="image/*" onchange="previewImageOnAdd(image2)" class="file-input file-input-bordered w-full col-span-5 {{ $errors->has('image2') ? ' input-error' : '' }}" />
-              <button class="btn btn-error" id="delete2" disabled><x-heroicon-o-trash class="w-4 h-4" /></button>
+              <button type="button" class="btn btn-error delete2" onclick="photoDelete(this.id)" disabled><x-heroicon-o-trash class="w-4 h-4" /></button>
             </div>
             @if ($errors->has('image2'))
               <label class="label">
@@ -166,7 +166,7 @@
             <img class="my-2 max-w-lg h-40 rounded-md" id="preview_image3" src="https://placehold.co/512x160?text=No+Image">
             <div class="grid grid-cols-6 gap-2">
               <input name="image3" id="image3" type="file" accept="image/*" onchange="previewImageOnAdd(image3)" class="file-input file-input-bordered w-full col-span-5 {{ $errors->has('image3') ? ' input-error' : '' }}" />
-              <button class="btn btn-error" id="delete3" disabled><x-heroicon-o-trash class="w-4 h-4" /></button>
+              <button type="button" class="btn btn-error delete3" onclick="photoDelete(this.id)" disabled><x-heroicon-o-trash class="w-4 h-4" /></button>
             </div>
             @if ($errors->has('image3'))
               <label class="label">
@@ -178,7 +178,7 @@
             <img class="my-2 max-w-lg h-40 rounded-md" id="preview_image4" src="https://placehold.co/512x160?text=No+Image">
             <div class="grid grid-cols-6 gap-2">
               <input name="image4" id="image4" type="file" accept="image/*" onchange="previewImageOnAdd(image4)" class="file-input file-input-bordered w-full col-span-5 {{ $errors->has('image4') ? ' input-error' : '' }}" />
-              <button class="btn btn-error" id="delete4" disabled><x-heroicon-o-trash class="w-4 h-4" /></button>
+              <button type="button" class="btn btn-error delete4" onclick="photoDelete(this.id)" disabled><x-heroicon-o-trash class="w-4 h-4" /></button>
             </div>
             @if ($errors->has('image4'))
               <label class="label">
@@ -190,7 +190,7 @@
             <img class="my-2 max-w-lg h-40 rounded-md" id="preview_image5" src="https://placehold.co/512x160?text=No+Image">
             <div class="grid grid-cols-6 gap-2">
               <input name="image5" id="image5" type="file" accept="image/*" onchange="previewImageOnAdd(image5)" class="file-input file-input-bordered w-full col-span-5 {{ $errors->has('image5') ? ' input-error' : '' }}" />
-              <button class="btn btn-error" id="delete5" disabled><x-heroicon-o-trash class="w-4 h-4" /></button>
+              <button type="button" class="btn btn-error delete5" onclick="photoDelete(this.id)" disabled><x-heroicon-o-trash class="w-4 h-4" /></button>
             </div>
             @if ($errors->has('image5'))
               <label class="label">
@@ -202,7 +202,7 @@
             <img class="my-2 max-w-lg h-40 rounded-md" id="preview_image6" src="https://placehold.co/512x160?text=No+Image">
             <div class="grid grid-cols-6 gap-2">
               <input name="image6" id="image6" type="file" accept="image/*" onchange="previewImageOnAdd(image6)" class="file-input file-input-bordered w-full col-span-5 {{ $errors->has('image6') ? ' input-error' : '' }}" />
-              <button class="btn btn-error" id="delete6" disabled><x-heroicon-o-trash class="w-4 h-4" /></button>
+              <button type="button" class="btn btn-error delete6" onclick="photoDelete(this.id)" disabled><x-heroicon-o-trash class="w-4 h-4" /></button>
             </div>
             @if ($errors->has('image6'))
               <label class="label">
@@ -214,7 +214,7 @@
             <img class="my-2 max-w-lg h-40 rounded-md" id="preview_image7" src="https://placehold.co/512x160?text=No+Image">
             <div class="grid grid-cols-6 gap-2">
               <input name="image7" id="image7" type="file" accept="image/*" onchange="previewImageOnAdd(image7)" class="file-input file-input-bordered w-full col-span-5 {{ $errors->has('image7') ? ' input-error' : '' }}" />
-              <button class="btn btn-error" id="delete7" disabled><x-heroicon-o-trash class="w-4 h-4" /></button>
+              <button type="button" class="btn btn-error delete7" onclick="photoDelete(this.id)" disabled><x-heroicon-o-trash class="w-4 h-4" /></button>
             </div>
             @if ($errors->has('image7'))
               <label class="label">
@@ -226,7 +226,7 @@
             <img class="my-2 max-w-lg h-40 rounded-md" id="preview_image8" src="https://placehold.co/512x160?text=No+Image">
             <div class="grid grid-cols-6 gap-2">
               <input name="image8" id="image8" type="file" accept="image/*" onchange="previewImageOnAdd(image8)" class="file-input file-input-bordered w-full col-span-5 {{ $errors->has('image8') ? ' input-error' : '' }}" />
-              <button class="btn btn-error" id="delete8" disabled><x-heroicon-o-trash class="w-4 h-4" /></button>
+              <button type="button" class="btn btn-error delete8" onclick="photoDelete(this.id)" disabled><x-heroicon-o-trash class="w-4 h-4" /></button>
             </div>
             @if ($errors->has('image8'))
               <label class="label">
@@ -264,7 +264,6 @@
       }
     }
 
-
     function backGallery() {
       $("#list").show();
       $("#add").hide();
@@ -300,17 +299,52 @@
         success: function(response) {
           const gallery = response?.gallery || {};
           const photos = gallery.photo;
-          const photo = [];
           $("#gallery_id_photo").val(gallery.id);
           $("#title").text("Add Photo at " + gallery.name);
           for (let i = 0; i < photos.length; i++) {
             var images = JSON.parse(photos[i].image);
             var realImage = images.realImage;
             var num = i + 1;
-            $("#delete" + num).removeAttr('disabled');
+            $(".delete" + num).removeAttr('disabled').attr('id', photos[i].id);
             $('#image' + num).attr('disabled', 'disabled');
             $('#preview_image' + num).attr('src', realImage || '');
           }
+        }
+      })
+    }
+
+    function photoDelete(id) {
+      Swal.fire({
+        title: 'Are you sure?',
+        text: "You won't be able to delete this!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes, delete it!'
+      }).then((result) => {
+        if (result.isConfirmed) {
+          let _token = $('meta[name="csrf-token"]').attr('content');
+          const url = window.location.href;
+          $.ajax({
+            type: "DELETE",
+            url: "/admin/galleries/photo/delete/" + id,
+            data: {
+              _token: _token,
+              id: id
+            },
+            success: function(response) {
+              if (response.status == 200) {
+                Swal.fire(
+                  'Deleted!',
+                  'Your file has been deleted.',
+                  'success'
+                ).then(function() {
+                  window.location = url + "?del=success";
+                });
+              }
+            }
+          });
         }
       })
     }
