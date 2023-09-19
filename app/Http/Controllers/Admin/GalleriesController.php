@@ -103,7 +103,6 @@ class GalleriesController extends Controller
         for ($i = 1; $i <= 8; $i++) {
             if ($request->file('image' . $i)) {
                 $dataImage1 = $this->UploadImageCloudinary(['image' => $request->file('image' . $i), 'folder' => 'galleries']);
-                // $image1 =
                 $photoArray[] = $dataImage1['dataImage'];
             }
         }
@@ -114,6 +113,12 @@ class GalleriesController extends Controller
                 'image' => $photo
             ]);
         }
+
+        $gallery = Gallery::findOrFail($request->gallery_id);
+
+        $gallery->update([
+            'image' => $photoArray[0]
+        ]);
 
         return redirect()->back()->with('success', 'Foto berhasil disimpan!');
     }

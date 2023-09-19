@@ -140,7 +140,10 @@
           <input type="hidden" name="gallery_id" id="gallery_id_photo">
           <div class="form-control w-full mt-2">
             <img class="my-2 max-w-lg h-40 rounded-md" id="preview_image1" src="https://placehold.co/512x160?text=No+Image">
-            <input name="image1" id="image1" type="file" accept="image/*" onchange="previewImageOnAdd(image1)" class="file-input file-input-bordered w-full {{ $errors->has('image1') ? ' input-error' : '' }}" />
+            <div class="grid grid-cols-6 gap-2">
+              <input name="image1" id="image1" type="file" accept="image/*" onchange="previewImageOnAdd(image1)" class="file-input file-input-bordered w-full col-span-5 {{ $errors->has('image1') ? ' input-error' : '' }}" />
+              <button class="btn btn-error" id="delete1" disabled><x-heroicon-o-trash class="w-4 h-4" /></button>
+            </div>
             @if ($errors->has('image1'))
               <label class="label">
                 <span class="label-text-alt text-error">{{ $errors->first('image1') }}</span>
@@ -149,7 +152,10 @@
           </div>
           <div class="form-control w-full mt-2">
             <img class="my-2 max-w-lg h-40 rounded-md" id="preview_image2" src="https://placehold.co/512x160?text=No+Image">
-            <input name="image2" id="image2" type="file" accept="image/*" onchange="previewImageOnAdd(image2)" class="file-input file-input-bordered w-full {{ $errors->has('image2') ? ' input-error' : '' }}" />
+            <div class="grid grid-cols-6 gap-2">
+              <input name="image2" id="image2" type="file" accept="image/*" onchange="previewImageOnAdd(image2)" class="file-input file-input-bordered w-full col-span-5 {{ $errors->has('image2') ? ' input-error' : '' }}" />
+              <button class="btn btn-error" id="delete2" disabled><x-heroicon-o-trash class="w-4 h-4" /></button>
+            </div>
             @if ($errors->has('image2'))
               <label class="label">
                 <span class="label-text-alt text-error">{{ $errors->first('image2') }}</span>
@@ -158,7 +164,10 @@
           </div>
           <div class="form-control w-full mt-2">
             <img class="my-2 max-w-lg h-40 rounded-md" id="preview_image3" src="https://placehold.co/512x160?text=No+Image">
-            <input name="image3" id="image3" type="file" accept="image/*" onchange="previewImageOnAdd(image3)" class="file-input file-input-bordered w-full {{ $errors->has('image3') ? ' input-error' : '' }}" />
+            <div class="grid grid-cols-6 gap-2">
+              <input name="image3" id="image3" type="file" accept="image/*" onchange="previewImageOnAdd(image3)" class="file-input file-input-bordered w-full col-span-5 {{ $errors->has('image3') ? ' input-error' : '' }}" />
+              <button class="btn btn-error" id="delete3" disabled><x-heroicon-o-trash class="w-4 h-4" /></button>
+            </div>
             @if ($errors->has('image3'))
               <label class="label">
                 <span class="label-text-alt text-error">{{ $errors->first('image3') }}</span>
@@ -167,7 +176,10 @@
           </div>
           <div class="form-control w-full mt-2">
             <img class="my-2 max-w-lg h-40 rounded-md" id="preview_image4" src="https://placehold.co/512x160?text=No+Image">
-            <input name="image4" id="image4" type="file" accept="image/*" onchange="previewImageOnAdd(image4)" class="file-input file-input-bordered w-full {{ $errors->has('image4') ? ' input-error' : '' }}" />
+            <div class="grid grid-cols-6 gap-2">
+              <input name="image4" id="image4" type="file" accept="image/*" onchange="previewImageOnAdd(image4)" class="file-input file-input-bordered w-full col-span-5 {{ $errors->has('image4') ? ' input-error' : '' }}" />
+              <button class="btn btn-error" id="delete4" disabled><x-heroicon-o-trash class="w-4 h-4" /></button>
+            </div>
             @if ($errors->has('image4'))
               <label class="label">
                 <span class="label-text-alt text-error">{{ $errors->first('image4') }}</span>
@@ -176,7 +188,10 @@
           </div>
           <div class="form-control w-full mt-2">
             <img class="my-2 max-w-lg h-40 rounded-md" id="preview_image5" src="https://placehold.co/512x160?text=No+Image">
-            <input name="image5" id="image5" type="file" accept="image/*" onchange="previewImageOnAdd(image5)" class="file-input file-input-bordered w-full {{ $errors->has('image5') ? ' input-error' : '' }}" />
+            <div class="grid grid-cols-6 gap-2">
+              <input name="image5" id="image5" type="file" accept="image/*" onchange="previewImageOnAdd(image5)" class="file-input file-input-bordered w-full col-span-5 {{ $errors->has('image5') ? ' input-error' : '' }}" />
+              <button class="btn btn-error" id="delete5" disabled><x-heroicon-o-trash class="w-4 h-4" /></button>
+            </div>
             @if ($errors->has('image5'))
               <label class="label">
                 <span class="label-text-alt text-error">{{ $errors->first('image5') }}</span>
@@ -185,7 +200,10 @@
           </div>
           <div class="form-control w-full mt-2">
             <img class="my-2 max-w-lg h-40 rounded-md" id="preview_image6" src="https://placehold.co/512x160?text=No+Image">
-            <input name="image6" id="image6" type="file" accept="image/*" onchange="previewImageOnAdd(image6)" class="file-input file-input-bordered w-full {{ $errors->has('image6') ? ' input-error' : '' }}" />
+            <div class="grid grid-cols-6 gap-2">
+              <input name="image6" id="image6" type="file" accept="image/*" onchange="previewImageOnAdd(image6)" class="file-input file-input-bordered w-full col-span-5 {{ $errors->has('image6') ? ' input-error' : '' }}" />
+              <button class="btn btn-error" id="delete6" disabled><x-heroicon-o-trash class="w-4 h-4" /></button>
+            </div>
             @if ($errors->has('image6'))
               <label class="label">
                 <span class="label-text-alt text-error">{{ $errors->first('image6') }}</span>
@@ -194,7 +212,10 @@
           </div>
           <div class="form-control w-full mt-2">
             <img class="my-2 max-w-lg h-40 rounded-md" id="preview_image7" src="https://placehold.co/512x160?text=No+Image">
-            <input name="image7" id="image7" type="file" accept="image/*" onchange="previewImageOnAdd(image7)" class="file-input file-input-bordered w-full {{ $errors->has('image7') ? ' input-error' : '' }}" />
+            <div class="grid grid-cols-6 gap-2">
+              <input name="image7" id="image7" type="file" accept="image/*" onchange="previewImageOnAdd(image7)" class="file-input file-input-bordered w-full col-span-5 {{ $errors->has('image7') ? ' input-error' : '' }}" />
+              <button class="btn btn-error" id="delete7" disabled><x-heroicon-o-trash class="w-4 h-4" /></button>
+            </div>
             @if ($errors->has('image7'))
               <label class="label">
                 <span class="label-text-alt text-error">{{ $errors->first('image7') }}</span>
@@ -203,7 +224,10 @@
           </div>
           <div class="form-control w-full mt-2">
             <img class="my-2 max-w-lg h-40 rounded-md" id="preview_image8" src="https://placehold.co/512x160?text=No+Image">
-            <input name="image8" id="image8" type="file" accept="image/*" onchange="previewImageOnAdd(image8)" class="file-input file-input-bordered w-full {{ $errors->has('image8') ? ' input-error' : '' }}" />
+            <div class="grid grid-cols-6 gap-2">
+              <input name="image8" id="image8" type="file" accept="image/*" onchange="previewImageOnAdd(image8)" class="file-input file-input-bordered w-full col-span-5 {{ $errors->has('image8') ? ' input-error' : '' }}" />
+              <button class="btn btn-error" id="delete8" disabled><x-heroicon-o-trash class="w-4 h-4" /></button>
+            </div>
             @if ($errors->has('image8'))
               <label class="label">
                 <span class="label-text-alt text-error">{{ $errors->first('image8') }}</span>
@@ -283,6 +307,8 @@
             var images = JSON.parse(photos[i].image);
             var realImage = images.realImage;
             var num = i + 1;
+            $("#delete" + num).removeAttr('disabled');
+            $('#image' + num).attr('disabled', 'disabled');
             $('#preview_image' + num).attr('src', realImage || '');
           }
         }
