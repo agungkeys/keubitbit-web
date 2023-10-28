@@ -42,7 +42,7 @@ class VideosController extends Controller
             'detail' => 'required',
             'iframe_youtube' => 'required',
             'link' => 'required',
-            'image' => 'required|image|mimes:jpeg,png,jpg,svg|max:3000'
+            'image' => 'image|mimes:jpeg,png,jpg,svg|max:3000'
         ]);
 
         if ($request->file('image')) {

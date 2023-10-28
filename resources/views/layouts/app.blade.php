@@ -67,9 +67,9 @@ Default Page
         link: "/about"
       },{
         id: 2,
-        name: "video",
-        label: "VIDEO",
-        link: "/video"
+        name: "gallery",
+        label: "GALLERY",
+        link: "/gallery"
       },{
         id: 3,
         name: "music",
