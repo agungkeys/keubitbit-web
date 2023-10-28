@@ -90,12 +90,21 @@ Route::group(['namespace' => 'Admin', 'as' => 'admin.'], function () {
         Route::get('/admin/stores/edit/{id}', 'StoresController@edit')->name('stores.edit');
         Route::post('/admin/stores/update', 'StoresController@update')->name('stores.update');
         Route::delete('/admin/stores/delete/{id}', 'StoresController@delete')->name('stores.delete');
-        //Master Stores
+        //Master Videos
         Route::get('/admin/videos', 'VideosController@index')->name('videos');
         Route::post('/admin/videos/store', 'VideosController@store')->name('videos.store');
         Route::get('/admin/videos/edit/{id}', 'VideosController@edit')->name('videos.edit');
         Route::post('/admin/videos/update', 'VideosController@update')->name('videos.update');
         Route::delete('/admin/videos/delete/{id}', 'VideosController@delete')->name('videos.delete');
+        //Master Galleries
+        Route::get('/admin/galleries', 'GalleriesController@index')->name('galleries');
+        Route::post('/admin/galleries/store', 'GalleriesController@store')->name('galleries.store');
+        Route::get('/admin/galleries/edit/{id}', 'GalleriesController@edit')->name('galleries.edit');
+        Route::post('/admin/galleries/update', 'GalleriesController@update')->name('galleries.update');
+        Route::delete('/admin/galleries/delete/{id}', 'GalleriesController@delete')->name('galleries.delete');
+        Route::get('/admin/galleries/photo/{id}', 'GalleriesController@photo')->name('galleries.photo');
+        Route::post('/admin/galleries/photo/store', 'GalleriesController@photoStore')->name('galleries.photo.store');
+        Route::delete('/admin/galleries/photo/delete/{id}', 'GalleriesController@photoDelete')->name('galleries.photo.delete');
     });
 });
 
