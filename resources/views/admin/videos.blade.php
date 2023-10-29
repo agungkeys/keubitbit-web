@@ -40,7 +40,10 @@
                       <x-column-header dataRoute="admin.videos" column-name="name" :sort-column="$sortColumn" :sortDirection="$sortDirection">Title</x-column-header>
                     </th>
                     <th>
-                      <x-column-header dataRoute="admin.videos" column-name="slug" :sort-column="$sortColumn" :sortDirection="$sortDirection">Slug</x-column-header>
+                      <x-column-header dataRoute="admin.videos" column-name="category" :sort-column="$sortColumn" :sortDirection="$sortDirection">Category</x-column-header>
+                    </th>
+                    <th>
+                      Slug
                     </th>
                     <th width="100">Action</th>
                   </tr>
@@ -66,6 +69,15 @@
                           <div>
                             <div class="font-bold">{{ $video->name }}</div>
                           </div>
+                      </td>
+                      <td>
+                        @if ($video->category == 'official')
+                          Official Video
+                        @elseif ($video->category == 'vlog')
+                          Vlog Video
+                        @elseif ($video->category == 'live')
+                          Live Video
+                        @endif
                       </td>
                       <td> {{ $video->slug }} </td>
                       <td>
@@ -122,6 +134,22 @@
         </div>
         <div class="form-control w-full mt-2">
           <label class="label">
+            <span class="label-text text-base-content undefined">Category</span>
+          </label>
+          <select name="category" class="input input-bordered w-full">
+            <option selected disabled>Your video category</option>
+            <option value="official">Official Video</option>
+            <option value="vlog">Vlog Video</option>
+            <option value="live">Live Video</option>
+          </select>
+          @if ($errors->has('iframe_youtube'))
+            <label class="label">
+              <span class="label-text-alt text-error">{{ $errors->first('iframe_youtube') }}</span>
+            </label>
+          @endif
+        </div>
+        <div class="form-control w-full mt-2">
+          <label class="label">
             <span class="label-text text-base-content undefined">Iframe Youtube</span>
           </label>
           <input name="iframe_youtube" type="text" placeholder="Your iframe youtube video" class="input input-bordered w-full {{ $errors->has('iframe_youtube') ? ' input-error' : '' }}" />
@@ -135,7 +163,7 @@
           <label class="label">
             <span class="label-text text-base-content undefined">Link</span>
           </label>
-          <input name="link" type="text" placeholder="Your link video" class="input input-bordered w-full {{ $errors->has('link') ? ' input-error' : '' }}" />
+          <input name="link" type="text" placeholder="Your video link" class="input input-bordered w-full {{ $errors->has('link') ? ' input-error' : '' }}" />
           @if ($errors->has('link'))
             <label class="label">
               <span class="label-text-alt text-error">{{ $errors->first('link') }}</span>
@@ -146,7 +174,7 @@
           <label class="label">
             <span class="label-text text-base-content undefined">Image</span>
           </label>
-          <img class="my-2 max-w-lg rounded-md mx-auto" id="newsPreview" hidden>
+          <img class="my-2 max-w-lg rounded-md mx-auto" id="videoPreview" hidden>
           <input name="image" id="image" type="file" accept="image/*" onchange="previewImageOnAdd()" class="file-input file-input-bordered w-full {{ $errors->has('image') ? ' input-error' : '' }}" />
           @if ($errors->has('image'))
             <label class="label">
@@ -195,6 +223,22 @@
           @if ($errors->has('detail'))
             <label class="label">
               <span class="label-text-alt text-error">{{ $errors->first('detail') }}</span>
+            </label>
+          @endif
+        </div>
+        <div class="form-control w-full mt-2">
+          <label class="label">
+            <span class="label-text text-base-content undefined">Category</span>
+          </label>
+          <select name="category" id="category" class="input input-bordered w-full">
+            <option selected disabled>Your video category</option>
+            <option value="official">Official Video</option>
+            <option value="vlog">Vlog Video</option>
+            <option value="live">Live Video</option>
+          </select>
+          @if ($errors->has('iframe_youtube'))
+            <label class="label">
+              <span class="label-text-alt text-error">{{ $errors->first('iframe_youtube') }}</span>
             </label>
           @endif
         </div>
@@ -253,6 +297,10 @@
         <span class="label-text text-gray-500">Detail</span>
       </label>
       <span id="detail_detail" class="label text-base">-</span>
+      <label class="label">
+        <span class="label-text text-gray-500">Category</span>
+      </label>
+      <span id="detail_category" class="label text-base">-</span>
       <label class="label">
         <span class="label-text text-gray-500">Iframe Youtube</span>
       </label>
@@ -352,6 +400,7 @@
           $("#iframe_youtube").val(video.iframe_youtube);
           $("#link").val(video.link);
           $('#videoPreviewEdit').attr('src', image?.realImage || '');
+          $('#category').val(video.category);
           CKEDITOR.instances['detailEdit'].setData(video.detail);
         }
       })
@@ -405,10 +454,18 @@
           if (response.video.image != '') {
             image = JSON.parse(dataImage);
           }
+          if (video.category == 'official') {
+            category = "Official Video";
+          } else if (video.category == 'live') {
+            category = "Live Video";
+          } else if (video.category == 'vlog') {
+            category = "VLog Video";
+          }
           $("#detail_name").text(video?.name);
           $("#detail_slug").text(video?.slug);
           $("#detail_detail").html(video?.detail);
           $("#detail_link").text(video?.link);
+          $("#detail_category").text(category);
           $("#detail_iframe_youtube").text(video?.iframe_youtube);
           $('#videoPreviewDetail').attr('src', image?.realImage || '');
         }

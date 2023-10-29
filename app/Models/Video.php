@@ -10,6 +10,6 @@ class Video extends Model
     use HasFactory;
 
     protected $fillable = [
-        'name', 'slug', 'detail', 'iframe_youtube', 'link', 'image'
+        'name', 'slug', 'detail', 'iframe_youtube', 'link', 'category', 'image'
     ];
 }
