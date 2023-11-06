@@ -18,6 +18,7 @@ return new class extends Migration
             $table->longText('detail');
             $table->string('iframe_youtube');
             $table->string('link');
+            $table->string('category');
             $table->longText('image');
             $table->timestamps();
         });

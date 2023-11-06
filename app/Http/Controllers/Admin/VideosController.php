@@ -27,7 +27,8 @@ class VideosController extends Controller
         if ($searchParam) {
             $video_query = $video_query->where(function ($query) use ($searchParam) {
                 $query
-                    ->orWhere('name', 'like', "%$searchParam%");
+                    ->orWhere('name', 'like', "%$searchParam%")
+                    ->orWhere('category', 'like', "%$searchParam%");
             });
         }
 
@@ -42,7 +43,8 @@ class VideosController extends Controller
             'detail' => 'required',
             'iframe_youtube' => 'required',
             'link' => 'required',
-            'image' => 'image|mimes:jpeg,png,jpg,svg|max:3000'
+            'category' => 'required',
+            'image' => 'required|image|mimes:jpeg,png,jpg,svg|max:3000',
         ]);
 
         if ($request->file('image')) {
@@ -58,6 +60,7 @@ class VideosController extends Controller
             'detail' => $request->detail,
             'iframe_youtube' => $request->iframe_youtube,
             'link' => $request->link,
+            'category' => $request->category,
             'image' => $image
         ]);
         return redirect()->back()->with('success', 'Video berhasil disimpan!');
@@ -79,6 +82,7 @@ class VideosController extends Controller
             'detail' => 'required',
             'iframe_youtube' => 'required',
             'link' => 'required',
+            'category' => 'required',
             'image' => 'image|mimes:jpeg,png,jpg,svg|max:3000'
         ]);
 
@@ -98,6 +102,7 @@ class VideosController extends Controller
             'image' => $image ?? $video->image,
             'iframe_youtube' => $request->iframe_youtube,
             'link' => $request->link,
+            'category' => $request->category,
         ]);
 
         return redirect()->back()->with('success', 'Video berhasil diubah!');
