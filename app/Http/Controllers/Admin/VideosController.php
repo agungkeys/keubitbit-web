@@ -43,8 +43,7 @@ class VideosController extends Controller
             'detail' => 'required',
             'iframe_youtube' => 'required',
             'link' => 'required',
-            'category' => 'required',
-            'image' => 'required|image|mimes:jpeg,png,jpg,svg|max:3000',
+            'category' => 'required'
         ]);
 
         if ($request->file('image')) {
@@ -82,8 +81,7 @@ class VideosController extends Controller
             'detail' => 'required',
             'iframe_youtube' => 'required',
             'link' => 'required',
-            'category' => 'required',
-            'image' => 'image|mimes:jpeg,png,jpg,svg|max:3000'
+            'category' => 'required'
         ]);
 
         $video = Video::findOrFail($request->video_id);

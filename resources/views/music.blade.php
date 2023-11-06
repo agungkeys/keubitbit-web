@@ -43,5 +43,20 @@
       </div>
     @endforeach
   </section>
+  <section class="pb-4 md:pb-10">
+    <h1 class="text-center text-3xl md:text-5xl font-bold mb-5">More album of Keubitbit</h1>
+    <div class="container max-w-lg">
+      <div class="grid gap-4 grid-cols-2">
+        <a href="https://open.spotify.com/artist/6W34RUeAaZxU7giOCVfG25" target="_blank" class="btn glass btn-md">
+          <img src="https://res.cloudinary.com/domqavi1p/image/upload/v1694177096/icons/3669986_lu9urg.webp" width="25" height="25" />
+          <span>Spotify</span>
+        </a>
+        <a href="https://music.apple.com/id/artist/keubitbit/1589699514" target="_blank" class="btn glass btn-md">
+          <img src="https://res.cloudinary.com/domqavi1p/image/upload/v1694177281/icons/7566380_iqnpmb.webp" width="25" height="25" />
+          <span>Apple</span>
+        </a>
+      </div>
+    </div>
+  </section>
 
 @endsection
