@@ -133,7 +133,7 @@
 
   <section id="photo" hidden>
     <div class="card bg-white">
-      <form class="card-body p-4" onsubmit="disableButton()" action="{{ route('admin.galleries.photo.store') }}" method="POST" enctype="multipart/form-data">
+      <form class="card-body p-4" action="{{ route('admin.galleries.photo.store') }}" method="POST" onsubmit="disableButton()" enctype="multipart/form-data">
         @csrf
         <h3 class="font-semibold text-2xl pb-2" id="title"></h3>
         <div class="grid grid-cols-2 gap-4">
@@ -235,7 +235,7 @@
             @endif
           </div>
         </div>
-        <x-form-action type="save" route="{{ $url }}" />
+        <x-form-action type="photo" route="{{ $url }}" />
       </form>
     </div>
   </section>
@@ -262,6 +262,18 @@
       } else {
         $("#" + "preview_" + id).attr("src", URL.createObjectURL(event.target.files[0]));
       }
+    }
+
+    function disableButton() {
+      var add = document.getElementById('submitAdd');
+      var addPhoto = document.getElementById('submitAddPhoto');
+      var edit = document.getElementById('submitEdit');
+      add.disabled = true;
+      addPhoto.disabled = true;
+      edit.disabled = true;
+      $('#loadingAdd').show();
+      $('#loadingAddPhoto').show();
+      $('#loadingEdit').show();
     }
 
     function backGallery() {
@@ -383,15 +395,6 @@
           });
         }
       })
-    }
-
-    function disableButton() {
-      var add = document.getElementById('submitAdd');
-      var edit = document.getElementById('submitEdit');
-      add.disabled = true;
-      edit.disabled = true;
-      $('#loadingAdd').show();
-      $('#loadingEdit').show();
     }
   </script>
 @endsection
