@@ -166,6 +166,31 @@ Default Page
         }
       ]
     }
+
+    const datacategoryvideos = [
+      {
+        id: 0,
+        name: "",
+        label: "All",
+        link: "?filter="
+      },
+      {
+        id: 1,
+        name: "official",
+        label: "Official",
+        link: "?filter=official"
+      },{
+        id: 2,
+        name: "vlog",
+        label: "Vlog",
+        link: "?filter=vlog"
+      },{
+        id: 3,
+        name: "live",
+        label: "Live",
+        link: "?filter=live"
+      }
+    ];
   </script>
   @if (session('subs'))
   <script>

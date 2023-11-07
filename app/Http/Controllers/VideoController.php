@@ -3,15 +3,22 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Video;
 
 class VideoController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        return view('video');
+        $filter = $request->filter;
+        if($filter){
+            $videos = Video::all()->where('category', $filter)->sortBy('created_at');
+        }else{
+            $videos = Video::all()->sortBy('created_at');
+        }
+        return view('video', compact('videos'));
     }
 
     /**
