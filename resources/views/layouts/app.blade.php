@@ -39,8 +39,8 @@ Default Page
   <link rel="dns-prefetch" href="//fonts.bunny.net" />
   <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet" />
   <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.7.0/flowbite.min.css" rel="stylesheet" />
-  <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
-  <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
+  <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
+  <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css" />
 
   <!-- Scripts -->
   @vite('resources/css/app.css')
@@ -54,47 +54,44 @@ Default Page
   @include('layouts.app-footer')
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
   <script>
-    const datamenu = [
-      {
-        id: 0,
-        name: "home",
-        label: "HOME",
-        link: "/"
-      },{
-        id: 1,
-        name: "about",
-        label: "ABOUT",
-        link: "/about"
-      },{
-        id: 2,
-        name: "gallery",
-        label: "GALLERY",
-        link: "/gallery"
-      },{
-        id: 3,
-        name: "music",
-        label: "MUSIC",
-        link: "/music"
-      },{
-        id: 4,
-        name: "tour",
-        label: "TOUR",
-        link: "/tour"
-      },{
-        id: 5,
-        name: "news",
-        label: "NEWS",
-        link: "/news"
-      },{
-        id: 6,
-        name: "contact",
-        label: "CONTACT",
-        link: "/contact"
-      }
-    ];
+    const datamenu = [{
+      id: 0,
+      name: "home",
+      label: "HOME",
+      link: "/"
+    }, {
+      id: 1,
+      name: "about",
+      label: "ABOUT",
+      link: "/about"
+    }, {
+      id: 2,
+      name: "gallery",
+      label: "GALLERY",
+      link: "/gallery"
+    }, {
+      id: 3,
+      name: "music",
+      label: "MUSIC",
+      link: "/music"
+    }, {
+      id: 4,
+      name: "tour",
+      label: "TOUR",
+      link: "/tour"
+    }, {
+      id: 5,
+      name: "news",
+      label: "NEWS",
+      link: "/news"
+    }, {
+      id: 6,
+      name: "contact",
+      label: "CONTACT",
+      link: "/contact"
+    }];
 
-    const datasocialfooter = [
-      {
+    const datasocialfooter = [{
         id: 0,
         name: "solemnity",
         image: "https://res.cloudinary.com/domqavi1p/image/upload/v1692809950/solemnity-size-01_ce2xa2.webp",
@@ -105,22 +102,22 @@ Default Page
         name: "apple-music",
         image: "https://res.cloudinary.com/domqavi1p/image/upload/v1690539805/applemusic-white_vhybzx.webp",
         link: "https://music.apple.com/id/artist/keubitbit/1589699514"
-      },{
+      }, {
         id: 2,
         name: "facebook",
         image: "https://res.cloudinary.com/domqavi1p/image/upload/v1690539844/facebook-white_ejzyil.webp",
         link: "https://www.facebook.com/keubitbit"
-      },{
+      }, {
         id: 3,
         name: "twitter",
         image: "https://res.cloudinary.com/domqavi1p/image/upload/v1690539886/twitter-white_zj1p5f.webp",
         link: "https://twitter.com/keubitbit_am"
-      },{
+      }, {
         id: 4,
         name: "instagram",
         image: "https://res.cloudinary.com/domqavi1p/image/upload/v1690539927/instagram-white_thzdpf.webp",
         link: "https://www.instagram.com/keubitbit_am"
-      },{
+      }, {
         id: 5,
         name: "youtube",
         image: "https://res.cloudinary.com/domqavi1p/image/upload/v1690539951/youtube-white_ciu5ol.webp",
@@ -132,43 +129,40 @@ Default Page
       album: "Peuneurah Bumoe",
       image: "https://res.cloudinary.com/domqavi1p/image/upload/v1690546337/ab67616d0000b273adaa917ccb54739ec80f2684_vgms6p.webp",
       year: "2023",
-      songs: [
-        {
-          id: 0,
-          name: "SiCupak Lada",
-          description: "Keubitbit",
-          file: ""
-        },{
-          id: 1,
-          name: "Sep Sep Hansep",
-          description: "Keubitbit, Fahmil Arabi",
-          file: ""
-        },{
-          id: 2,
-          name: "Bak Tajak",
-          description: "Keubitbit, Fahmil Arabi",
-          file: ""
-        },{
-          id: 3,
-          name: "Eu mak Eu",
-          description: "Keubitbit, Fahmil Arabi",
-          file: ""
-        },{
-          id: 4,
-          name: "ANGEN",
-          description: "Keubitbit, Fahmil Arabi",
-          file: ""
-        },{
-          id: 5,
-          name: "Rhambule",
-          description: "Keubitbit, Fahmil Arabi",
-          file: ""
-        }
-      ]
+      songs: [{
+        id: 0,
+        name: "SiCupak Lada",
+        description: "Keubitbit",
+        file: ""
+      }, {
+        id: 1,
+        name: "Sep Sep Hansep",
+        description: "Keubitbit, Fahmil Arabi",
+        file: ""
+      }, {
+        id: 2,
+        name: "Bak Tajak",
+        description: "Keubitbit, Fahmil Arabi",
+        file: ""
+      }, {
+        id: 3,
+        name: "Eu mak Eu",
+        description: "Keubitbit, Fahmil Arabi",
+        file: ""
+      }, {
+        id: 4,
+        name: "ANGEN",
+        description: "Keubitbit, Fahmil Arabi",
+        file: ""
+      }, {
+        id: 5,
+        name: "Rhambule",
+        description: "Keubitbit, Fahmil Arabi",
+        file: ""
+      }]
     }
 
-    const datacategoryvideos = [
-      {
+    const datacategoryvideos = [{
         id: 0,
         name: "",
         label: "All",
@@ -179,12 +173,12 @@ Default Page
         name: "official",
         label: "Official",
         link: "?filter=official"
-      },{
+      }, {
         id: 2,
         name: "vlog",
         label: "Vlog",
         link: "?filter=vlog"
-      },{
+      }, {
         id: 3,
         name: "live",
         label: "Live",
@@ -193,13 +187,22 @@ Default Page
     ];
   </script>
   @if (session('subs'))
-  <script>
-    Swal.fire(
+    <script>
+      Swal.fire(
         'Thank You!!',
         'Subscribe Successfully',
         'success'
       )
-  </script>
+    </script>
+  @endif
+  @if (session('contact'))
+    <script>
+      Swal.fire(
+        'Thank You!!',
+        'Your message was sent successfully',
+        'success'
+      )
+    </script>
   @endif
   @yield('js')
 </body>

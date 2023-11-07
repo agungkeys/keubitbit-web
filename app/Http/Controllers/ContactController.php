@@ -1,26 +1,30 @@
 <?php
 
 namespace App\Http\Controllers;
+
+use App\Models\Contact;
 use Illuminate\Http\Request;
 
 class ContactController extends Controller
 {
-  public function index(Request $request)
-  {
-    return view('contact');
-  }
-  public function store(Request $request)
+    public function index(Request $request)
+    {
+        return view('contact');
+    }
+    public function store(Request $request)
     {
         $request->validate([
             'name' => 'required',
-            'email' => 'email|required|unique:mailists',
+            'email' => 'email|required',
             'message' => 'required',
         ]);
 
-        // $mailist = new Mailist();
-        // $mailist->email = $request->email;
-        // $mailist->save();
+        $contact = new Contact();
+        $contact->name = $request->name;
+        $contact->email = $request->email;
+        $contact->message = $request->message;
+        $contact->save();
 
-        // return redirect()->back()->with('subs', 'success');
+        return redirect()->back()->with('contact', 'success');
     }
 }
