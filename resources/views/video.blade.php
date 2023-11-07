@@ -6,9 +6,9 @@
     <h1 class="text-white text-center text-3xl md:text-5xl font-bold tracking-wider">Video</h1>
   </div>
 </section>
-<section class="container py-8">
+<section class="container py-4 md:py-8">
   <div 
-    class="flex gap-4 mb-8"
+    class="flex gap-4 mb-4 md:mb-8"
     x-data="{ data: datacategoryvideos }"
   >
     <template x-for="item in data">
@@ -39,7 +39,7 @@
           <a href="{{$video->link}}" target="_blank">
             <h2 class="card-title text-2xl md:text-3xl font-philosopher pt-4">{{$video->name}}</h2>
           </a>
-          <div class="mt-4 text-sm md:text-lg">{!!$video->detail !!}</div>
+          <div class="mt-1 md:mt-4 mb-4 md:mb-0 text-sm md:text-lg">{!!$video->detail !!}</div>
         </div>
     @endforeach
   </div>

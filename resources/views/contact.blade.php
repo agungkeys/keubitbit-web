@@ -11,8 +11,8 @@
     <h4 class="text-lg">Send Message To</h4>
     <h1 class="text-5xl font-semibold font-philosopher text-black">General Inquiries</h1>
     
-    <div class="grid grid-cols-5">
-      <div class="col-span-2">
+    <div class="grid grid-cols-1 md:grid-cols-5">
+      <div class="col-span-1 md:col-span-2">
         <div class="card mt-5 bg-white border-gray-50 border-2 shadow-lg">
           <form class="card-body" onsubmit="disableButton()" action="{{ route('contact.store') }}" method="POST" enctype="multipart/form-data">
             @csrf
@@ -54,7 +54,7 @@
           </form>
         </div>
       </div>
-      <div class="col-span-3"></div>
+      <div class="col-span-1 md:col-span-3"></div>
     </div>
   </div>
 
