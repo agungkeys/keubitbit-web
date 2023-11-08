@@ -105,6 +105,9 @@ Route::group(['namespace' => 'Admin', 'as' => 'admin.'], function () {
         Route::get('/admin/galleries/photo/{id}', 'GalleriesController@photo')->name('galleries.photo');
         Route::post('/admin/galleries/photo/store', 'GalleriesController@photoStore')->name('galleries.photo.store');
         Route::delete('/admin/galleries/photo/delete/{id}', 'GalleriesController@photoDelete')->name('galleries.photo.delete');
+        //Master Contacts
+        Route::get('/admin/contacts', 'ContactsController@index')->name('contacts');
+        Route::get('/admin/contacts/detail/{id}', 'ContactsController@detail')->name('contacts.detail');
     });
 });
 

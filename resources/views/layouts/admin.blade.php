@@ -179,6 +179,12 @@ Default Page
         label: "Newsletter",
         link: "/admin/newsletter?sortDirection=desc&sortColumn=id",
         isLabel: false,
+      }, {
+        id: 13,
+        name: "contacts",
+        label: "Contacts",
+        link: "/admin/contacts?sortDirection=desc&sortColumn=id",
+        isLabel: false,
       }
     ];
   </script>
