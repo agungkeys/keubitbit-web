@@ -37,7 +37,8 @@
             {!!$video->iframe_youtube!!}
           </div>
           <a href="{{$video->link}}" target="_blank">
-            <h2 class="card-title text-2xl md:text-3xl font-philosopher pt-4">{{$video->name}}</h2>
+            <div class="mt-4 badge badge-secondary capitalize">{{$video->category}} video</div>
+            <h2 class="card-title text-2xl md:text-3xl font-philosopher pt-2">{{$video->name}}</h2>
           </a>
           <div class="mt-1 md:mt-4 mb-4 md:mb-0 text-sm md:text-lg">{!!$video->detail !!}</div>
         </div>

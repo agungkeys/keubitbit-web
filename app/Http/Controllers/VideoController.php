@@ -14,9 +14,9 @@ class VideoController extends Controller
     {
         $filter = $request->filter;
         if($filter){
-            $videos = Video::all()->where('category', $filter)->sortBy('created_at');
+            $videos = Video::all()->where('category', $filter)->sortByDesc('created_at');
         }else{
-            $videos = Video::all()->sortBy('created_at');
+            $videos = Video::all()->sortByDesc('created_at');
         }
         return view('video', compact('videos'));
     }

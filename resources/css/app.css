@@ -74,3 +74,7 @@
 #wysiwyg p {
   margin-bottom: 10px;
 }
+
+#wysiwyg a {
+  color: #dfa82f;
+}

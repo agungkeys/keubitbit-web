@@ -230,7 +230,7 @@
       <label class="label">
         <span class="label-text text-gray-500">Detail</span>
       </label>
-      <span id="detail_detail" class="label text-base">-</span>
+      <span id="detail_detail" class="label text-base block">-</span>
       <label class="label">
         <span class="label-text text-gray-500">Image</span>
       </label>

@@ -1,12 +1,14 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Models\News;
 use Illuminate\Http\Request;
 
 class NewsController extends Controller
 {
   public function index(Request $request)
   {
-    return view('news');
+    $news = News::all()->where('is_active', 1)->sortByDesc('created_at');
+    return view('news', compact('news'));
   }
 }
