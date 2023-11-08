@@ -20,9 +20,9 @@
         </a>
         <div class="card-body block">
           <a href="{{$data->reference}}" target="_blank">
-            <h2 class="card-title line-clamp-2">{{$data->name}}</h2>
+            <h2 class="card-title line-clamp-2 font-philosopher text-base md:text-xl">{{$data->name}}</h2>
           </a>
-          <div id="wysiwyg" class="mt-2 md:mt-4 text-lg">{!!$data->detail !!}</div>
+          <div id="wysiwyg" class="mt-2 md:mt-4 text-base md:text-lg">{!!$data->detail !!}</div>
         </div>
       </div>
     @endforeach

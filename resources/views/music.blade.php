@@ -34,7 +34,7 @@
               </div>
               <h2 class="card-title text-2xl md:text-3xl font-philosopher pt-2">{{$music->name}}</h2>
               <h2 class="mt-0 text-xl md:text-3xl text-yellow-600 font-philosopher">{{$music->date_release}}</h2>
-              <div id="wysiwyg" class="text-black text-lg tracking-wider my-2">
+              <div id="wysiwyg" class="text-black text-base md:text-lg tracking-wider my-2">
                 {!!$music->detail!!}
               </div>
             </div>
