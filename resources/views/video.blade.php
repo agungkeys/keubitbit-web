@@ -8,7 +8,7 @@
 </section>
 <section class="container py-4 md:py-8">
   <div 
-    class="flex gap-4 mb-4 md:mb-8"
+    class="flex gap-2 md:gap-4 mb-4 md:mb-8"
     x-data="{ data: datacategoryvideos }"
   >
     <template x-for="item in data">

@@ -13,7 +13,7 @@
       <div class="card-body">
         <h2 class="card-title font-philosopher mx-auto text-xl md:text-2xl">Gallery Photos</h2>
         <div class="card-actions justify-end">
-          <a href="/gallery/photo" class="btn btn-md md:btn-lg btn-secondary w-full">More Photo</a>
+          <a href="/gallery/photo" class="btn btn-sm md:btn-lg btn-secondary w-full">More Photo</a>
         </div>
       </div>
     </div>
@@ -22,7 +22,7 @@
       <div class="card-body">
         <h2 class="card-title font-philosopher mx-auto text-xl md:text-2xl">Gallery Videos</h2>
         <div class="card-actions justify-end">
-          <a href="/gallery/video" class="btn btn-md md:btn-lg btn-secondary w-full">More Video</a>
+          <a href="/gallery/video" class="btn btn-sm md:btn-lg btn-secondary w-full">More Video</a>
         </div>
       </div>
     </div>

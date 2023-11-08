@@ -103,12 +103,15 @@
   <section class="bg-[url('https://res.cloudinary.com/domqavi1p/image/upload/c_fill,h_200,w_500/v1690519461/ART_WORK_KEUBITBIT_emiyy9.webp')]">
     <div class="container py-6">
       <h1 class="text-center py-2 md:py-4 text-3xl md:text-5xl font-bold">Discography</h1>
-      <div x-data="{ data: datadiscography}" class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-4 mb-4">
-        <template x-for="item in data">
-          <a target="_blank" x-bind:href="item.link" class="bg-secondary duration-500 hover:bg-black hover:text-white group card w-full">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-4 mb-4">
+        @foreach ($musics as $music)
+          @php
+            $img = json_decode($music->image);
+          @endphp
+          <a target="_blank" href="{{$music->link_spotify}}" class="bg-secondary duration-500 hover:bg-black hover:text-white group card w-full">
             <div class="card-body p-5">
               <div class="flex justify-between items-center">
-                <h2 class="capitalize font-bold text-sm md:text-base" x-text="item.name"></h2>
+                <h2 class="capitalize font-bold text-sm md:text-base">{{$music->name}}</h2>
                 <div class="group-hover:translate-x-2 duration-500">
                   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M11.25 4.5l7.5 7.5-7.5 7.5m-6-15l7.5 7.5-7.5 7.5" />
@@ -117,7 +120,7 @@
               </div>
             </div>
           </a>
-        </template>
+        @endforeach
       </div>
     </div>
   </section>

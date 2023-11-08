@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Banner;
 use App\Models\Music;
+use App\Models\Video;
 use App\Models\Mailist;
 use Illuminate\Http\Request;
 
@@ -13,7 +14,8 @@ class IndexController extends Controller
     {
         $banners = Banner::all();
         $musicFeatured = Music::where('is_featured', 1)->first();
-        return view('index', compact(['banners', 'musicFeatured']));
+        $videos = Video::latest()->limit(3)->get();
+        return view('index', compact(['banners', 'musicFeatured', 'videos']));
     }
     public function store(Request $request)
     {

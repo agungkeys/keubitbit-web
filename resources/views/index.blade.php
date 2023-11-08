@@ -83,33 +83,21 @@
       <h1 class="text-black text-3xl md:text-5xl font-bold">Latest Videos</h1>
     </div>
     <div class="py-2 md:py-4 grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-6">
-      <div class="card shadow-xl bg-contain bg-[url('https://res.cloudinary.com/domqavi1p/image/upload/c_fill,h_200,w_500/v1690519461/ART_WORK_KEUBITBIT_emiyy9.webp')]">
-        <iframe width="100%" height="315" src="https://www.youtube.com/embed/RcPB6GtYTYQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-        <div class="card-body">
-          <span class="text-xl text-primary">Keubitbit - Hembala (Tribute For Endatu) Live Moscow Jazz Festival 2023</span>
-          <p class="mt-2 text-lg">By: Keubitbit</p>
+      @foreach ($videos as $video)
+        @php
+          $img = json_decode($video->image);
+        @endphp
+        <div class="card shadow-xl bg-contain bg-[url('https://res.cloudinary.com/domqavi1p/image/upload/c_fill,h_200,w_500/v1690519461/ART_WORK_KEUBITBIT_emiyy9.webp')]">
+          {!!$video->iframe_youtube!!}
+          <div class="card-body p-4 md:p-6">
+            <span class="text-xl md:text-2xl text-primary font-philosopher">{{$video->name}}</span>
+            <div class="mt-1 text-sm md:text-base text-white">{!!$video->detail!!}</div>
+          </div>
         </div>
-      </div>
-
-      <div class="card shadow-xl bg-contain bg-[url('https://res.cloudinary.com/domqavi1p/image/upload/c_fill,h_200,w_500/v1690519461/ART_WORK_KEUBITBIT_emiyy9.webp')]">
-        <iframe width="100%" height="315" src="https://www.youtube.com/embed/_1KiJRbX-J0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-        <div class="card-body">
-          <span class="text-xl text-primary">Keubitbit - Sep Sep Hansep Live Moscow Jazz Festival 2023</span>
-          <p class="mt-2 text-lg">By: Keubitbit</p>
-        </div>
-      </div>
-
-      <div class="card shadow-xl bg-contain bg-[url('https://res.cloudinary.com/domqavi1p/image/upload/c_fill,h_200,w_500/v1690519461/ART_WORK_KEUBITBIT_emiyy9.webp')]">
-        <iframe width="100%" height="315" src="https://www.youtube.com/embed/GvM4L0hK2Kc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-        <div class="card-body">
-          <span class="text-xl text-primary">Keubitbit - Bak Tajak Live Moscow Jazz Festival 2023</span>
-          <p class="mt-2 text-lg">By: Keubitbit</p>
-        </div>
-      </div>
-      
+      @endforeach 
     </div>
     <div class="text-center py-4 md:py-8">
-      <a href="https://www.youtube.com/@KeubitbitAtjehEthnicMusic" class="btn btn-secondary btn-md md:btn-lg capitalize">More Videos</a>
+      <a href="/gallery/video" class="btn btn-secondary btn-md md:btn-lg capitalize">More Videos</a>
     </div>
   </section>
 
