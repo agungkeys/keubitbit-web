@@ -185,6 +185,24 @@ Default Page
         link: "?filter=live"
       }
     ];
+    
+    const datatourfilter = [{
+        id: 0,
+        name: "",
+        label: "All",
+        link: "?filter="
+      }, {
+        id: 1,
+        name: "upcoming",
+        label: "Upcoming",
+        link: "?filter=upcoming"
+      }, {
+        id: 2,
+        name: "past",
+        label: "Past",
+        link: "?filter=past"
+      }
+    ]
   </script>
   @if (session('subs'))
     <script>
