@@ -22,23 +22,43 @@
       </a>
     </template>
   </div>
+
+  @if(request()->input('filter'))
+  <h2 class="text-lg md:text-2xl font-semibold md:font-bold mb-4">Filtered by <span>{{request()->input('filter')}}</span> tour</h2>
+  @else
+  <h2 class="text-lg md:text-2xl font-semibold md:font-bold mb-4">All tour</h2>
+  @endif
+  
   @if(count($tours) > 0)
     @foreach ($tours as $data)
       @php
         $img = json_decode($data->image);
       @endphp
-      <a href="{{$data->link}}" target="_blank">
+      <div>
         <div class="card shadow-xl my-4 border-[1px] border-gray-100 hover:text-white hover:bg-secondary hover:border-secondary">
           <div class="card-body p-4">
-            <div class="flex">
-              <h1 class="flex-1 text-xl font-semibold line-clamp-1">{{$data->name}}</h1>
+            <div class="grid md:grid-rows-none md:grid-cols-4 items-center">
               <div>
-                <span class="text-base text-gray-400">{{$data->location}}</span>
+                <span class="text-base md:text-xl">{{\Carbon\Carbon::parse($data->date_gigs)->format('M j, Y')}}</span>
+              </div>
+              <div>
+                <h1 class="text-xl font-semibold line-clamp-1">{{$data->name}}</h1>
+              </div>
+              <div>
+                <span class="text-base md:text-xl">{{$data->location}}</span>
+              </div>
+              <div class="text-right">
+                <a class="btn btn-sm md:btn-circle" href="{{$data->link}}">
+                  <span class="md:hidden">More Info</span>
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M12.75 15l3-3m0 0l-3-3m3 3h-7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>                  
+                </a>
               </div>
             </div>
           </div>
         </div>
-      </a>
+      </div>
     @endforeach
   @else
     <div class="card shadow-xl my-4 border-[1px] border-gray-100">

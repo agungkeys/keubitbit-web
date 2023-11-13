@@ -144,12 +144,6 @@ Default Page
         link: "/admin/tours?sortDirection=desc&sortColumn=id",
         isLabel: false,
       }, {
-        id: 7,
-        name: "stores",
-        label: "Store",
-        link: "/admin/stores?sortDirection=desc&sortColumn=id",
-        isLabel: false,
-      }, {
         id: 8,
         name: "articles",
         label: "Article & News",
