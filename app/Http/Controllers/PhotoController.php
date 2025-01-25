@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Gallery;
 
 class PhotoController extends Controller
 {
@@ -11,7 +12,8 @@ class PhotoController extends Controller
      */
     public function index()
     {
-        return view('photo');
+        $galleries = Gallery::all()->sortByDesc('created_at');
+        return view('photo', compact('galleries'));
     }
 
     /**

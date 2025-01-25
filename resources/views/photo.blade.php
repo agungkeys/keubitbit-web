@@ -7,9 +7,22 @@
   </div>
 </section>
 <section class="container py-4">
-  <h1 class="py-3 font-philosopher text-xl md:text-3xl text-center">Album Photo Coming Soon</h1>
-  <figure class="py-2 md:py-5">
-    <img class="mx-auto max-h-[15em] md:max-h-[20em] p-2" src="https://res.cloudinary.com/domqavi1p/image/upload/v1699406198/icons/under-const_co1lu2.webp" alt="Under Consturction" />
-  </figure>
+  <h2 class="text-lg md:text-2xl font-semibold md:font-bold mb-4">All Photos</h2>
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+    @foreach ($galleries as $gallery)
+    @php
+      $img = json_decode($gallery->image);
+    @endphp
+      <div class="w-100">
+        <a href="#" target="_blank">
+          <div class="">
+            <img class="rounded-md w-full object-cover h-48" width="400" height="400" src="{{$img->realImage}}" alt="{{$gallery->name}}" />
+          </div>
+          <h2 class="card-title text-xl md:text-2xl font-philosopher pt-2">{{$gallery->name}}</h2>
+        </a>
+        <!-- <div class="mt-1 md:mt-4 mb-4 md:mb-0 text-base md:text-lg">{!!$gallery->detail !!}</div> -->
+      </div>
+    @endforeach
+  </div>
 </section>
 @endsection
