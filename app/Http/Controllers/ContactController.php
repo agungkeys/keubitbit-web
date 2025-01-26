@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Contact;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\ContactFormMail;
 
 class ContactController extends Controller
 {
@@ -23,8 +25,8 @@ class ContactController extends Controller
         $contact->name = $request->name;
         $contact->email = $request->email;
         $contact->message = $request->message;
+        Mail::to('info@keubitbit.com')->send(new ContactFormMail($contact));
         $contact->save();
-
         return redirect()->back()->with('contact', 'success');
     }
 }

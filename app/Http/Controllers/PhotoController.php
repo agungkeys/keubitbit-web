@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Gallery;
+use App\Models\Photo;
 
 class PhotoController extends Controller
 {
@@ -35,9 +36,13 @@ class PhotoController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(string $slug)
     {
-        //
+        $gallery = Gallery::where('slug', $slug)->first();
+        $imageFeturedPhoto = Photo::where('gallery_id', $gallery->id)->first();
+        $featuredPhoto = json_decode($imageFeturedPhoto->image);
+        $photos = Photo::where('gallery_id', $gallery->id)->get();
+        return view('photo-detail', compact(['gallery', 'featuredPhoto', 'photos']));
     }
 
     /**
